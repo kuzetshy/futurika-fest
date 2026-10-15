@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futurika Fest — UX Prototype & Interactive Schedule</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #151d2f;
+      --card-border: #24324f;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --tech-tag: #3b82f6;
+      --vision-tag: #a855f7;
+      --star-active: #fbbf24;
+      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: rgba(11, 15, 25, 0.95);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .badge {
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      padding: 4px 8px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .btn-agenda {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-agenda:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 24px auto 16px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+
+    .controls-wrapper {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .search-bar {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--text-muted);
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0b0f19;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    .grid-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .item-card:hover {
+      border-color: #3b507a;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .time-slot {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .track-pill {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .track-vision {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .track-tech {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .item-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .speaker-info {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .item-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 12px;
+    }
+
+    .stage-name {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .btn-fav {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-fav:hover {
+      border-color: var(--star-active);
+      color: #fff;
+    }
+
+    .btn-fav.saved {
+      background: rgba(251, 191, 36, 0.12);
+      border-color: var(--star-active);
+      color: var(--star-active);
+      font-weight: 600;
+    }
+
+    /* Modal / Drawer for My Schedule */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .agenda-item {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .no-results {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 40px 20px;
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        FUTURIKA<span>FEST</span>
+        <span class="badge">PROTOTYPE</span>
+      </div>
+      <button class="btn-agenda" id="openAgendaBtn">
+        ⭐ My Schedule (<span id="agendaCount">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Festival Programme Prototype</h1>
+      <p>DOX Centre for Contemporary Art, Prague • 21–23 May 2027. Filter, search and bookmark 60 curated AI keynotes & workshops.</p>
+    </section>
+
+    <section class="controls-wrapper">
+      <div class="search-bar">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="🔍 Search speakers, topics (e.g. 'LLM', 'Diffusion', 'FastAPI', 'Elena')..." 
+          aria-label="Search programme"
+        />
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Day:</span>
+        <button class="tab-btn active" data-day="all">All Days</button>
+        <button class="tab-btn" data-day="1">Day 1 (May 21)</button>
+        <button class="tab-btn" data-day="2">Day 2 (May 22)</button>
+        <button class="tab-btn" data-day="3">Day 3 (May 23)</button>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Stage:</span>
+        <button class="tab-btn active" data-stage="all">All Stages</button>
+        <button class="tab-btn" data-stage="stage-vision">Vision Hall (DOX+)</button>
+        <button class="tab-btn" data-stage="stage-tech">Tech & Code Lab</button>
+      </div>
+    </section>
+
+    <section class="grid-container" id="programmeGrid"></section>
+  </main>
+
+  <!-- My Agenda Modal -->
+  <div class="modal-overlay" id="agendaModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Your Saved Schedule</h2>
+        <button class="close-btn" id="closeAgendaBtn">&times;</button>
+      </div>
+      <div id="agendaList"></div>
+    </div>
+  </div>
+
+  <script>
+    // Inlined Festival Data from data.json
+    const festivalData = {
+  "festival": {
+    "name": "Futurika Fest",
+    "edition": "5th Edition / 2027",
+    "location": "DOX Centre for Contemporary Art & DOX+, Prague, Czech Republic",
+    "date_range": "21 May 2027 – 23 May 2027",
+    "type": "Creative Technology, Artificial Intelligence & Generative Arts Festival",
+    "main_genres": [
+      "Generative AI",
+      "Creative Coding",
+      "Autonomous Agents",
+      "Interactive Digital Media",
+      "Edge ML"
+    ],
+    "summary": "Central Europe's premier hands-on festival bridging generative artificial intelligence, avant-garde digital arts, interactive media, and open-source software engineering."
+  },
+  "stages": [
+    {
+      "id": "stage-vision",
+      "name": "Prompt & Vision Hall",
+      "type": "Keynotes, Generative Art, Media Performances & AI Demos",
+      "capacity": 450,
+      "location": "Main Auditorium (DOX+ Hall)"
+    },
+    {
+      "id": "stage-tech",
+      "name": "Tech & Code Lab",
+      "type": "Technical Talks, LLM Architecture, Agentic Workflows & Live Coding",
+      "capacity": 250,
+      "location": "Innovation Hub, Floor 2"
+    }
+  ],
+  "performers": [
+    {
+      "id": "perf-01",
+      "name": "Dr. Elena Rostova",
+      "track": "Vision & Creative Tech",
+      "role": "Creative AI Lead at Synthetix",
+      "headline_topic": "Cognitive Aesthetics & Neural Style Transfer in Modern Cinema",
+      "country": "International / CZ",
+      "bio": "Dr. Elena Rostova is a leading expert specializing in cognitive aesthetics & neural style transfer in modern cinema. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-02",
+      "name": "Marcus Vance",
+      "track": "Vision & Creative Tech",
+      "role": "Founder of HoloMesh Labs",
+      "headline_topic": "From Diffusion to Reality: The Evolution of Text-to-3D Synthesis",
+      "country": "International / CZ",
+      "bio": "Marcus Vance is a leading expert specializing in from diffusion to reality: the evolution of text-to-3d synthesis. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-03",
+      "name": "Aoi Tanaka",
+      "track": "Vision & Creative Tech",
+      "role": "Sound Architect & Digital Artist",
+      "headline_topic": "Generative Audiovisual Symphony: Real-Time Latent Space Soundscapes",
+      "country": "International / CZ",
+      "bio": "Aoi Tanaka is a leading expert specializing in generative audiovisual symphony: real-time latent space soundscapes. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-04",
+      "name": "Liam Gallagher-Smith",
+      "track": "Vision & Creative Tech",
+      "role": "Research Fellow at Oxford Digital Ethics",
+      "headline_topic": "Ethics of Synthetic Media: Deepfakes, Watermarking, and Ownership",
+      "country": "International / CZ",
+      "bio": "Liam Gallagher-Smith is a leading expert specializing in ethics of synthetic media: deepfakes, watermarking, and ownership. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-05",
+      "name": "Sofia Benitez",
+      "track": "Vision & Creative Tech",
+      "role": "Creative Director at PixelSphere",
+      "headline_topic": "Autonomous Avatars: The Psychology of Synthetic Brand Influencers",
+      "country": "International / CZ",
+      "bio": "Sofia Benitez is a leading expert specializing in autonomous avatars: the psychology of synthetic brand influencers. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-06",
+      "name": "Jan Novák",
+      "track": "Vision & Creative Tech",
+      "role": "NLP Director at Charles AI Hub",
+      "headline_topic": "Czech Language Models: Preserving Cultural Heritage through Open Weights",
+      "country": "International / CZ",
+      "bio": "Jan Novák is a leading expert specializing in czech language models: preserving cultural heritage through open weights. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-07",
+      "name": "Chloe Dubois",
+      "track": "Vision & Creative Tech",
+      "role": "Principal Architect at Studio Biomimic",
+      "headline_topic": "AI-Augmented Architecture: Algorithmic Urbanism and Future Habitats",
+      "country": "International / CZ",
+      "bio": "Chloe Dubois is a leading expert specializing in ai-augmented architecture: algorithmic urbanism and future habitats. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-08",
+      "name": "Tariq Al-Mansoor",
+      "track": "Vision & Creative Tech",
+      "role": "Design Technologist at BrandSynth",
+      "headline_topic": "Generative Typography and Dynamic Branding Systems",
+      "country": "International / CZ",
+      "bio": "Tariq Al-Mansoor is a leading expert specializing in generative typography and dynamic branding systems. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-09",
+      "name": "Dr. Miriam Kováčová",
+      "track": "Vision & Creative Tech",
+      "role": "Senior Lecturer at CTU Digital Arts",
+      "headline_topic": "Bio-Digital Art: Cellular Automata Meets Neural Networks",
+      "country": "International / CZ",
+      "bio": "Dr. Miriam Kováčová is a leading expert specializing in bio-digital art: cellular automata meets neural networks. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-10",
+      "name": "Arjun Patel",
+      "track": "Vision & Creative Tech",
+      "role": "VP of XR Research at NeuraVision",
+      "headline_topic": "Interactive Spatial Computing with Real-time Diffusion Engines",
+      "country": "International / CZ",
+      "bio": "Arjun Patel is a leading expert specializing in interactive spatial computing with real-time diffusion engines. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-11",
+      "name": "Greta Lindholm",
+      "track": "Vision & Creative Tech",
+      "role": "Lead Game Designer at Nordic Worlds",
+      "headline_topic": "AI in Game Design: Generating Living Worlds without Static Assets",
+      "country": "International / CZ",
+      "bio": "Greta Lindholm is a leading expert specializing in ai in game design: generating living worlds without static assets. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-12",
+      "name": "Lucas Rossi",
+      "track": "Vision & Creative Tech",
+      "role": "VFX Supervisor at CineTech Milan",
+      "headline_topic": "Cinematography Reimagined: Virtual Production with Neural Radiance Fields (NeRF)",
+      "country": "International / CZ",
+      "bio": "Lucas Rossi is a leading expert specializing in cinematography reimagined: virtual production with neural radiance fields (nerf). Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-13",
+      "name": "Zhenya Morozov",
+      "track": "Vision & Creative Tech",
+      "role": "Curator at FutureLens Gallery",
+      "headline_topic": "Post-Photography: Authenticity in the Age of Midjourney v8",
+      "country": "International / CZ",
+      "bio": "Zhenya Morozov is a leading expert specializing in post-photography: authenticity in the age of midjourney v8. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-14",
+      "name": "Amara Okafor",
+      "track": "Vision & Creative Tech",
+      "role": "AI Inclusion Lead at AfroTech Futures",
+      "headline_topic": "African Languages in Generative AI: Breaking Linguistic Monoculture",
+      "country": "International / CZ",
+      "bio": "Amara Okafor is a leading expert specializing in african languages in generative ai: breaking linguistic monoculture. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-15",
+      "name": "Sven Erikson",
+      "track": "Vision & Creative Tech",
+      "role": "Robotics Artist at Stockholm Makers",
+      "headline_topic": "Autonomous Robotic Sculpting using Spatial Transformers",
+      "country": "International / CZ",
+      "bio": "Sven Erikson is a leading expert specializing in autonomous robotic sculpting using spatial transformers. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-16",
+      "name": "Maya Lin-Schumacher",
+      "track": "Vision & Creative Tech",
+      "role": "Textile Technologist at BioWeave",
+      "headline_topic": "Generative Fashion: Algorithmic Couture and Zero-Waste Patterns",
+      "country": "International / CZ",
+      "bio": "Maya Lin-Schumacher is a leading expert specializing in generative fashion: algorithmic couture and zero-waste patterns. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-17",
+      "name": "David Miller",
+      "track": "Vision & Creative Tech",
+      "role": "Producer & Audio Engineer",
+      "headline_topic": "Music Without Musicians? Co-Creation Workflows with Generative Audio",
+      "country": "International / CZ",
+      "bio": "David Miller is a leading expert specializing in music without musicians? co-creation workflows with generative audio. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-18",
+      "name": "Dr. Katerina Krausová",
+      "track": "Vision & Creative Tech",
+      "role": "Neuroscientist at BrainTech Prague",
+      "headline_topic": "Neuroethics of Brain-Computer Interfaces in Digital Arts",
+      "country": "International / CZ",
+      "bio": "Dr. Katerina Krausová is a leading expert specializing in neuroethics of brain-computer interfaces in digital arts. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-19",
+      "name": "Felix Baumgartner",
+      "track": "Vision & Creative Tech",
+      "role": "CTO at HoloStage Vienna",
+      "headline_topic": "Real-Time AI Holography: Projecting Volumetric Synthetic Humans",
+      "country": "International / CZ",
+      "bio": "Felix Baumgartner is a leading expert specializing in real-time ai holography: projecting volumetric synthetic humans. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-20",
+      "name": "Nadia Chernova",
+      "track": "Vision & Creative Tech",
+      "role": "Philosopher of Technology at Sorbonne",
+      "headline_topic": "The Synthetic Muse: Can Neural Networks Possess Intention?",
+      "country": "International / CZ",
+      "bio": "Nadia Chernova is a leading expert specializing in the synthetic muse: can neural networks possess intention?. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-21",
+      "name": "Carlos Mendez",
+      "track": "Vision & Creative Tech",
+      "role": "Visual Jockey & Creative Coder",
+      "headline_topic": "Live Latent VJing: Real-time Audio-Reactive Video Synthesis",
+      "country": "International / CZ",
+      "bio": "Carlos Mendez is a leading expert specializing in live latent vjing: real-time audio-reactive video synthesis. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-22",
+      "name": "Hanna Weber",
+      "track": "Vision & Creative Tech",
+      "role": "Story Lead at European Animation Guild",
+      "headline_topic": "Generative Storyboarding and Automated Animatic Generation",
+      "country": "International / CZ",
+      "bio": "Hanna Weber is a leading expert specializing in generative storyboarding and automated animatic generation. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-23",
+      "name": "Dr. Alexei Voronov",
+      "track": "Vision & Creative Tech",
+      "role": "Complexity Scientist at DataMind",
+      "headline_topic": "Multi-Agent Simulation of Fictional Societies for Worldbuilding",
+      "country": "International / CZ",
+      "bio": "Dr. Alexei Voronov is a leading expert specializing in multi-agent simulation of fictional societies for worldbuilding. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-24",
+      "name": "Zuzana Černá",
+      "track": "Vision & Creative Tech",
+      "role": "UX Director at Prague Design Collective",
+      "headline_topic": "Accessible AI UI: Designing Inclusive Prompts for Impaired Creators",
+      "country": "International / CZ",
+      "bio": "Zuzana Černá is a leading expert specializing in accessible ai ui: designing inclusive prompts for impaired creators. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-25",
+      "name": "Oskar Blomqvist",
+      "track": "Vision & Creative Tech",
+      "role": "Digital Horticulturist at Nordic Green",
+      "headline_topic": "Synthetic Botany: Algorithmic Flora Simulation for Interactive Exhibits",
+      "country": "International / CZ",
+      "bio": "Oskar Blomqvist is a leading expert specializing in synthetic botany: algorithmic flora simulation for interactive exhibits. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-26",
+      "name": "Evelyn Reed",
+      "track": "Vision & Creative Tech",
+      "role": "Indie Film Director & Technologist",
+      "headline_topic": "Human-in-the-Loop Filmmaking: Directing Agentic Casts",
+      "country": "International / CZ",
+      "bio": "Evelyn Reed is a leading expert specializing in human-in-the-loop filmmaking: directing agentic casts. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-27",
+      "name": "Kenji Takahashi",
+      "track": "Vision & Creative Tech",
+      "role": "Interactive Novelist at Tokyo StoryLab",
+      "headline_topic": "Hyper-Personalized Interactive Narrative Design",
+      "country": "International / CZ",
+      "bio": "Kenji Takahashi is a leading expert specializing in hyper-personalized interactive narrative design. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-28",
+      "name": "Alina Popescu",
+      "track": "Vision & Creative Tech",
+      "role": "Metaverse Stylist at DigiCouture",
+      "headline_topic": "Digital Fashion in the Age of Autonomous Avatars",
+      "country": "International / CZ",
+      "bio": "Alina Popescu is a leading expert specializing in digital fashion in the age of autonomous avatars. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-29",
+      "name": "Matěj Dvořák",
+      "track": "Vision & Creative Tech",
+      "role": "IP Attorney & Tech Counsel",
+      "headline_topic": "The Economics of Generative IP: Licensing Neural Checkpoints",
+      "country": "International / CZ",
+      "bio": "Matěj Dvořák is a leading expert specializing in the economics of generative ip: licensing neural checkpoints. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-30",
+      "name": "Dr. Rachel Weiss",
+      "track": "Vision & Creative Tech",
+      "role": "Choreographer & Roboticist at Zurich Arts",
+      "headline_topic": "Embodied AI in Performance Art: Human-Robot Dance Duets",
+      "country": "International / CZ",
+      "bio": "Dr. Rachel Weiss is a leading expert specializing in embodied ai in performance art: human-robot dance duets. Featured keynote speaker at Futurika Fest."
+    },
+    {
+      "id": "perf-31",
+      "name": "Dr. Alexander Wright",
+      "track": "Engineering & Core AI",
+      "role": "Chief AI Scientist at SwarmNet",
+      "headline_topic": "Autonomous Agent Swarms: Multi-Agent Collaboration in Production",
+      "country": "International / EU",
+      "bio": "Dr. Alexander Wright works on cutting-edge production systems, focusing on autonomous agent swarms: multi-agent collaboration in production. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-32",
+      "name": "Petra Horáková",
+      "track": "Engineering & Core AI",
+      "role": "Systems Engineer at Prague Embedded",
+      "headline_topic": "Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air",
+      "country": "International / EU",
+      "bio": "Petra Horáková works on cutting-edge production systems, focusing on local llms on edge hardware: optimizing 7b models for macbook air. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-33",
+      "name": "Dmitri Volkov",
+      "track": "Engineering & Core AI",
+      "role": "Lead Architect at Agentic Stack",
+      "headline_topic": "Building Deterministic Workflows on Top of Non-Deterministic LLMs",
+      "country": "International / EU",
+      "bio": "Dmitri Volkov works on cutting-edge production systems, focusing on building deterministic workflows on top of non-deterministic llms. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-34",
+      "name": "Sarah Jenkins",
+      "track": "Engineering & Core AI",
+      "role": "Data Engineer at PineScale",
+      "headline_topic": "Vector Databases at Scale: HNSW Indexing Benchmarks for 100M Records",
+      "country": "International / EU",
+      "bio": "Sarah Jenkins works on cutting-edge production systems, focusing on vector databases at scale: hnsw indexing benchmarks for 100m records. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-35",
+      "name": "Tomasz Zielinski",
+      "track": "Engineering & Core AI",
+      "role": "ML Engineer at Warsaw FinTech",
+      "headline_topic": "Fine-Tuning Open Source LLMs for Legal & Financial Reasoning",
+      "country": "International / EU",
+      "bio": "Tomasz Zielinski works on cutting-edge production systems, focusing on fine-tuning open source llms for legal & financial reasoning. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-36",
+      "name": "Dr. Hélène Martin",
+      "track": "Engineering & Core AI",
+      "role": "Research Scientist at INRIA",
+      "headline_topic": "Mechanistic Interpretability: Peeking Inside Transformer Attention Heads",
+      "country": "International / EU",
+      "bio": "Dr. Hélène Martin works on cutting-edge production systems, focusing on mechanistic interpretability: peeking inside transformer attention heads. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-37",
+      "name": "Martin Svoboda",
+      "track": "Engineering & Core AI",
+      "role": "Head of AI at SearchBridge",
+      "headline_topic": "RAG That Doesn't Hallucinate: Graph Neural Networks meet Dense Retrieval",
+      "country": "International / EU",
+      "bio": "Martin Svoboda works on cutting-edge production systems, focusing on rag that doesn't hallucinate: graph neural networks meet dense retrieval. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-38",
+      "name": "Ing. Jakub Kučera",
+      "track": "Engineering & Core AI",
+      "role": "Senior Backend Architect at CloudStack Prague",
+      "headline_topic": "Deploying FastAPI Backend Microservices with Model Quantization",
+      "country": "International / EU",
+      "bio": "Ing. Jakub Kučera works on cutting-edge production systems, focusing on deploying fastapi backend microservices with model quantization. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-39",
+      "name": "Olga Ivanova",
+      "track": "Engineering & Core AI",
+      "role": "Principal Data Scientist at FinShield",
+      "headline_topic": "Synthetic Data Generation for Training Robust Fraud Detection Models",
+      "country": "International / EU",
+      "bio": "Olga Ivanova works on cutting-edge production systems, focusing on synthetic data generation for training robust fraud detection models. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-40",
+      "name": "Lukas Brandt",
+      "track": "Engineering & Core AI",
+      "role": "Core Contributor at Candle ML",
+      "headline_topic": "Rust for Machine Learning: Blazing Fast Tokenizers and Inference Engines",
+      "country": "International / EU",
+      "bio": "Lukas Brandt works on cutting-edge production systems, focusing on rust for machine learning: blazing fast tokenizers and inference engines. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-41",
+      "name": "Fatima Zahra",
+      "track": "Engineering & Core AI",
+      "role": "QA Engineer at EvalHub",
+      "headline_topic": "Evaluation Frameworks for LLMs: Automated Benchmarking Beyond MMLU",
+      "country": "International / EU",
+      "bio": "Fatima Zahra works on cutting-edge production systems, focusing on evaluation frameworks for llms: automated benchmarking beyond mmlu. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-42",
+      "name": "Julian Richter",
+      "track": "Engineering & Core AI",
+      "role": "Research Lead at EfficientAI Munich",
+      "headline_topic": "Small Language Models (SLMs) vs. Mega-Models: Efficiency Tradeoffs",
+      "country": "International / EU",
+      "bio": "Julian Richter works on cutting-edge production systems, focusing on small language models (slms) vs. mega-models: efficiency tradeoffs. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-43",
+      "name": "Eliška Procházková",
+      "track": "Engineering & Core AI",
+      "role": "DevOps Architect at CloudPeak",
+      "headline_topic": "Self-Healing Distributed Systems Powered by Observability Agents",
+      "country": "International / EU",
+      "bio": "Eliška Procházková works on cutting-edge production systems, focusing on self-healing distributed systems powered by observability agents. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-44",
+      "name": "Arthur Pendelton",
+      "track": "Engineering & Core AI",
+      "role": "Privacy Architect at OpenSecure",
+      "headline_topic": "Federated Learning: Collaborative Model Training Without Data Sharing",
+      "country": "International / EU",
+      "bio": "Arthur Pendelton works on cutting-edge production systems, focusing on federated learning: collaborative model training without data sharing. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-45",
+      "name": "Maximilian Gruber",
+      "track": "Engineering & Core AI",
+      "role": "Inference Engineer at vLLM Core",
+      "headline_topic": "Memory Management and KV-Cache Compression in LLM Serving",
+      "country": "International / EU",
+      "bio": "Maximilian Gruber works on cutting-edge production systems, focusing on memory management and kv-cache compression in llm serving. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-46",
+      "name": "Dr. Veronika Křížová",
+      "track": "Engineering & Core AI",
+      "role": "Statistician at Prague Data Science Lab",
+      "headline_topic": "Causal Inference in Machine Learning: Moving Beyond Correlation",
+      "country": "International / EU",
+      "bio": "Dr. Veronika Křížová works on cutting-edge production systems, focusing on causal inference in machine learning: moving beyond correlation. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-47",
+      "name": "Hiroshi Sato",
+      "track": "Engineering & Core AI",
+      "role": "ML Researcher at Kyoto Systems",
+      "headline_topic": "Low-Rank Adaptation (LoRA) Deep-Dive: Adapting Foundation Models",
+      "country": "International / EU",
+      "bio": "Hiroshi Sato works on cutting-edge production systems, focusing on low-rank adaptation (lora) deep-dive: adapting foundation models. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-48",
+      "name": "Klára Veselá",
+      "track": "Engineering & Core AI",
+      "role": "Fullstack ML Engineer at StreamVoice",
+      "headline_topic": "Building Real-Time Multimodal Pipelines with WebSockets and WebRTC",
+      "country": "International / EU",
+      "bio": "Klára Veselá works on cutting-edge production systems, focusing on building real-time multimodal pipelines with websockets and webrtc. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-49",
+      "name": "Brian O'Connor",
+      "track": "Engineering & Core AI",
+      "role": "Cybersecurity Analyst at SecurePrompt",
+      "headline_topic": "Securing Prompt Injections and Jailbreaks in Enterprise Agents",
+      "country": "International / EU",
+      "bio": "Brian O'Connor works on cutting-edge production systems, focusing on securing prompt injections and jailbreaks in enterprise agents. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-50",
+      "name": "Simon Dufresne",
+      "track": "Engineering & Core AI",
+      "role": "AI Optimization Lead at CompresSys",
+      "headline_topic": "Model Distillation: Compressing Frontier Models into Tiny Weights",
+      "country": "International / EU",
+      "bio": "Simon Dufresne works on cutting-edge production systems, focusing on model distillation: compressing frontier models into tiny weights. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-51",
+      "name": "Dr. Ondřej Malý",
+      "track": "Engineering & Core AI",
+      "role": "Knowledge Engineer at BioGraph",
+      "headline_topic": "Graph RAG: Connecting Unstructured Knowledge with Neo4j",
+      "country": "International / EU",
+      "bio": "Dr. Ondřej Malý works on cutting-edge production systems, focusing on graph rag: connecting unstructured knowledge with neo4j. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-52",
+      "name": "Valerie Dupont",
+      "track": "Engineering & Core AI",
+      "role": "Alignment Researcher at Paris AI",
+      "headline_topic": "Continuous Alignment: DPO vs RLHF in Continuous Production Cycles",
+      "country": "International / EU",
+      "bio": "Valerie Dupont works on cutting-edge production systems, focusing on continuous alignment: dpo vs rlhf in continuous production cycles. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-53",
+      "name": "Tibor Varga",
+      "track": "Engineering & Core AI",
+      "role": "Cloud Infrastructure Lead at ScalerEU",
+      "headline_topic": "Serverless GPU Orchestration: Cold Start Reduction Strategies",
+      "country": "International / EU",
+      "bio": "Tibor Varga works on cutting-edge production systems, focusing on serverless gpu orchestration: cold start reduction strategies. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-54",
+      "name": "Nikola Tesla-Smith",
+      "track": "Engineering & Core AI",
+      "role": "Hardware Engineer at NeuroChip",
+      "headline_topic": "Neuromorphic Computing: Spiking Neural Networks in Low-Power IoT",
+      "country": "International / EU",
+      "bio": "Nikola Tesla-Smith works on cutting-edge production systems, focusing on neuromorphic computing: spiking neural networks in low-power iot. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-55",
+      "name": "Barbora Němcová",
+      "track": "Engineering & Core AI",
+      "role": "Developer Advocate at DevStack",
+      "headline_topic": "Synthetic Code Generation: Benchmarking Copilots across Python and Rust",
+      "country": "International / EU",
+      "bio": "Barbora Němcová works on cutting-edge production systems, focusing on synthetic code generation: benchmarking copilots across python and rust. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-56",
+      "name": "Goran Petrovic",
+      "track": "Engineering & Core AI",
+      "role": "Quantitative Analyst at AlphaStream",
+      "headline_topic": "Time-Series Forecasting with Hybrid Transformer-Mamba Architectures",
+      "country": "International / EU",
+      "bio": "Goran Petrovic works on cutting-edge production systems, focusing on time-series forecasting with hybrid transformer-mamba architectures. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-57",
+      "name": "Zdeněk Pokorný",
+      "track": "Engineering & Core AI",
+      "role": "Compliance Officer at EuroTech Ethics",
+      "headline_topic": "Data Lineage and Model Governance under the EU AI Act",
+      "country": "International / EU",
+      "bio": "Zdeněk Pokorný works on cutting-edge production systems, focusing on data lineage and model governance under the eu ai act. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-58",
+      "name": "Diana Vance",
+      "track": "Engineering & Core AI",
+      "role": "Backend Lead at FastAPI Cloud",
+      "headline_topic": "Semantic Caching for High-Throughput LLM APIs",
+      "country": "International / EU",
+      "bio": "Diana Vance works on cutting-edge production systems, focusing on semantic caching for high-throughput llm apis. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-59",
+      "name": "Emir Kurt",
+      "track": "Engineering & Core AI",
+      "role": "Database Architect at QueryMind",
+      "headline_topic": "Autonomous Database Query Optimization using Deep Reinforcement Learning",
+      "country": "International / EU",
+      "bio": "Emir Kurt works on cutting-edge production systems, focusing on autonomous database query optimization using deep reinforcement learning. Technical workshop lead at Futurika Fest."
+    },
+    {
+      "id": "perf-60",
+      "name": "Dr. Laura Fontana",
+      "track": "Engineering & Core AI",
+      "role": "Quantum Computing Fellow at CERN OpenLab",
+      "headline_topic": "Quantum Machine Learning: Exploring Variational Quantum Classifiers",
+      "country": "International / EU",
+      "bio": "Dr. Laura Fontana works on cutting-edge production systems, focusing on quantum machine learning: exploring variational quantum classifiers. Technical workshop lead at Futurika Fest."
+    }
+  ],
+  "programme": [
+    {
+      "id": "prog-001",
+      "title": "Cognitive Aesthetics & Neural Style Transfer in Modern Cinema",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "09:30",
+      "end_time": "10:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-01",
+      "performer_name": "Dr. Elena Rostova",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Cognitive Aesthetics & Neural Style Transfer in Modern Cinema' delivered by Dr. Elena Rostova (Creative AI Lead at Synthetix)."
+    },
+    {
+      "id": "prog-002",
+      "title": "From Diffusion to Reality: The Evolution of Text-to-3D Synthesis",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "10:30",
+      "end_time": "11:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-02",
+      "performer_name": "Marcus Vance",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'From Diffusion to Reality: The Evolution of Text-to-3D Synthesis' delivered by Marcus Vance (Founder of HoloMesh Labs)."
+    },
+    {
+      "id": "prog-003",
+      "title": "Generative Audiovisual Symphony: Real-Time Latent Space Soundscapes",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "11:30",
+      "end_time": "12:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-03",
+      "performer_name": "Aoi Tanaka",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Generative Audiovisual Symphony: Real-Time Latent Space Soundscapes' delivered by Aoi Tanaka (Sound Architect & Digital Artist)."
+    },
+    {
+      "id": "prog-004",
+      "title": "Ethics of Synthetic Media: Deepfakes, Watermarking, and Ownership",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "12:30",
+      "end_time": "13:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-04",
+      "performer_name": "Liam Gallagher-Smith",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Ethics of Synthetic Media: Deepfakes, Watermarking, and Ownership' delivered by Liam Gallagher-Smith (Research Fellow at Oxford Digital Ethics)."
+    },
+    {
+      "id": "prog-005",
+      "title": "Autonomous Avatars: The Psychology of Synthetic Brand Influencers",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "13:30",
+      "end_time": "14:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-05",
+      "performer_name": "Sofia Benitez",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Autonomous Avatars: The Psychology of Synthetic Brand Influencers' delivered by Sofia Benitez (Creative Director at PixelSphere)."
+    },
+    {
+      "id": "prog-006",
+      "title": "Czech Language Models: Preserving Cultural Heritage through Open Weights",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "14:30",
+      "end_time": "15:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-06",
+      "performer_name": "Jan Novák",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Czech Language Models: Preserving Cultural Heritage through Open Weights' delivered by Jan Novák (NLP Director at Charles AI Hub)."
+    },
+    {
+      "id": "prog-007",
+      "title": "AI-Augmented Architecture: Algorithmic Urbanism and Future Habitats",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "15:30",
+      "end_time": "16:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-07",
+      "performer_name": "Chloe Dubois",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'AI-Augmented Architecture: Algorithmic Urbanism and Future Habitats' delivered by Chloe Dubois (Principal Architect at Studio Biomimic)."
+    },
+    {
+      "id": "prog-008",
+      "title": "Generative Typography and Dynamic Branding Systems",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "16:30",
+      "end_time": "17:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-08",
+      "performer_name": "Tariq Al-Mansoor",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Generative Typography and Dynamic Branding Systems' delivered by Tariq Al-Mansoor (Design Technologist at BrandSynth)."
+    },
+    {
+      "id": "prog-009",
+      "title": "Bio-Digital Art: Cellular Automata Meets Neural Networks",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "17:30",
+      "end_time": "18:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-09",
+      "performer_name": "Dr. Miriam Kováčová",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Bio-Digital Art: Cellular Automata Meets Neural Networks' delivered by Dr. Miriam Kováčová (Senior Lecturer at CTU Digital Arts)."
+    },
+    {
+      "id": "prog-010",
+      "title": "Interactive Spatial Computing with Real-time Diffusion Engines",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "18:30",
+      "end_time": "19:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-10",
+      "performer_name": "Arjun Patel",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Interactive Spatial Computing with Real-time Diffusion Engines' delivered by Arjun Patel (VP of XR Research at NeuraVision)."
+    },
+    {
+      "id": "prog-011",
+      "title": "Autonomous Agent Swarms: Multi-Agent Collaboration in Production",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "09:30",
+      "end_time": "10:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-31",
+      "performer_name": "Dr. Alexander Wright",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Autonomous Agent Swarms: Multi-Agent Collaboration in Production' hosted by Dr. Alexander Wright (Chief AI Scientist at SwarmNet)."
+    },
+    {
+      "id": "prog-012",
+      "title": "Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "10:30",
+      "end_time": "11:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-32",
+      "performer_name": "Petra Horáková",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air' hosted by Petra Horáková (Systems Engineer at Prague Embedded)."
+    },
+    {
+      "id": "prog-013",
+      "title": "Building Deterministic Workflows on Top of Non-Deterministic LLMs",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "11:30",
+      "end_time": "12:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-33",
+      "performer_name": "Dmitri Volkov",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Building Deterministic Workflows on Top of Non-Deterministic LLMs' hosted by Dmitri Volkov (Lead Architect at Agentic Stack)."
+    },
+    {
+      "id": "prog-014",
+      "title": "Vector Databases at Scale: HNSW Indexing Benchmarks for 100M Records",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "12:30",
+      "end_time": "13:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-34",
+      "performer_name": "Sarah Jenkins",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Vector Databases at Scale: HNSW Indexing Benchmarks for 100M Records' hosted by Sarah Jenkins (Data Engineer at PineScale)."
+    },
+    {
+      "id": "prog-015",
+      "title": "Fine-Tuning Open Source LLMs for Legal & Financial Reasoning",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "13:30",
+      "end_time": "14:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-35",
+      "performer_name": "Tomasz Zielinski",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Fine-Tuning Open Source LLMs for Legal & Financial Reasoning' hosted by Tomasz Zielinski (ML Engineer at Warsaw FinTech)."
+    },
+    {
+      "id": "prog-016",
+      "title": "Mechanistic Interpretability: Peeking Inside Transformer Attention Heads",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "14:30",
+      "end_time": "15:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-36",
+      "performer_name": "Dr. Hélène Martin",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Mechanistic Interpretability: Peeking Inside Transformer Attention Heads' hosted by Dr. Hélène Martin (Research Scientist at INRIA)."
+    },
+    {
+      "id": "prog-017",
+      "title": "RAG That Doesn't Hallucinate: Graph Neural Networks meet Dense Retrieval",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "15:30",
+      "end_time": "16:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-37",
+      "performer_name": "Martin Svoboda",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'RAG That Doesn't Hallucinate: Graph Neural Networks meet Dense Retrieval' hosted by Martin Svoboda (Head of AI at SearchBridge)."
+    },
+    {
+      "id": "prog-018",
+      "title": "Deploying FastAPI Backend Microservices with Model Quantization",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "16:30",
+      "end_time": "17:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-38",
+      "performer_name": "Ing. Jakub Kučera",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Deploying FastAPI Backend Microservices with Model Quantization' hosted by Ing. Jakub Kučera (Senior Backend Architect at CloudStack Prague)."
+    },
+    {
+      "id": "prog-019",
+      "title": "Synthetic Data Generation for Training Robust Fraud Detection Models",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "17:30",
+      "end_time": "18:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-39",
+      "performer_name": "Olga Ivanova",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Synthetic Data Generation for Training Robust Fraud Detection Models' hosted by Olga Ivanova (Principal Data Scientist at FinShield)."
+    },
+    {
+      "id": "prog-020",
+      "title": "Rust for Machine Learning: Blazing Fast Tokenizers and Inference Engines",
+      "day": 1,
+      "date": "2027-05-21",
+      "start_time": "18:30",
+      "end_time": "19:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-40",
+      "performer_name": "Lukas Brandt",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Rust for Machine Learning: Blazing Fast Tokenizers and Inference Engines' hosted by Lukas Brandt (Core Contributor at Candle ML)."
+    },
+    {
+      "id": "prog-021",
+      "title": "AI in Game Design: Generating Living Worlds without Static Assets",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "09:30",
+      "end_time": "10:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-11",
+      "performer_name": "Greta Lindholm",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'AI in Game Design: Generating Living Worlds without Static Assets' delivered by Greta Lindholm (Lead Game Designer at Nordic Worlds)."
+    },
+    {
+      "id": "prog-022",
+      "title": "Cinematography Reimagined: Virtual Production with Neural Radiance Fields (NeRF)",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "10:30",
+      "end_time": "11:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-12",
+      "performer_name": "Lucas Rossi",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Cinematography Reimagined: Virtual Production with Neural Radiance Fields (NeRF)' delivered by Lucas Rossi (VFX Supervisor at CineTech Milan)."
+    },
+    {
+      "id": "prog-023",
+      "title": "Post-Photography: Authenticity in the Age of Midjourney v8",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "11:30",
+      "end_time": "12:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-13",
+      "performer_name": "Zhenya Morozov",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Post-Photography: Authenticity in the Age of Midjourney v8' delivered by Zhenya Morozov (Curator at FutureLens Gallery)."
+    },
+    {
+      "id": "prog-024",
+      "title": "African Languages in Generative AI: Breaking Linguistic Monoculture",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "12:30",
+      "end_time": "13:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-14",
+      "performer_name": "Amara Okafor",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'African Languages in Generative AI: Breaking Linguistic Monoculture' delivered by Amara Okafor (AI Inclusion Lead at AfroTech Futures)."
+    },
+    {
+      "id": "prog-025",
+      "title": "Autonomous Robotic Sculpting using Spatial Transformers",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "13:30",
+      "end_time": "14:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-15",
+      "performer_name": "Sven Erikson",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Autonomous Robotic Sculpting using Spatial Transformers' delivered by Sven Erikson (Robotics Artist at Stockholm Makers)."
+    },
+    {
+      "id": "prog-026",
+      "title": "Generative Fashion: Algorithmic Couture and Zero-Waste Patterns",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "14:30",
+      "end_time": "15:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-16",
+      "performer_name": "Maya Lin-Schumacher",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Generative Fashion: Algorithmic Couture and Zero-Waste Patterns' delivered by Maya Lin-Schumacher (Textile Technologist at BioWeave)."
+    },
+    {
+      "id": "prog-027",
+      "title": "Music Without Musicians? Co-Creation Workflows with Generative Audio",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "15:30",
+      "end_time": "16:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-17",
+      "performer_name": "David Miller",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Music Without Musicians? Co-Creation Workflows with Generative Audio' delivered by David Miller (Producer & Audio Engineer)."
+    },
+    {
+      "id": "prog-028",
+      "title": "Neuroethics of Brain-Computer Interfaces in Digital Arts",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "16:30",
+      "end_time": "17:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-18",
+      "performer_name": "Dr. Katerina Krausová",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Neuroethics of Brain-Computer Interfaces in Digital Arts' delivered by Dr. Katerina Krausová (Neuroscientist at BrainTech Prague)."
+    },
+    {
+      "id": "prog-029",
+      "title": "Real-Time AI Holography: Projecting Volumetric Synthetic Humans",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "17:30",
+      "end_time": "18:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-19",
+      "performer_name": "Felix Baumgartner",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Real-Time AI Holography: Projecting Volumetric Synthetic Humans' delivered by Felix Baumgartner (CTO at HoloStage Vienna)."
+    },
+    {
+      "id": "prog-030",
+      "title": "The Synthetic Muse: Can Neural Networks Possess Intention?",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "18:30",
+      "end_time": "19:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-20",
+      "performer_name": "Nadia Chernova",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'The Synthetic Muse: Can Neural Networks Possess Intention?' delivered by Nadia Chernova (Philosopher of Technology at Sorbonne)."
+    },
+    {
+      "id": "prog-031",
+      "title": "Evaluation Frameworks for LLMs: Automated Benchmarking Beyond MMLU",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "09:30",
+      "end_time": "10:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-41",
+      "performer_name": "Fatima Zahra",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Evaluation Frameworks for LLMs: Automated Benchmarking Beyond MMLU' hosted by Fatima Zahra (QA Engineer at EvalHub)."
+    },
+    {
+      "id": "prog-032",
+      "title": "Small Language Models (SLMs) vs. Mega-Models: Efficiency Tradeoffs",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "10:30",
+      "end_time": "11:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-42",
+      "performer_name": "Julian Richter",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Small Language Models (SLMs) vs. Mega-Models: Efficiency Tradeoffs' hosted by Julian Richter (Research Lead at EfficientAI Munich)."
+    },
+    {
+      "id": "prog-033",
+      "title": "Self-Healing Distributed Systems Powered by Observability Agents",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "11:30",
+      "end_time": "12:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-43",
+      "performer_name": "Eliška Procházková",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Self-Healing Distributed Systems Powered by Observability Agents' hosted by Eliška Procházková (DevOps Architect at CloudPeak)."
+    },
+    {
+      "id": "prog-034",
+      "title": "Federated Learning: Collaborative Model Training Without Data Sharing",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "12:30",
+      "end_time": "13:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-44",
+      "performer_name": "Arthur Pendelton",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Federated Learning: Collaborative Model Training Without Data Sharing' hosted by Arthur Pendelton (Privacy Architect at OpenSecure)."
+    },
+    {
+      "id": "prog-035",
+      "title": "Memory Management and KV-Cache Compression in LLM Serving",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "13:30",
+      "end_time": "14:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-45",
+      "performer_name": "Maximilian Gruber",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Memory Management and KV-Cache Compression in LLM Serving' hosted by Maximilian Gruber (Inference Engineer at vLLM Core)."
+    },
+    {
+      "id": "prog-036",
+      "title": "Causal Inference in Machine Learning: Moving Beyond Correlation",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "14:30",
+      "end_time": "15:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-46",
+      "performer_name": "Dr. Veronika Křížová",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Causal Inference in Machine Learning: Moving Beyond Correlation' hosted by Dr. Veronika Křížová (Statistician at Prague Data Science Lab)."
+    },
+    {
+      "id": "prog-037",
+      "title": "Low-Rank Adaptation (LoRA) Deep-Dive: Adapting Foundation Models",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "15:30",
+      "end_time": "16:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-47",
+      "performer_name": "Hiroshi Sato",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Low-Rank Adaptation (LoRA) Deep-Dive: Adapting Foundation Models' hosted by Hiroshi Sato (ML Researcher at Kyoto Systems)."
+    },
+    {
+      "id": "prog-038",
+      "title": "Building Real-Time Multimodal Pipelines with WebSockets and WebRTC",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "16:30",
+      "end_time": "17:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-48",
+      "performer_name": "Klára Veselá",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Building Real-Time Multimodal Pipelines with WebSockets and WebRTC' hosted by Klára Veselá (Fullstack ML Engineer at StreamVoice)."
+    },
+    {
+      "id": "prog-039",
+      "title": "Securing Prompt Injections and Jailbreaks in Enterprise Agents",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "17:30",
+      "end_time": "18:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-49",
+      "performer_name": "Brian O'Connor",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Securing Prompt Injections and Jailbreaks in Enterprise Agents' hosted by Brian O'Connor (Cybersecurity Analyst at SecurePrompt)."
+    },
+    {
+      "id": "prog-040",
+      "title": "Model Distillation: Compressing Frontier Models into Tiny Weights",
+      "day": 2,
+      "date": "2027-05-22",
+      "start_time": "18:30",
+      "end_time": "19:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-50",
+      "performer_name": "Simon Dufresne",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Model Distillation: Compressing Frontier Models into Tiny Weights' hosted by Simon Dufresne (AI Optimization Lead at CompresSys)."
+    },
+    {
+      "id": "prog-041",
+      "title": "Live Latent VJing: Real-time Audio-Reactive Video Synthesis",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "09:30",
+      "end_time": "10:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-21",
+      "performer_name": "Carlos Mendez",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Live Latent VJing: Real-time Audio-Reactive Video Synthesis' delivered by Carlos Mendez (Visual Jockey & Creative Coder)."
+    },
+    {
+      "id": "prog-042",
+      "title": "Generative Storyboarding and Automated Animatic Generation",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "10:30",
+      "end_time": "11:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-22",
+      "performer_name": "Hanna Weber",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Generative Storyboarding and Automated Animatic Generation' delivered by Hanna Weber (Story Lead at European Animation Guild)."
+    },
+    {
+      "id": "prog-043",
+      "title": "Multi-Agent Simulation of Fictional Societies for Worldbuilding",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "11:30",
+      "end_time": "12:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-23",
+      "performer_name": "Dr. Alexei Voronov",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Multi-Agent Simulation of Fictional Societies for Worldbuilding' delivered by Dr. Alexei Voronov (Complexity Scientist at DataMind)."
+    },
+    {
+      "id": "prog-044",
+      "title": "Accessible AI UI: Designing Inclusive Prompts for Impaired Creators",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "12:30",
+      "end_time": "13:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-24",
+      "performer_name": "Zuzana Černá",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Accessible AI UI: Designing Inclusive Prompts for Impaired Creators' delivered by Zuzana Černá (UX Director at Prague Design Collective)."
+    },
+    {
+      "id": "prog-045",
+      "title": "Synthetic Botany: Algorithmic Flora Simulation for Interactive Exhibits",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "13:30",
+      "end_time": "14:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-25",
+      "performer_name": "Oskar Blomqvist",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Synthetic Botany: Algorithmic Flora Simulation for Interactive Exhibits' delivered by Oskar Blomqvist (Digital Horticulturist at Nordic Green)."
+    },
+    {
+      "id": "prog-046",
+      "title": "Human-in-the-Loop Filmmaking: Directing Agentic Casts",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "14:30",
+      "end_time": "15:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-26",
+      "performer_name": "Evelyn Reed",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Human-in-the-Loop Filmmaking: Directing Agentic Casts' delivered by Evelyn Reed (Indie Film Director & Technologist)."
+    },
+    {
+      "id": "prog-047",
+      "title": "Hyper-Personalized Interactive Narrative Design",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "15:30",
+      "end_time": "16:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-27",
+      "performer_name": "Kenji Takahashi",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Hyper-Personalized Interactive Narrative Design' delivered by Kenji Takahashi (Interactive Novelist at Tokyo StoryLab)."
+    },
+    {
+      "id": "prog-048",
+      "title": "Digital Fashion in the Age of Autonomous Avatars",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "16:30",
+      "end_time": "17:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-28",
+      "performer_name": "Alina Popescu",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Digital Fashion in the Age of Autonomous Avatars' delivered by Alina Popescu (Metaverse Stylist at DigiCouture)."
+    },
+    {
+      "id": "prog-049",
+      "title": "The Economics of Generative IP: Licensing Neural Checkpoints",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "17:30",
+      "end_time": "18:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-29",
+      "performer_name": "Matěj Dvořák",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'The Economics of Generative IP: Licensing Neural Checkpoints' delivered by Matěj Dvořák (IP Attorney & Tech Counsel)."
+    },
+    {
+      "id": "prog-050",
+      "title": "Embodied AI in Performance Art: Human-Robot Dance Duets",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "18:30",
+      "end_time": "19:15",
+      "stage_id": "stage-vision",
+      "stage_name": "Prompt & Vision Hall",
+      "performer_id": "perf-30",
+      "performer_name": "Dr. Rachel Weiss",
+      "track": "Vision & Creative Tech",
+      "type": "Keynote / Presentation",
+      "description": "Keynote session on 'Embodied AI in Performance Art: Human-Robot Dance Duets' delivered by Dr. Rachel Weiss (Choreographer & Roboticist at Zurich Arts)."
+    },
+    {
+      "id": "prog-051",
+      "title": "Graph RAG: Connecting Unstructured Knowledge with Neo4j",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "09:30",
+      "end_time": "10:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-51",
+      "performer_name": "Dr. Ondřej Malý",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Graph RAG: Connecting Unstructured Knowledge with Neo4j' hosted by Dr. Ondřej Malý (Knowledge Engineer at BioGraph)."
+    },
+    {
+      "id": "prog-052",
+      "title": "Continuous Alignment: DPO vs RLHF in Continuous Production Cycles",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "10:30",
+      "end_time": "11:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-52",
+      "performer_name": "Valerie Dupont",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Continuous Alignment: DPO vs RLHF in Continuous Production Cycles' hosted by Valerie Dupont (Alignment Researcher at Paris AI)."
+    },
+    {
+      "id": "prog-053",
+      "title": "Serverless GPU Orchestration: Cold Start Reduction Strategies",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "11:30",
+      "end_time": "12:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-53",
+      "performer_name": "Tibor Varga",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Serverless GPU Orchestration: Cold Start Reduction Strategies' hosted by Tibor Varga (Cloud Infrastructure Lead at ScalerEU)."
+    },
+    {
+      "id": "prog-054",
+      "title": "Neuromorphic Computing: Spiking Neural Networks in Low-Power IoT",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "12:30",
+      "end_time": "13:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-54",
+      "performer_name": "Nikola Tesla-Smith",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Neuromorphic Computing: Spiking Neural Networks in Low-Power IoT' hosted by Nikola Tesla-Smith (Hardware Engineer at NeuroChip)."
+    },
+    {
+      "id": "prog-055",
+      "title": "Synthetic Code Generation: Benchmarking Copilots across Python and Rust",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "13:30",
+      "end_time": "14:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-55",
+      "performer_name": "Barbora Němcová",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Synthetic Code Generation: Benchmarking Copilots across Python and Rust' hosted by Barbora Němcová (Developer Advocate at DevStack)."
+    },
+    {
+      "id": "prog-056",
+      "title": "Time-Series Forecasting with Hybrid Transformer-Mamba Architectures",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "14:30",
+      "end_time": "15:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-56",
+      "performer_name": "Goran Petrovic",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Time-Series Forecasting with Hybrid Transformer-Mamba Architectures' hosted by Goran Petrovic (Quantitative Analyst at AlphaStream)."
+    },
+    {
+      "id": "prog-057",
+      "title": "Data Lineage and Model Governance under the EU AI Act",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "15:30",
+      "end_time": "16:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-57",
+      "performer_name": "Zdeněk Pokorný",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Data Lineage and Model Governance under the EU AI Act' hosted by Zdeněk Pokorný (Compliance Officer at EuroTech Ethics)."
+    },
+    {
+      "id": "prog-058",
+      "title": "Semantic Caching for High-Throughput LLM APIs",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "16:30",
+      "end_time": "17:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-58",
+      "performer_name": "Diana Vance",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Semantic Caching for High-Throughput LLM APIs' hosted by Diana Vance (Backend Lead at FastAPI Cloud)."
+    },
+    {
+      "id": "prog-059",
+      "title": "Autonomous Database Query Optimization using Deep Reinforcement Learning",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "17:30",
+      "end_time": "18:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-59",
+      "performer_name": "Emir Kurt",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Autonomous Database Query Optimization using Deep Reinforcement Learning' hosted by Emir Kurt (Database Architect at QueryMind)."
+    },
+    {
+      "id": "prog-060",
+      "title": "Quantum Machine Learning: Exploring Variational Quantum Classifiers",
+      "day": 3,
+      "date": "2027-05-23",
+      "start_time": "18:30",
+      "end_time": "19:15",
+      "stage_id": "stage-tech",
+      "stage_name": "Tech & Code Lab",
+      "performer_id": "perf-60",
+      "performer_name": "Dr. Laura Fontana",
+      "track": "Engineering & Core AI",
+      "type": "Technical Workshop / Deep-Dive",
+      "description": "In-depth technical session on 'Quantum Machine Learning: Exploring Variational Quantum Classifiers' hosted by Dr. Laura Fontana (Quantum Computing Fellow at CERN OpenLab)."
+    }
+  ]
+};
+
+    let selectedDay = 'all';
+    let selectedStage = 'all';
+    let searchQuery = '';
+
+    // Favorites persistence using localStorage
+    const STORAGE_KEY = 'futurika_saved_sessions';
+    function getSavedSessions() {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    }
+
+    function saveSession(id) {
+      let list = getSavedSessions();
+      if (list.includes(id)) {
+        list = list.filter(item => item !== id);
+      } else {
+        list.push(id);
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      updateBadge();
+      renderProgramme();
+      renderAgendaModal();
+    }
+
+    function updateBadge() {
+      const count = getSavedSessions().length;
+      document.getElementById('agendaCount').textContent = count;
+    }
+
+    function renderProgramme() {
+      const grid = document.getElementById('programmeGrid');
+      const saved = getSavedSessions();
+
+      const filtered = festivalData.programme.filter(item => {
+        const matchDay = (selectedDay === 'all') || (item.day.toString() === selectedDay);
+        const matchStage = (selectedStage === 'all') || (item.stage_id === selectedStage);
+        const matchSearch = searchQuery === '' || 
+          item.title.toLowerCase().includes(searchQuery) ||
+          item.performer_name.toLowerCase().includes(searchQuery) ||
+          item.description.toLowerCase().includes(searchQuery);
+
+        return matchDay && matchStage && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="no-results">No sessions found matching your criteria. Try resetting filters.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const isSaved = saved.includes(item.id);
+        const isVision = item.stage_id === 'stage-vision';
+        return `
+          <article class="item-card">
+            <div>
+              <div class="card-top">
+                <span class="time-slot">${item.date} • ${item.start_time} - ${item.end_time}</span>
+                <span class="track-pill ${isVision ? 'track-vision' : 'track-tech'}">
+                  ${isVision ? 'Vision & Art' : 'Core Tech'}
+                </span>
+              </div>
+              <h3 class="item-title">${item.title}</h3>
+              <div class="speaker-info">
+                <span>👤</span>
+                <strong>${item.performer_name}</strong>
+              </div>
+              <p class="item-desc">${item.description}</p>
+            </div>
+            <div class="card-footer">
+              <span class="stage-name">📍 ${item.stage_name}</span>
+              <button 
+                class="btn-fav ${isSaved ? 'saved' : ''}" 
+                onclick="saveSession('${item.id}')"
+                aria-label="Bookmark session"
+              >
+                ${isSaved ? '★ Saved to Schedule' : '☆ Save to Schedule'}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderAgendaModal() {
+      const listContainer = document.getElementById('agendaList');
+      const savedIds = getSavedSessions();
+      const savedItems = festivalData.programme.filter(p => savedIds.includes(p.id));
+
+      if (savedItems.length === 0) {
+        listContainer.innerHTML = '<p style="color: #9ca3af; text-align: center; padding: 20px 0;">No sessions saved yet. Click "☆ Save to Schedule" on any session to add it here!</p>';
+        return;
+      }
+
+      listContainer.innerHTML = savedItems.map(item => `
+        <div class="agenda-item">
+          <div>
+            <div style="font-size: 0.8rem; color: #10b981; font-weight: 700;">${item.date} • ${item.start_time} (${item.stage_name})</div>
+            <strong style="font-size: 0.95rem;">${item.title}</strong>
+            <div style="font-size: 0.8rem; color: #9ca3af;">${item.performer_name}</div>
+          </div>
+          <button class="btn-fav saved" onclick="saveSession('${item.id}')">Remove</button>
+        </div>
+      `).join('');
+    }
+
+    // Event Listeners
+    document.querySelectorAll('[data-day]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        document.querySelectorAll('[data-day]').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        selectedDay = e.target.getAttribute('data-day');
+        renderProgramme();
+      });
+    });
+
+    document.querySelectorAll('[data-stage]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        document.querySelectorAll('[data-stage]').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        selectedStage = e.target.getAttribute('data-stage');
+        renderProgramme();
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', e => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderProgramme();
+    });
+
+    // Modal controls
+    const modal = document.getElementById('agendaModal');
+    document.getElementById('openAgendaBtn').addEventListener('click', () => {
+      renderAgendaModal();
+      modal.classList.add('active');
+    });
+
+    document.getElementById('closeAgendaBtn').addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+
+    // Initial boot
+    updateBadge();
+    renderProgramme();
+  </script>
+</body>
+</html>
