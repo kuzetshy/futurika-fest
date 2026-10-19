@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Futurika Fest — UX Prototype & Interactive Schedule</title>
+  <meta name="description" content="Futurika Fest 2027 — International festival and summit bridging generative AI, creative coding, digital media arts, and open-source tech at DOX Prague.">
+  <title>Futurika Fest 2027 — UX Prototype &amp; Interactive Summit Platform</title>
   <style>
     :root {
       --bg: #0b0f19;
+      --bg-surface: #111827;
       --card-bg: #151d2f;
+      --card-hover: #1a243a;
       --card-border: #24324f;
+      --card-border-hover: #3b82f6;
       --accent: #10b981;
       --accent-hover: #059669;
+      --accent-light: rgba(16, 185, 129, 0.12);
       --text: #f3f4f6;
       --text-muted: #9ca3af;
       --tech-tag: #3b82f6;
       --vision-tag: #a855f7;
       --star-active: #fbbf24;
+      --star-bg: rgba(251, 191, 36, 0.15);
       --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -30,7 +36,25 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: #0b0f19;
+      padding: 8px 16px;
+      z-index: 10000;
+      font-weight: 700;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
     }
 
     header {
@@ -39,16 +63,26 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(10px);
-      padding: 12px 20px;
+      backdrop-filter: blur(12px);
+      padding: 10px 16px;
     }
 
     .nav-container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
     }
 
     .logo {
@@ -56,22 +90,60 @@
       font-size: 1.25rem;
       letter-spacing: -0.5px;
       color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .logo span {
       color: var(--accent);
     }
 
-    .badge {
+    .badge-proto {
       background: #1e293b;
       border: 1px solid var(--card-border);
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 9999px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
       color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link.active {
+      color: #fff;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn-agenda {
@@ -83,43 +155,268 @@
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
       transition: all 0.2s;
+      min-height: 44px;
     }
 
-    .btn-agenda:hover {
+    .btn-agenda:hover, .btn-agenda.active {
+      border-color: var(--star-active);
+      color: var(--star-active);
+    }
+
+    .agenda-count-badge {
+      background: var(--accent);
+      color: #0b0f19;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 9999px;
+    }
+
+    .mobile-menu-btn {
+      display: inline-flex;
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer .nav-link {
+      width: 100%;
+      justify-content: flex-start;
+      padding: 12px 16px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumbs a {
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(36, 50, 79, 0.4), rgba(16, 185, 129, 0.08));
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px 24px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .hero-banner h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .hero-banner p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      max-width: 720px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0b0f19;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
 
-    .hero {
-      max-width: 1100px;
-      margin: 24px auto 16px;
-      padding: 0 20px;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
-    .hero h1 {
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .stat-number {
       font-size: 1.8rem;
       font-weight: 800;
-      margin-bottom: 6px;
-      line-height: 1.2;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
     }
 
-    .hero p {
+    .stat-label {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 650px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
     }
 
     .controls-wrapper {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 24px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .search-bar {
@@ -137,6 +434,7 @@
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s;
+      min-height: 48px;
     }
 
     .search-input:focus {
@@ -155,7 +453,7 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      font-weight: 600;
+      font-weight: 700;
       margin-right: 4px;
     }
 
@@ -163,12 +461,16 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      padding: 7px 14px;
-      border-radius: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .tab-btn:hover {
@@ -184,58 +486,52 @@
     }
 
     .grid-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 2.4rem;
-      }
-      .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      gap: 16px;
     }
 
     .item-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 18px;
+      border-radius: 14px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.15s, border-color 0.15s;
+      transition: border-color 0.2s, transform 0.15s;
     }
 
     .item-card:hover {
       border-color: #3b507a;
+      transform: translateY(-2px);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 10px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
     .time-slot {
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .track-pill {
       font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .track-vision {
@@ -251,53 +547,72 @@
     }
 
     .item-title {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       line-height: 1.35;
+      color: #fff;
     }
 
-    .speaker-info {
-      font-size: 0.85rem;
-      color: #e5e7eb;
-      margin-bottom: 10px;
-      display: flex;
+    .speaker-btn {
+      background: transparent;
+      border: none;
+      color: #93c5fd;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 6px 0;
+      text-align: left;
+      transition: color 0.2s;
+      min-height: 38px;
+    }
+
+    .speaker-btn:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     .item-desc {
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.45;
-      margin-bottom: 16px;
+      line-height: 1.5;
+      margin: 10px 0 16px;
     }
 
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 14px;
+      gap: 8px;
     }
 
-    .stage-name {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+    .stage-badge {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .btn-fav {
       background: transparent;
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 0.75rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       transition: all 0.2s;
+      min-height: 44px;
     }
 
     .btn-fav:hover {
@@ -306,13 +621,194 @@
     }
 
     .btn-fav.saved {
-      background: rgba(251, 191, 36, 0.12);
+      background: var(--star-bg);
       border-color: var(--star-active);
       color: var(--star-active);
+    }
+
+    .performer-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .performer-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .performer-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border: 2px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .performer-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .performer-role {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 8px;
       font-weight: 600;
     }
 
-    /* Modal / Drawer for My Schedule */
+    .performer-topic {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .stage-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .stage-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .stage-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .stage-capacity {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .stage-specs {
+      list-style: none;
+      margin: 16px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    .stage-specs li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 16px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 48px;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: -4px;
+      padding-top: 12px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open {
+      border-color: var(--accent);
+    }
+
+    .info-box-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .info-box h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+    }
+
+    .info-box p, .info-box li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     .modal-overlay {
       display: none;
       position: fixed;
@@ -320,10 +816,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
       z-index: 1000;
-      padding: 20px;
+      padding: 16px;
+      overflow-y: auto;
     }
 
     .modal-overlay.active {
@@ -333,39 +830,69 @@
     }
 
     .modal-content {
-      background: var(--card-bg);
+      background: var(--bg-surface);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      max-width: 580px;
+      border-radius: 16px;
+      max-width: 620px;
       width: 100%;
-      max-height: 80vh;
+      max-height: 85vh;
       overflow-y: auto;
       padding: 24px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
     }
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       border-bottom: 1px solid var(--card-border);
-      padding-bottom: 12px;
+      padding-bottom: 14px;
+    }
+
+    .modal-header h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
     }
 
     .close-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover {
+      color: #fff;
     }
 
     .agenda-item {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
+    }
+
+    .agenda-summary-bar {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
     .no-results {
@@ -373,69 +900,412 @@
       color: var(--text-muted);
       padding: 40px 20px;
       grid-column: 1 / -1;
+      background: var(--card-bg);
+      border: 1px dashed var(--card-border);
+      border-radius: 12px;
+    }
+
+    footer {
+      background: #070a11;
+      border-top: 1px solid var(--card-border);
+      padding: 30px 16px;
+      margin-top: auto;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: none;
+      }
+      .mobile-drawer {
+        display: none !important;
+      }
+      .hero-banner h1 {
+        font-size: 2.8rem;
+      }
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .stage-showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .info-box-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
   </style>
 </head>
 <body>
 
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Header Navigation -->
   <header>
     <div class="nav-container">
-      <div class="logo">
-        FUTURIKA<span>FEST</span>
-        <span class="badge">PROTOTYPE</span>
+      <div class="brand-group" onclick="switchView('home')" role="button" tabindex="0" aria-label="Go to Futurika Home">
+        <div class="logo">FUTURIKA<span>FEST</span></div>
+        <span class="badge-proto">PROTOTYPE</span>
       </div>
-      <button class="btn-agenda" id="openAgendaBtn">
-        ⭐ My Schedule (<span id="agendaCount">0</span>)
-      </button>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <button class="nav-link active" data-view="home" onclick="switchView('home')">Home</button>
+        <button class="nav-link" data-view="programme" onclick="switchView('programme')">Programme</button>
+        <button class="nav-link" data-view="performers" onclick="switchView('performers')">Performers</button>
+        <button class="nav-link" data-view="stages" onclick="switchView('stages')">Stages &amp; Venues</button>
+        <button class="nav-link" data-view="practical" onclick="switchView('practical')">Practical Info</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-agenda" id="openAgendaBtn" aria-label="Open My Saved Schedule">
+          ⭐ <span class="agenda-text">My Schedule</span>
+          <span class="agenda-count-badge" id="agendaCount">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <button class="nav-link active" data-view="home" onclick="switchView('home')">🏠 Home</button>
+      <button class="nav-link" data-view="programme" onclick="switchView('programme')">📅 Programme &amp; Schedule</button>
+      <button class="nav-link" data-view="performers" onclick="switchView('performers')">👥 Performers &amp; Speakers</button>
+      <button class="nav-link" data-view="stages" onclick="switchView('stages')">🏛️ Stages &amp; Venues</button>
+      <button class="nav-link" data-view="practical" onclick="switchView('practical')">ℹ️ Practical Info &amp; FAQ</button>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Festival Programme Prototype</h1>
-      <p>DOX Centre for Contemporary Art, Prague • 21–23 May 2027. Filter, search and bookmark 60 curated AI keynotes & workshops.</p>
+  <main id="mainContent">
+
+    <!-- VIEW 1: HOME -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-banner">
+        <span class="hero-tag">Central Europe’s Premier AI Summit</span>
+        <h1>Futurika Fest 2027</h1>
+        <p>Connecting generative AI researchers, creative technologists, autonomous agent builders, and avant-garde media artists for 3 days of talks, workshops, and immersive live performances in Prague.</p>
+        
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="switchView('programme')">Explore 3-Day Programme →</button>
+          <button class="btn-secondary" onclick="switchView('performers')">Meet 60 Performers</button>
+          <button class="btn-secondary" onclick="switchView('practical')">Venue &amp; Logistics</button>
+        </div>
+
+        <div class="hero-meta-bar">
+          <div class="meta-item">📅 21–23 May 2027 (3 Full Days)</div>
+          <div class="meta-item">📍 DOX Centre for Contemporary Art &amp; DOX+, Prague 7</div>
+          <div class="meta-item">💡 2 Specialized Stages</div>
+          <div class="meta-item">🌐 60 Curated Sessions</div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Summit Days</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Stages</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">60</span>
+          <span class="stat-label">Top Speakers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">60</span>
+          <span class="stat-label">Sessions &amp; Labs</span>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2>Curated Keynote Highlights</h2>
+        <p>Preview world-class AI researchers and digital creators presenting at Futurika 2027.</p>
+      </div>
+
+      <div class="grid-container" id="homeHighlightsGrid">
+        <!-- Dynamically rendered top keynotes -->
+      </div>
     </section>
 
-    <section class="controls-wrapper">
-      <div class="search-bar">
-        <input 
-          type="text" 
-          id="searchInput" 
-          class="search-input" 
-          placeholder="🔍 Search speakers, topics (e.g. 'LLM', 'Diffusion', 'FastAPI', 'Elena')..." 
-          aria-label="Search programme"
-        />
+
+    <!-- VIEW 2: PROGRAMME -->
+    <section id="view-programme" class="view-section">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a onclick="switchView('home')">Home</a> &gt; <span>Programme &amp; Schedule</span>
+      </nav>
+
+      <div class="section-header">
+        <h1>Festival Programme &amp; Schedule</h1>
+        <p>Explore all 60 sessions across 3 days. Filter by day, stage, or topic, search in real-time, and bookmark your personal schedule.</p>
       </div>
 
-      <div class="filter-group">
-        <span class="filter-label">Day:</span>
-        <button class="tab-btn active" data-day="all">All Days</button>
-        <button class="tab-btn" data-day="1">Day 1 (May 21)</button>
-        <button class="tab-btn" data-day="2">Day 2 (May 22)</button>
-        <button class="tab-btn" data-day="3">Day 3 (May 23)</button>
+      <div class="controls-wrapper">
+        <div class="search-bar">
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="🔍 Search speakers, topics (e.g. 'LLM', 'Diffusion', 'FastAPI', 'Elena')..." 
+            aria-label="Search programme by title, speaker or description"
+          />
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Day:</span>
+          <button class="tab-btn active" data-day="all">All Days (21–23 May)</button>
+          <button class="tab-btn" data-day="1">Day 1 (21 May)</button>
+          <button class="tab-btn" data-day="2">Day 2 (22 May)</button>
+          <button class="tab-btn" data-day="3">Day 3 (23 May)</button>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Stage:</span>
+          <button class="tab-btn active" data-stage="all">All Stages</button>
+          <button class="tab-btn" data-stage="stage-vision">Vision Hall (DOX+)</button>
+          <button class="tab-btn" data-stage="stage-tech">Tech &amp; Code Lab</button>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Track:</span>
+          <button class="tab-btn active" data-track="all">All Tracks</button>
+          <button class="tab-btn" data-track="Vision & Creative Tech">Vision &amp; Creative Tech</button>
+          <button class="tab-btn" data-track="Core AI & Engineering">Core AI &amp; Engineering</button>
+        </div>
       </div>
 
-      <div class="filter-group">
-        <span class="filter-label">Stage:</span>
-        <button class="tab-btn active" data-stage="all">All Stages</button>
-        <button class="tab-btn" data-stage="stage-vision">Vision Hall (DOX+)</button>
-        <button class="tab-btn" data-stage="stage-tech">Tech & Code Lab</button>
+      <section class="grid-container" id="programmeGrid" aria-label="Programme Sessions List"></section>
+    </section>
+
+
+    <!-- VIEW 3: PERFORMERS -->
+    <section id="view-performers" class="view-section">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a onclick="switchView('home')">Home</a> &gt; <span>Performers &amp; Speakers</span>
+      </nav>
+
+      <div class="section-header">
+        <h1>Featured Speakers &amp; Artists</h1>
+        <p>Meet our 60 global innovators spanning generative deep learning, autonomous software agents, and interactive audiovisual art.</p>
+      </div>
+
+      <div class="controls-wrapper">
+        <div class="search-bar">
+          <input 
+            type="text" 
+            id="searchPerformerInput" 
+            class="search-input" 
+            placeholder="🔍 Search performer name, affiliation, or topic..." 
+            aria-label="Search performers"
+          />
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Filter Track:</span>
+          <button class="tab-btn active" data-perf-track="all">All Speakers (60)</button>
+          <button class="tab-btn" data-perf-track="Vision & Creative Tech">Vision &amp; Creative Tech (30)</button>
+          <button class="tab-btn" data-perf-track="Core AI & Engineering">Core AI &amp; Engineering (30)</button>
+        </div>
+      </div>
+
+      <section class="grid-container" id="performersGrid" aria-label="Performers Directory"></section>
+    </section>
+
+
+    <!-- VIEW 4: STAGES -->
+    <section id="view-stages" class="view-section">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a onclick="switchView('home')">Home</a> &gt; <span>Stages &amp; Venues</span>
+      </nav>
+
+      <div class="section-header">
+        <h1>Stages &amp; Venues</h1>
+        <p>Explore the two distinct architectural and technological spaces hosting Futurika Fest at DOX Prague.</p>
+      </div>
+
+      <div class="stage-showcase-grid">
+        <article class="stage-card">
+          <div>
+            <div class="stage-header">
+              <h2 class="stage-title">Prompt &amp; Vision Hall</h2>
+              <span class="stage-capacity">Capacity: 450</span>
+            </div>
+            <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 8px;">Main Auditorium (DOX+ Hall)</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Designed for visionary keynotes, large-scale generative audiovisual performances, neural cinema screenings, and live robotic arts.</p>
+            
+            <ul class="stage-specs">
+              <li>🔊 Meyer Sound Spatial Audio 7.1 System</li>
+              <li>📽️ Dual 4K Laser Projection Surfaces</li>
+              <li>🎨 Stage Rigging for Live Kinetic Installations</li>
+              <li>♿ 100% Step-free barrier-free access &amp; reserved seating</li>
+            </ul>
+          </div>
+          <button class="btn-primary" onclick="filterByStageFromCard('stage-vision')">View Vision Hall Schedule →</button>
+        </article>
+
+        <article class="stage-card">
+          <div>
+            <div class="stage-header">
+              <h2 class="stage-title">Tech &amp; Code Lab</h2>
+              <span class="stage-capacity">Capacity: 250</span>
+            </div>
+            <p style="color: #60a5fa; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px;">Innovation Hub, Floor 2</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Focused on hands-on coding deep dives, local LLM fine-tuning, multi-agent frameworks, open weights optimization, and live hacking.</p>
+            
+            <ul class="stage-specs">
+              <li>⚡ Gigabit Developer LAN &amp; Dedicated Power Outlets</li>
+              <li>💻 Ultra-wide Dual Screens for Terminal &amp; Code Review</li>
+              <li>🎙️ Interactive Q&amp;A microphone system</li>
+              <li>♿ Elevator access from Main Lobby to Floor 2</li>
+            </ul>
+          </div>
+          <button class="btn-primary" onclick="filterByStageFromCard('stage-tech')">View Tech Lab Schedule →</button>
+        </article>
       </div>
     </section>
 
-    <section class="grid-container" id="programmeGrid"></section>
+
+    <!-- VIEW 5: PRACTICAL INFO -->
+    <section id="view-practical" class="view-section">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a onclick="switchView('home')">Home</a> &gt; <span>Practical Information</span>
+      </nav>
+
+      <div class="section-header">
+        <h1>Practical Information &amp; FAQ</h1>
+        <p>Everything you need to know about venue access, transportation, accessibility, and summit guidelines.</p>
+      </div>
+
+      <div class="info-box-grid">
+        <article class="info-box">
+          <h3>📍 Location &amp; Directions</h3>
+          <p><strong>DOX Centre for Contemporary Art &amp; DOX+ Hall</strong><br>Poupětova 1, Prague 7 – Holešovice, Czech Republic</p>
+          <p style="margin-top: 10px;">
+            • <strong>Metro:</strong> Line C (Red) to <em>Nádraží Holešovice</em> (6 min walk)<br>
+            • <strong>Tram:</strong> Lines 6, 12, 14 to stop <em>Dělnická</em> or <em>Ortenovo náměstí</em> (2 min walk)<br>
+            • <strong>Train:</strong> Prague-Holešovice Train Station (8 min walk)
+          </p>
+        </article>
+
+        <article class="info-box">
+          <h3>♿ Accessibility &amp; Inclusivity</h3>
+          <p>We are dedicated to providing a fully accessible experience conforming to WCAG 2.0 AA digital guidelines and physical standards:</p>
+          <ul style="margin-top: 8px; margin-left: 18px;">
+            <li>Step-free access to all entrances and DOX+ hall.</li>
+            <li>Elevator access to Innovation Hub Floor 2.</li>
+            <li>Accessible restrooms on Ground Floor &amp; Floor 2.</li>
+            <li>Induction hearing loops installed in Vision Hall.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="section-header" style="margin-top: 30px;">
+        <h2>Frequently Asked Questions</h2>
+        <p>Click any question to view detailed logistical answers.</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Do I need to print my summit pass?</span>
+            <span>▼</span>
+          </button>
+          <div class="faq-answer">
+            No printing required! Simply present the QR code on your mobile device at the DOX check-in desk on Poupětova 1. You will receive an NFC attendee badge.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does the personal schedule (My Schedule) work?</span>
+            <span>▼</span>
+          </button>
+          <div class="faq-answer">
+            You can bookmark any talk or workshop into your personal schedule by clicking "☆ Save to Schedule". Your agenda is saved securely in your browser’s localStorage, meaning it is accessible completely offline during your visit without needing an account or login!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are laptop power outlets provided during workshops?</span>
+            <span>▼</span>
+          </button>
+          <div class="faq-answer">
+            Yes! All seating rows in the Tech &amp; Code Lab (Floor 2) are equipped with dedicated 230V European power strips and high-speed Wi-Fi 6 connectivity.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Will sessions be recorded or live-streamed?</span>
+            <span>▼</span>
+          </button>
+          <div class="faq-answer">
+            All keynotes in the Prompt &amp; Vision Hall will be recorded in 4K and made available to registered attendees within 48 hours following the festival conclusion. Hands-on coding labs are in-person only to encourage active collaboration.
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- My Agenda Modal -->
-  <div class="modal-overlay" id="agendaModal">
+  <div class="modal-overlay" id="agendaModal" role="dialog" aria-modal="true" aria-labelledby="agendaModalTitle">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Your Saved Schedule</h2>
-        <button class="close-btn" id="closeAgendaBtn">&times;</button>
+        <h2 id="agendaModalTitle">⭐ My Saved Schedule</h2>
+        <button class="close-btn" id="closeAgendaBtn" aria-label="Close Schedule Modal">&times;</button>
       </div>
       <div id="agendaList"></div>
+      <div class="agenda-summary-bar" id="agendaSummaryBar" style="display: none;">
+        <span id="agendaTotalText">0 sessions saved</span>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem; min-height: 38px;" onclick="clearAllAgenda()">Clear All</button>
+      </div>
     </div>
   </div>
+
+  <!-- Performer Detail Modal -->
+  <div class="modal-overlay" id="performerModal" role="dialog" aria-modal="true" aria-labelledby="performerModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="performerModalTitle">Speaker Profile</h2>
+        <button class="close-btn" id="closePerformerBtn" aria-label="Close Speaker Profile Modal">&times;</button>
+      </div>
+      <div id="performerModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <strong>Futurika Fest 2027</strong> • DOX Prague • 21–23 May 2027
+      </div>
+      <div>
+        Web Design Course Prototype • Compliant with WCAG 2.0 AA • Pure Client-Side Architecture
+      </div>
+    </div>
+  </footer>
 
   <script>
     // Inlined Festival Data from data.json
@@ -1917,51 +2787,170 @@
   ]
 };
 
+    // Application State
+    let currentView = 'home';
     let selectedDay = 'all';
     let selectedStage = 'all';
+    let selectedTrack = 'all';
     let searchQuery = '';
+    let perfTrackFilter = 'all';
+    let perfSearchQuery = '';
 
-    // Favorites persistence using localStorage
-    const STORAGE_KEY = 'futurika_saved_sessions';
+    // LocalStorage Key
+    const STORAGE_KEY = 'futurika_saved_sessions_2027';
+
     function getSavedSessions() {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
     }
 
     function saveSession(id) {
-      let list = getSavedSessions();
-      if (list.includes(id)) {
-        list = list.filter(item => item !== id);
+      let saved = getSavedSessions();
+      if (saved.includes(id)) {
+        saved = saved.filter(item => item !== id);
       } else {
-        list.push(id);
+        saved.push(id);
       }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
       updateBadge();
       renderProgramme();
-      renderAgendaModal();
+      if (document.getElementById('agendaModal').classList.contains('active')) {
+        renderAgendaModal();
+      }
+    }
+
+    function clearAllAgenda() {
+      if (confirm('Are you sure you want to clear your saved schedule?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        updateBadge();
+        renderProgramme();
+        renderAgendaModal();
+      }
     }
 
     function updateBadge() {
       const count = getSavedSessions().length;
-      document.getElementById('agendaCount').textContent = count;
+      const badge = document.getElementById('agendaCount');
+      if (badge) badge.textContent = count;
     }
 
+    // Navigation and View Switching
+    function switchView(viewName) {
+      currentView = viewName;
+
+      // Update section visibility
+      document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+      const activeSec = document.getElementById('view-' + viewName);
+      if (activeSec) activeSec.classList.add('active');
+
+      // Update nav link active state
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('data-view') === viewName) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Close mobile drawer
+      document.getElementById('mobileDrawer').classList.remove('open');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Trigger view-specific rendering
+      if (viewName === 'home') renderHomeHighlights();
+      if (viewName === 'programme') renderProgramme();
+      if (viewName === 'performers') renderPerformers();
+    }
+
+    // Filter by Stage from Stage Card
+    function filterByStageFromCard(stageId) {
+      selectedStage = stageId;
+      selectedDay = 'all';
+      selectedTrack = 'all';
+      searchQuery = '';
+      const sInput = document.getElementById('searchInput');
+      if (sInput) sInput.value = '';
+
+      document.querySelectorAll('[data-stage]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-stage') === stageId);
+      });
+      document.querySelectorAll('[data-day]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-day') === 'all');
+      });
+      document.querySelectorAll('[data-track]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-track') === 'all');
+      });
+
+      switchView('programme');
+    }
+
+    // Render Home Keynote Highlights (First 4 Sessions)
+    function renderHomeHighlights() {
+      const grid = document.getElementById('homeHighlightsGrid');
+      if (!grid) return;
+      const highlights = festivalData.programme.slice(0, 4);
+      const saved = getSavedSessions();
+
+      grid.innerHTML = highlights.map(item => {
+        const isSaved = saved.includes(item.id);
+        const isVision = item.stage_id === 'stage-vision';
+        return `
+          <article class="item-card">
+            <div>
+              <div class="card-top">
+                <span class="time-slot">📅 Day ${item.day} • ${item.start_time} - ${item.end_time}</span>
+                <span class="track-pill ${isVision ? 'track-vision' : 'track-tech'}">
+                  ${isVision ? 'Vision & Art' : 'Core Tech'}
+                </span>
+              </div>
+              <h3 class="item-title">${item.title}</h3>
+              <button class="speaker-btn" onclick="openPerformerModal('${item.performer_id}')" title="View speaker biography">
+                <span>👤</span>
+                <strong>${item.performer_name}</strong>
+                <span style="font-size: 0.75rem; opacity: 0.7;">(View Bio)</span>
+              </button>
+              <p class="item-desc">${item.description}</p>
+            </div>
+            <div class="card-footer">
+              <span class="stage-badge">📍 ${item.stage_name}</span>
+              <button 
+                class="btn-fav ${isSaved ? 'saved' : ''}" 
+                onclick="saveSession('${item.id}')"
+                aria-label="Bookmark session"
+              >
+                ${isSaved ? '★ Saved' : '☆ Save to Schedule'}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Render Programme
     function renderProgramme() {
       const grid = document.getElementById('programmeGrid');
+      if (!grid) return;
       const saved = getSavedSessions();
 
       const filtered = festivalData.programme.filter(item => {
         const matchDay = (selectedDay === 'all') || (item.day.toString() === selectedDay);
         const matchStage = (selectedStage === 'all') || (item.stage_id === selectedStage);
+        const matchTrack = (selectedTrack === 'all') || (item.track === selectedTrack);
         const matchSearch = searchQuery === '' || 
           item.title.toLowerCase().includes(searchQuery) ||
           item.performer_name.toLowerCase().includes(searchQuery) ||
           item.description.toLowerCase().includes(searchQuery);
 
-        return matchDay && matchStage && matchSearch;
+        return matchDay && matchStage && matchTrack && matchSearch;
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = '<div class="no-results">No sessions found matching your criteria. Try resetting filters.</div>';
+        grid.innerHTML = '<div class="no-results"><h3>No sessions found</h3><p>Try adjusting your search query or reset day/stage filters.</p></div>';
         return;
       }
 
@@ -1972,20 +2961,21 @@
           <article class="item-card">
             <div>
               <div class="card-top">
-                <span class="time-slot">${item.date} • ${item.start_time} - ${item.end_time}</span>
+                <span class="time-slot">📅 Day ${item.day} (${item.date}) • ${item.start_time} - ${item.end_time}</span>
                 <span class="track-pill ${isVision ? 'track-vision' : 'track-tech'}">
                   ${isVision ? 'Vision & Art' : 'Core Tech'}
                 </span>
               </div>
               <h3 class="item-title">${item.title}</h3>
-              <div class="speaker-info">
+              <button class="speaker-btn" onclick="openPerformerModal('${item.performer_id}')" title="Click to view speaker bio">
                 <span>👤</span>
                 <strong>${item.performer_name}</strong>
-              </div>
+                <span style="font-size: 0.75rem; opacity: 0.75;">(View Bio)</span>
+              </button>
               <p class="item-desc">${item.description}</p>
             </div>
             <div class="card-footer">
-              <span class="stage-name">📍 ${item.stage_name}</span>
+              <span class="stage-badge">📍 ${item.stage_name}</span>
               <button 
                 class="btn-fav ${isSaved ? 'saved' : ''}" 
                 onclick="saveSession('${item.id}')"
@@ -1999,70 +2989,235 @@
       }).join('');
     }
 
+    // Render Performers Directory
+    function renderPerformers() {
+      const grid = document.getElementById('performersGrid');
+      if (!grid) return;
+
+      const filtered = festivalData.performers.filter(p => {
+        const matchTrack = (perfTrackFilter === 'all') || (p.track === perfTrackFilter);
+        const matchSearch = perfSearchQuery === '' || 
+          p.name.toLowerCase().includes(perfSearchQuery) ||
+          p.role.toLowerCase().includes(perfSearchQuery) ||
+          p.headline_topic.toLowerCase().includes(perfSearchQuery) ||
+          p.bio.toLowerCase().includes(perfSearchQuery);
+        return matchTrack && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="no-results"><h3>No speakers found</h3><p>Try a different keyword or reset the track filter.</p></div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const isVision = p.track === 'Vision & Creative Tech';
+        return `
+          <article class="performer-card">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="performer-avatar">👤</div>
+                <span class="track-pill ${isVision ? 'track-vision' : 'track-tech'}">
+                  ${isVision ? 'Vision' : 'Core AI'}
+                </span>
+              </div>
+              <h3 class="performer-name">${p.name}</h3>
+              <div class="performer-role">${p.role}</div>
+              <p class="performer-topic"><strong>Topic:</strong> ${p.headline_topic}</p>
+            </div>
+            <button class="btn-secondary" style="width: 100%; margin-top: 12px;" onclick="openPerformerModal('${p.id}')">
+              View Profile &amp; Talk Abstract →
+            </button>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Performer Modal Functions
+    function openPerformerModal(performerId) {
+      const performer = festivalData.performers.find(p => p.id === performerId);
+      if (!performer) return;
+
+      const sessions = festivalData.programme.filter(item => item.performer_id === performerId);
+      const saved = getSavedSessions();
+
+      const modalBody = document.getElementById('performerModalBody');
+      const isVision = performer.track === 'Vision & Creative Tech';
+
+      modalBody.innerHTML = `
+        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
+          <div class="performer-avatar" style="width: 64px; height: 64px; font-size: 1.8rem; margin-bottom: 0;">👤</div>
+          <div>
+            <h3 style="font-size: 1.35rem; color: #fff;">${performer.name}</h3>
+            <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem;">${performer.role}</p>
+            <span class="track-pill ${isVision ? 'track-vision' : 'track-tech'}" style="margin-top: 4px; display: inline-block;">
+              ${performer.track}
+            </span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px;">Biography &amp; Focus</h4>
+          <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6;">${performer.bio}</p>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 10px;">Festival Sessions at Futurika</h4>
+          ${sessions.map(s => {
+            const isSaved = saved.includes(s.id);
+            return `
+              <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 14px; margin-bottom: 8px;">
+                <div style="font-size: 0.8rem; color: var(--accent); font-weight: 700;">📅 Day ${s.day} (${s.date}) • ${s.start_time} - ${s.end_time}</div>
+                <strong style="font-size: 1rem; color: #fff; display: block; margin: 4px 0;">${s.title}</strong>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">📍 Location: ${s.stage_name}</div>
+                <button 
+                  class="btn-fav ${isSaved ? 'saved' : ''}" 
+                  onclick="saveSession('${s.id}'); openPerformerModal('${performerId}');"
+                >
+                  ${isSaved ? '★ In Your Schedule' : '☆ Save to My Schedule'}
+                </button>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      document.getElementById('performerModal').classList.add('active');
+    }
+
+    // Agenda / My Schedule Modal
     function renderAgendaModal() {
       const listContainer = document.getElementById('agendaList');
+      const summaryBar = document.getElementById('agendaSummaryBar');
+      const totalText = document.getElementById('agendaTotalText');
       const savedIds = getSavedSessions();
       const savedItems = festivalData.programme.filter(p => savedIds.includes(p.id));
 
       if (savedItems.length === 0) {
-        listContainer.innerHTML = '<p style="color: #9ca3af; text-align: center; padding: 20px 0;">No sessions saved yet. Click "☆ Save to Schedule" on any session to add it here!</p>';
+        listContainer.innerHTML = '<p style="color: #9ca3af; text-align: center; padding: 30px 10px; font-size: 0.95rem;">No sessions saved yet.<br><br>Click <strong>"☆ Save to Schedule"</strong> on any talk or workshop to curate your personal summit itinerary!</p>';
+        summaryBar.style.display = 'none';
         return;
       }
+
+      summaryBar.style.display = 'flex';
+      totalText.textContent = `${savedItems.length} session${savedItems.length > 1 ? 's' : ''} bookmarked`;
 
       listContainer.innerHTML = savedItems.map(item => `
         <div class="agenda-item">
           <div>
-            <div style="font-size: 0.8rem; color: #10b981; font-weight: 700;">${item.date} • ${item.start_time} (${item.stage_name})</div>
-            <strong style="font-size: 0.95rem;">${item.title}</strong>
-            <div style="font-size: 0.8rem; color: #9ca3af;">${item.performer_name}</div>
+            <div style="font-size: 0.8rem; color: #10b981; font-weight: 700;">Day ${item.day} • ${item.start_time} (${item.stage_name})</div>
+            <strong style="font-size: 0.95rem; color: #fff;">${item.title}</strong>
+            <div style="font-size: 0.82rem; color: #9ca3af;">👤 ${item.performer_name}</div>
           </div>
-          <button class="btn-fav saved" onclick="saveSession('${item.id}')">Remove</button>
+          <button class="btn-fav saved" onclick="saveSession('${item.id}')" aria-label="Remove from schedule">Remove</button>
         </div>
       `).join('');
     }
 
     // Event Listeners
-    document.querySelectorAll('[data-day]').forEach(btn => {
-      btn.addEventListener('click', e => {
-        document.querySelectorAll('[data-day]').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        selectedDay = e.target.getAttribute('data-day');
-        renderProgramme();
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-day]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          document.querySelectorAll('[data-day]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          selectedDay = e.target.getAttribute('data-day');
+          renderProgramme();
+        });
       });
-    });
 
-    document.querySelectorAll('[data-stage]').forEach(btn => {
-      btn.addEventListener('click', e => {
-        document.querySelectorAll('[data-stage]').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        selectedStage = e.target.getAttribute('data-stage');
-        renderProgramme();
+      document.querySelectorAll('[data-stage]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          document.querySelectorAll('[data-stage]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          selectedStage = e.target.getAttribute('data-stage');
+          renderProgramme();
+        });
       });
-    });
 
-    document.getElementById('searchInput').addEventListener('input', e => {
-      searchQuery = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('[data-track]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          document.querySelectorAll('[data-track]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          selectedTrack = e.target.getAttribute('data-track');
+          renderProgramme();
+        });
+      });
+
+      document.querySelectorAll('[data-perf-track]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          document.querySelectorAll('[data-perf-track]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          perfTrackFilter = e.target.getAttribute('data-perf-track');
+          renderPerformers();
+        });
+      });
+
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', e => {
+          searchQuery = e.target.value.toLowerCase().trim();
+          renderProgramme();
+        });
+      }
+
+      const searchPerfInput = document.getElementById('searchPerformerInput');
+      if (searchPerfInput) {
+        searchPerfInput.addEventListener('input', e => {
+          perfSearchQuery = e.target.value.toLowerCase().trim();
+          renderPerformers();
+        });
+      }
+
+      const agendaModal = document.getElementById('agendaModal');
+      document.getElementById('openAgendaBtn').addEventListener('click', () => {
+        renderAgendaModal();
+        agendaModal.classList.add('active');
+      });
+
+      document.getElementById('closeAgendaBtn').addEventListener('click', () => {
+        agendaModal.classList.remove('active');
+      });
+
+      agendaModal.addEventListener('click', e => {
+        if (e.target === agendaModal) agendaModal.classList.remove('active');
+      });
+
+      const perfModal = document.getElementById('performerModal');
+      document.getElementById('closePerformerBtn').addEventListener('click', () => {
+        perfModal.classList.remove('active');
+      });
+
+      perfModal.addEventListener('click', e => {
+        if (e.target === perfModal) perfModal.classList.remove('active');
+      });
+
+      window.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          agendaModal.classList.remove('active');
+          perfModal.classList.remove('active');
+        }
+      });
+
+      const mobileToggle = document.getElementById('mobileMenuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', () => {
+          mobileDrawer.classList.toggle('open');
+        });
+      }
+
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          item.classList.toggle('open');
+          const icon = btn.querySelector('span:last-child');
+          if (icon) icon.textContent = item.classList.contains('open') ? '▲' : '▼';
+        });
+      });
+
+      updateBadge();
+      renderHomeHighlights();
       renderProgramme();
     });
-
-    // Modal controls
-    const modal = document.getElementById('agendaModal');
-    document.getElementById('openAgendaBtn').addEventListener('click', () => {
-      renderAgendaModal();
-      modal.classList.add('active');
-    });
-
-    document.getElementById('closeAgendaBtn').addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
-
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-
-    // Initial boot
-    updateBadge();
-    renderProgramme();
   </script>
 </body>
 </html>

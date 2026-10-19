@@ -80,6 +80,14 @@ Futurika Website
     └── Persistent client-side list of saved sessions with total duration counter
 ```
 
+### Purpose of Each Main Section
+- **Home Page (`index.html`):** Welcomes visitors and introduces the festival's identity, core theme (Generative AI & Creative Tech), date range, and DOX Prague location. Provides curated keynote highlights, venue sneak peeks, and direct calls-to-action for ticket purchasing and programme exploration.
+- **Programme / Schedule (`programme.html`):** The primary schedule management tool. Delivers the complete 3-day chronological agenda (60 items across 2 stages) with multi-criteria filtering by day and stage, instant real-time keyword search, and local bookmarking into "My Schedule".
+- **Performers / Speakers (`performers.html`):** A searchable directory of all 60 international and Czech speakers, engineers, and digital artists. Offers track filtering (*Vision & Creative Tech* vs *Core AI & Engineering*) and detailed modals with speaker bios, credentials, and their scheduled festival sessions.
+- **Stages & Venues (`stages.html`):** Spatial and technical orientation guide detailing the two distinct festival venues: *Prompt & Vision Hall* (DOX+ Hall, 450 seats) for immersive media and keynotes, and *Tech & Code Lab* (Innovation Hub, 250 seats) for live-coding and agentic workshops.
+- **Practical Info (`practical.html`):** Logistical hub providing public transit directions (Metro C / Tram stops in Prague 7 Holešovice), wheelchair accessibility standards, attendee code of conduct, and an interactive FAQ accordion.
+- **My Schedule / Favorites (Interactive Drawer):** Offline-capable, client-side personal itinerary manager powered by `localStorage`. Allows visitors to curate and reference their custom session lineup on-site without needing an account or persistent internet connection.
+
 ### Main Navigation & Interconnections
 - **Header Navigation:** Clean persistent navbar linking directly to `Home`, `Programme`, `Performers`, `Stages`, `Practical Info`, and a badge showing the count of saved favorite sessions (`⭐ My Schedule [0]`).
 - **Contextual Linking:** Every performer card links directly to their corresponding programme items. Programme items link to venue/stage descriptions and detailed speaker bios.
@@ -122,7 +130,7 @@ Futurika Website
 ---
 
 ## 6. Data Foundation Summary
-- **Format:** `data.json` (also easily serializable to XML if needed).
+- **Format:** Both `data.json` and `data.xml` are provided in the project root directory.
 - **Festival Scope:**
   - **Days:** 3 Days (21–23 May 2027).
   - **Venues / Stages:** 2 Distinct Stages (`stage-vision` and `stage-tech`).
