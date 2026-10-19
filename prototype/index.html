@@ -429,7 +429,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       color: #fff;
-      padding: 12px 16px;
+      padding: 12px 42px 12px 16px;
       border-radius: 10px;
       font-size: 0.95rem;
       outline: none;
@@ -439,6 +439,30 @@
 
     .search-input:focus {
       border-color: var(--accent);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .clear-search-btn:hover {
+      background: var(--accent);
+      color: #0b0f19;
     }
 
     .filter-group {
@@ -483,6 +507,66 @@
       color: #0b0f19;
       border-color: var(--accent);
       font-weight: 700;
+    }
+
+    /* Active Filters Indicator Bar */
+    .active-filters-bar {
+      display: none;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+    }
+
+    .active-filters-label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .active-tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .filter-chip {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .chip-remove-btn {
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.85rem;
+      line-height: 1;
+      padding: 0 2px;
+    }
+
+    .btn-reset-filters {
+      background: transparent;
+      border: none;
+      color: #f87171;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: auto;
+      padding: 4px 8px;
     }
 
     .grid-container {
@@ -902,7 +986,7 @@
       grid-column: 1 / -1;
       background: var(--card-bg);
       border: 1px dashed var(--card-border);
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
     footer {
@@ -1070,6 +1154,7 @@
             placeholder="🔍 Search speakers, topics (e.g. 'LLM', 'Diffusion', 'FastAPI', 'Elena')..." 
             aria-label="Search programme by title, speaker or description"
           />
+          <button id="clearSearchBtn" class="clear-search-btn" onclick="clearSearchOnly()" title="Clear search query" aria-label="Clear search input">✖</button>
         </div>
 
         <div class="filter-group">
@@ -1091,7 +1176,14 @@
           <span class="filter-label">Track:</span>
           <button class="tab-btn active" data-track="all">All Tracks</button>
           <button class="tab-btn" data-track="Vision & Creative Tech">Vision &amp; Creative Tech</button>
-          <button class="tab-btn" data-track="Core AI & Engineering">Core AI &amp; Engineering</button>
+          <button class="tab-btn" data-track="Engineering & Core AI">Engineering &amp; Core AI</button>
+        </div>
+
+        <!-- Active Filters Bar -->
+        <div class="active-filters-bar" id="activeFiltersBar">
+          <span class="active-filters-label">Active filters:</span>
+          <div class="active-tags-container" id="activeTagsContainer"></div>
+          <button class="btn-reset-filters" onclick="resetAllFilters()">Clear All Filters</button>
         </div>
       </div>
 
@@ -1124,7 +1216,7 @@
           <span class="filter-label">Filter Track:</span>
           <button class="tab-btn active" data-perf-track="all">All Speakers (60)</button>
           <button class="tab-btn" data-perf-track="Vision & Creative Tech">Vision &amp; Creative Tech (30)</button>
-          <button class="tab-btn" data-perf-track="Core AI & Engineering">Core AI &amp; Engineering (30)</button>
+          <button class="tab-btn" data-perf-track="Engineering & Core AI">Engineering &amp; Core AI (30)</button>
         </div>
       </div>
 
@@ -2875,6 +2967,8 @@
       searchQuery = '';
       const sInput = document.getElementById('searchInput');
       if (sInput) sInput.value = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
 
       document.querySelectorAll('[data-stage]').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-stage') === stageId);
@@ -2887,6 +2981,93 @@
       });
 
       switchView('programme');
+    }
+
+    // Clear Search Input Only
+    function clearSearchOnly() {
+      searchQuery = '';
+      const sInput = document.getElementById('searchInput');
+      if (sInput) {
+        sInput.value = '';
+        sInput.focus();
+      }
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+      renderProgramme();
+    }
+
+    // Reset All Filters in Programme
+    function resetAllFilters() {
+      selectedDay = 'all';
+      selectedStage = 'all';
+      selectedTrack = 'all';
+      searchQuery = '';
+      const sInput = document.getElementById('searchInput');
+      if (sInput) sInput.value = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
+      document.querySelectorAll('[data-day]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-day') === 'all');
+      });
+      document.querySelectorAll('[data-stage]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-stage') === 'all');
+      });
+      document.querySelectorAll('[data-track]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-track') === 'all');
+      });
+
+      renderProgramme();
+    }
+
+    // Update Active Filters Bar
+    function updateActiveFiltersBar() {
+      const bar = document.getElementById('activeFiltersBar');
+      const tagsContainer = document.getElementById('activeTagsContainer');
+      if (!bar || !tagsContainer) return;
+
+      const isFiltered = (selectedDay !== 'all') || (selectedStage !== 'all') || (selectedTrack !== 'all') || (searchQuery !== '');
+
+      if (!isFiltered) {
+        bar.style.display = 'none';
+        tagsContainer.innerHTML = '';
+        return;
+      }
+
+      bar.style.display = 'flex';
+      let chipsHtml = '';
+
+      if (selectedDay !== 'all') {
+        chipsHtml += `<span class="filter-chip">Day ${selectedDay} <button class="chip-remove-btn" onclick="removeFilter('day')">×</button></span>`;
+      }
+      if (selectedStage !== 'all') {
+        const stageLabel = selectedStage === 'stage-vision' ? 'Vision Hall' : 'Tech Lab';
+        chipsHtml += `<span class="filter-chip">${stageLabel} <button class="chip-remove-btn" onclick="removeFilter('stage')">×</button></span>`;
+      }
+      if (selectedTrack !== 'all') {
+        chipsHtml += `<span class="filter-chip">${selectedTrack} <button class="chip-remove-btn" onclick="removeFilter('track')">×</button></span>`;
+      }
+      if (searchQuery !== '') {
+        chipsHtml += `<span class="filter-chip">Search: "${searchQuery}" <button class="chip-remove-btn" onclick="clearSearchOnly()">×</button></span>`;
+      }
+
+      tagsContainer.innerHTML = chipsHtml;
+    }
+
+    function removeFilter(filterType) {
+      if (filterType === 'day') {
+        selectedDay = 'all';
+        document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.getAttribute('data-day') === 'all'));
+      }
+      if (filterType === 'stage') {
+        selectedStage = 'all';
+        document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.getAttribute('data-stage') === 'all'));
+      }
+      if (filterType === 'track') {
+        selectedTrack = 'all';
+        document.querySelectorAll('[data-track]').forEach(b => b.classList.toggle('active', b.getAttribute('data-track') === 'all'));
+      }
+      renderProgramme();
     }
 
     // Render Home Keynote Highlights (First 4 Sessions)
@@ -2936,6 +3117,7 @@
       const grid = document.getElementById('programmeGrid');
       if (!grid) return;
       const saved = getSavedSessions();
+      updateActiveFiltersBar();
 
       const filtered = festivalData.programme.filter(item => {
         const matchDay = (selectedDay === 'all') || (item.day.toString() === selectedDay);
@@ -2950,7 +3132,20 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = '<div class="no-results"><h3>No sessions found</h3><p>Try adjusting your search query or reset day/stage filters.</p></div>';
+        let msg = 'No sessions found matching current criteria.';
+        if (searchQuery !== '') {
+          msg = `No sessions match "${searchQuery}" with the active Day/Stage filters.`;
+        }
+        grid.innerHTML = `
+          <div class="no-results">
+            <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 6px;">No sessions found</h3>
+            <p style="margin-bottom: 16px; color: #9ca3af;">${msg}</p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              ${searchQuery !== '' ? `<button class="btn-primary" onclick="clearSearchOnly()">Clear Search "${searchQuery}"</button>` : ''}
+              <button class="btn-secondary" onclick="resetAllFilters()">Reset All Filters</button>
+            </div>
+          </div>
+        `;
         return;
       }
 
@@ -3118,8 +3313,8 @@
       document.querySelectorAll('[data-day]').forEach(btn => {
         btn.addEventListener('click', e => {
           document.querySelectorAll('[data-day]').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          selectedDay = e.target.getAttribute('data-day');
+          e.currentTarget.classList.add('active');
+          selectedDay = e.currentTarget.getAttribute('data-day');
           renderProgramme();
         });
       });
@@ -3127,8 +3322,8 @@
       document.querySelectorAll('[data-stage]').forEach(btn => {
         btn.addEventListener('click', e => {
           document.querySelectorAll('[data-stage]').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          selectedStage = e.target.getAttribute('data-stage');
+          e.currentTarget.classList.add('active');
+          selectedStage = e.currentTarget.getAttribute('data-stage');
           renderProgramme();
         });
       });
@@ -3136,8 +3331,8 @@
       document.querySelectorAll('[data-track]').forEach(btn => {
         btn.addEventListener('click', e => {
           document.querySelectorAll('[data-track]').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          selectedTrack = e.target.getAttribute('data-track');
+          e.currentTarget.classList.add('active');
+          selectedTrack = e.currentTarget.getAttribute('data-track');
           renderProgramme();
         });
       });
@@ -3145,16 +3340,20 @@
       document.querySelectorAll('[data-perf-track]').forEach(btn => {
         btn.addEventListener('click', e => {
           document.querySelectorAll('[data-perf-track]').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          perfTrackFilter = e.target.getAttribute('data-perf-track');
+          e.currentTarget.classList.add('active');
+          perfTrackFilter = e.currentTarget.getAttribute('data-perf-track');
           renderPerformers();
         });
       });
 
       const searchInput = document.getElementById('searchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
       if (searchInput) {
         searchInput.addEventListener('input', e => {
           searchQuery = e.target.value.toLowerCase().trim();
+          if (clearSearchBtn) {
+            clearSearchBtn.style.display = searchQuery.length > 0 ? 'inline-flex' : 'none';
+          }
           renderProgramme();
         });
       }
