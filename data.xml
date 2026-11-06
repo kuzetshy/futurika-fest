@@ -2,18 +2,22 @@
 <festival_data>
   <festival>
     <name>Futurika Fest</name>
+    <subtitle>AI &amp; Creative Tech Summit</subtitle>
     <edition>5th Edition / 2027</edition>
-    <location>DOX Centre for Contemporary Art &amp; DOX+, Prague, Czech Republic</location>
+    <location>DOX Centre for Contemporary Art &amp; DOX+ Hall, Prague, Czech Republic</location>
+    <address>Poupětova 1, 170 00 Prague 7, Czech Republic</address>
     <date_range>21 May 2027 – 23 May 2027</date_range>
-    <type>Creative Technology, Artificial Intelligence &amp; Generative Arts Festival</type>
+    <start_date>2027-05-21</start_date>
+    <end_date>2027-05-23</end_date>
+    <type>International festival and tech summit of generative AI, creative coding, digital media arts and open-source software engineering</type>
     <main_genres>
-      <genre>Generative AI</genre>
-      <genre>Creative Coding</genre>
-      <genre>Autonomous Agents</genre>
-      <genre>Interactive Digital Media</genre>
-      <genre>Edge ML</genre>
+      <genre>Generative AI &amp; Digital Art</genre>
+      <genre>LLM Systems &amp; Autonomous Agents</genre>
+      <genre>Interactive Spatial Audio/Visuals</genre>
+      <genre>Edge Computing &amp; Open Weights</genre>
+      <genre>AI Ethics &amp; European AI Act</genre>
     </main_genres>
-    <summary>Central Europe's premier hands-on festival bridging generative artificial intelligence, avant-garde digital arts, interactive media, and open-source software engineering.</summary>
+    <summary>A three-day festival in Prague that brings together generative AI researchers, creative technologists, open-source engineers and media artists for keynotes, workshops and live performances.</summary>
   </festival>
   <stages>
     <stage id="stage-vision">
@@ -31,484 +35,544 @@
   </stages>
   <performers>
     <performer id="perf-01">
+      <slug>elena-rostova</slug>
       <name>Dr. Elena Rostova</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Creative AI Lead at Synthetix</role>
       <headline_topic>Cognitive Aesthetics &amp; Neural Style Transfer in Modern Cinema</headline_topic>
-      <country>International / CZ</country>
-      <bio>Dr. Elena Rostova is a leading expert specializing in cognitive aesthetics &amp; neural style transfer in modern cinema. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Bulgaria</country>
+      <bio>Elena Rostova spent a decade restoring archive film before moving into machine vision, and now leads the creative AI team at Synthetix. Her studio work tests how far style transfer can go before audiences stop trusting what they see on screen.</bio>
     </performer>
     <performer id="perf-02">
+      <slug>marcus-vance</slug>
       <name>Marcus Vance</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Founder of HoloMesh Labs</role>
       <headline_topic>From Diffusion to Reality: The Evolution of Text-to-3D Synthesis</headline_topic>
-      <country>International / CZ</country>
-      <bio>Marcus Vance is a leading expert specializing in from diffusion to reality: the evolution of text-to-3d synthesis. Featured keynote speaker at Futurika Fest.</bio>
+      <country>United Kingdom</country>
+      <bio>Marcus Vance founded HoloMesh Labs after years as a technical artist in games. The company builds tools that turn rough text briefs into editable 3D assets for small production studios.</bio>
     </performer>
     <performer id="perf-03">
+      <slug>aoi-tanaka</slug>
       <name>Aoi Tanaka</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Sound Architect &amp; Digital Artist</role>
       <headline_topic>Generative Audiovisual Symphony: Real-Time Latent Space Soundscapes</headline_topic>
-      <country>International / CZ</country>
-      <bio>Aoi Tanaka is a leading expert specializing in generative audiovisual symphony: real-time latent space soundscapes. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Japan</country>
+      <bio>Aoi Tanaka composes for concert halls and galleries using instruments trained on field recordings from Japanese coastal towns. Their pieces change each night in response to the room and the audience.</bio>
     </performer>
     <performer id="perf-04">
-      <name>Liam Gallagher-Smith</name>
+      <slug>liam-hartley</slug>
+      <name>Liam Hartley</name>
       <track>Vision &amp; Creative Tech</track>
-      <role>Research Fellow at Oxford Digital Ethics</role>
+      <role>Research Fellow at the Institute for Synthetic Media Ethics</role>
       <headline_topic>Ethics of Synthetic Media: Deepfakes, Watermarking, and Ownership</headline_topic>
-      <country>International / CZ</country>
-      <bio>Liam Gallagher-Smith is a leading expert specializing in ethics of synthetic media: deepfakes, watermarking, and ownership. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Ireland</country>
+      <bio>Liam Hartley studies how synthetic media affects evidence, journalism and consent. As a research fellow at the Institute for Synthetic Media Ethics, he advises newsrooms on provenance and labelling standards.</bio>
     </performer>
     <performer id="perf-05">
+      <slug>sofia-benitez</slug>
       <name>Sofia Benitez</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Creative Director at PixelSphere</role>
       <headline_topic>Autonomous Avatars: The Psychology of Synthetic Brand Influencers</headline_topic>
-      <country>International / CZ</country>
-      <bio>Sofia Benitez is a leading expert specializing in autonomous avatars: the psychology of synthetic brand influencers. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Spain</country>
+      <bio>Sofia Benitez has directed campaigns for fashion and consumer brands for fifteen years. At PixelSphere she now researches why audiences form attachments to virtual characters they know are not real.</bio>
     </performer>
     <performer id="perf-06">
+      <slug>jan-novak</slug>
       <name>Jan Novák</name>
       <track>Vision &amp; Creative Tech</track>
-      <role>NLP Director at Charles AI Hub</role>
+      <role>NLP Director at Vltava AI Hub</role>
       <headline_topic>Czech Language Models: Preserving Cultural Heritage through Open Weights</headline_topic>
-      <country>International / CZ</country>
-      <bio>Jan Novák is a leading expert specializing in czech language models: preserving cultural heritage through open weights. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Jan Novák directs natural language research at the Vltava AI Hub, a Prague lab focused on smaller European languages. He coordinates a volunteer effort to digitise Czech archives as open training data.</bio>
     </performer>
     <performer id="perf-07">
+      <slug>chloe-dubois</slug>
       <name>Chloe Dubois</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Principal Architect at Studio Biomimic</role>
       <headline_topic>AI-Augmented Architecture: Algorithmic Urbanism and Future Habitats</headline_topic>
-      <country>International / CZ</country>
-      <bio>Chloe Dubois is a leading expert specializing in ai-augmented architecture: algorithmic urbanism and future habitats. Featured keynote speaker at Futurika Fest.</bio>
+      <country>France</country>
+      <bio>Chloe Dubois is a principal architect at Studio Biomimic, where generative models feed into real planning decisions. Her housing projects in Lyon and Marseille use simulation to reduce summer heat in dense neighbourhoods.</bio>
     </performer>
     <performer id="perf-08">
+      <slug>tariq-al-mansoor</slug>
       <name>Tariq Al-Mansoor</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Design Technologist at BrandSynth</role>
       <headline_topic>Generative Typography and Dynamic Branding Systems</headline_topic>
-      <country>International / CZ</country>
-      <bio>Tariq Al-Mansoor is a leading expert specializing in generative typography and dynamic branding systems. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Jordan</country>
+      <bio>Tariq Al-Mansoor designs identity systems at BrandSynth that behave like software rather than static logos. He trained as a type designer working in Arabic and Latin scripts, and multi-script support shapes his tools.</bio>
     </performer>
     <performer id="perf-09">
+      <slug>miriam-kovacova</slug>
       <name>Dr. Miriam Kováčová</name>
       <track>Vision &amp; Creative Tech</track>
-      <role>Senior Lecturer at CTU Digital Arts</role>
+      <role>Senior Lecturer at Prague School of Digital Arts</role>
       <headline_topic>Bio-Digital Art: Cellular Automata Meets Neural Networks</headline_topic>
-      <country>International / CZ</country>
-      <bio>Dr. Miriam Kováčová is a leading expert specializing in bio-digital art: cellular automata meets neural networks. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Slovakia</country>
+      <bio>Miriam Kováčová teaches at the Prague School of Digital Arts and runs a small wet lab for artists. Her installations let living cell cultures and neural networks influence one another's growth.</bio>
     </performer>
     <performer id="perf-10">
+      <slug>arjun-patel</slug>
       <name>Arjun Patel</name>
       <track>Vision &amp; Creative Tech</track>
       <role>VP of XR Research at NeuraVision</role>
       <headline_topic>Interactive Spatial Computing with Real-time Diffusion Engines</headline_topic>
-      <country>International / CZ</country>
-      <bio>Arjun Patel is a leading expert specializing in interactive spatial computing with real-time diffusion engines. Featured keynote speaker at Futurika Fest.</bio>
+      <country>India</country>
+      <bio>Arjun Patel leads extended reality research at NeuraVision, working on headsets that generate scenes as the wearer moves. He previously built real-time rendering engines for flight simulators.</bio>
     </performer>
     <performer id="perf-11">
+      <slug>greta-lindholm</slug>
       <name>Greta Lindholm</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Lead Game Designer at Nordic Worlds</role>
       <headline_topic>AI in Game Design: Generating Living Worlds without Static Assets</headline_topic>
-      <country>International / CZ</country>
-      <bio>Greta Lindholm is a leading expert specializing in ai in game design: generating living worlds without static assets. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Sweden</country>
+      <bio>Greta Lindholm leads game design at Nordic Worlds, an independent studio known for open-world survival titles. She focuses on systems where quests and characters emerge from play instead of being scripted.</bio>
     </performer>
     <performer id="perf-12">
+      <slug>lucas-rossi</slug>
       <name>Lucas Rossi</name>
       <track>Vision &amp; Creative Tech</track>
       <role>VFX Supervisor at CineTech Milan</role>
       <headline_topic>Cinematography Reimagined: Virtual Production with Neural Radiance Fields (NeRF)</headline_topic>
-      <country>International / CZ</country>
-      <bio>Lucas Rossi is a leading expert specializing in cinematography reimagined: virtual production with neural radiance fields (nerf). Featured keynote speaker at Futurika Fest.</bio>
+      <country>Italy</country>
+      <bio>Lucas Rossi has supervised visual effects on European features and streaming series at CineTech Milan. His crews were among the first in Italy to replace location reshoots with captured neural scenes.</bio>
     </performer>
     <performer id="perf-13">
+      <slug>zhenya-morozov</slug>
       <name>Zhenya Morozov</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Curator at FutureLens Gallery</role>
       <headline_topic>Post-Photography: Authenticity in the Age of Midjourney v8</headline_topic>
-      <country>International / CZ</country>
-      <bio>Zhenya Morozov is a leading expert specializing in post-photography: authenticity in the age of midjourney v8. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Ukraine</country>
+      <bio>Zhenya Morozov curates FutureLens Gallery, which shows photography and image synthesis side by side. Their exhibitions ask visitors to guess how each picture was made and record what changes their mind.</bio>
     </performer>
     <performer id="perf-14">
+      <slug>amara-okafor</slug>
       <name>Amara Okafor</name>
       <track>Vision &amp; Creative Tech</track>
       <role>AI Inclusion Lead at AfroTech Futures</role>
       <headline_topic>African Languages in Generative AI: Breaking Linguistic Monoculture</headline_topic>
-      <country>International / CZ</country>
-      <bio>Amara Okafor is a leading expert specializing in african languages in generative ai: breaking linguistic monoculture. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Nigeria</country>
+      <bio>Amara Okafor leads inclusion work at AfroTech Futures, supporting speech and text datasets for African languages. She began as a linguist documenting Igbo dialects and still works closely with local speakers.</bio>
     </performer>
     <performer id="perf-15">
+      <slug>sven-erikson</slug>
       <name>Sven Erikson</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Robotics Artist at Stockholm Makers</role>
       <headline_topic>Autonomous Robotic Sculpting using Spatial Transformers</headline_topic>
-      <country>International / CZ</country>
-      <bio>Sven Erikson is a leading expert specializing in autonomous robotic sculpting using spatial transformers. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Sweden</country>
+      <bio>Sven Erikson builds sculpting robots at Stockholm Makers, a shared workshop for artists and engineers. His machines carve wood and clay from spoken descriptions and leave the marks of their mistakes visible.</bio>
     </performer>
     <performer id="perf-16">
+      <slug>maya-lin-schumacher</slug>
       <name>Maya Lin-Schumacher</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Textile Technologist at BioWeave</role>
       <headline_topic>Generative Fashion: Algorithmic Couture and Zero-Waste Patterns</headline_topic>
-      <country>International / CZ</country>
-      <bio>Maya Lin-Schumacher is a leading expert specializing in generative fashion: algorithmic couture and zero-waste patterns. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Germany</country>
+      <bio>Maya Lin-Schumacher trained as a pattern cutter before moving into computational design at BioWeave. She develops garment patterns that use every centimetre of fabric and works with small European mills.</bio>
     </performer>
     <performer id="perf-17">
+      <slug>david-miller</slug>
       <name>David Miller</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Producer &amp; Audio Engineer</role>
       <headline_topic>Music Without Musicians? Co-Creation Workflows with Generative Audio</headline_topic>
-      <country>International / CZ</country>
-      <bio>David Miller is a leading expert specializing in music without musicians? co-creation workflows with generative audio. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Canada</country>
+      <bio>David Miller is an independent producer and audio engineer with credits across electronic and film music. He runs open studio sessions where session players and generative tools record together.</bio>
     </performer>
     <performer id="perf-18">
+      <slug>katerina-krausova</slug>
       <name>Dr. Katerina Krausová</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Neuroscientist at BrainTech Prague</role>
       <headline_topic>Neuroethics of Brain-Computer Interfaces in Digital Arts</headline_topic>
-      <country>International / CZ</country>
-      <bio>Dr. Katerina Krausová is a leading expert specializing in neuroethics of brain-computer interfaces in digital arts. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Katerina Krausová is a neuroscientist at BrainTech Prague who studies attention and motor imagery. She also consults for artists using brain-computer interfaces and writes on consent in neural data collection.</bio>
     </performer>
     <performer id="perf-19">
-      <name>Felix Baumgartner</name>
+      <slug>felix-brandstatter</slug>
+      <name>Felix Brandstätter</name>
       <track>Vision &amp; Creative Tech</track>
       <role>CTO at HoloStage Vienna</role>
       <headline_topic>Real-Time AI Holography: Projecting Volumetric Synthetic Humans</headline_topic>
-      <country>International / CZ</country>
-      <bio>Felix Baumgartner is a leading expert specializing in real-time ai holography: projecting volumetric synthetic humans. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Austria</country>
+      <bio>Felix Brandstätter is chief technology officer at HoloStage Vienna, which builds volumetric displays for theatre and live events. He started out as a lighting technician at the Vienna opera houses.</bio>
     </performer>
     <performer id="perf-20">
+      <slug>nadia-chernova</slug>
       <name>Nadia Chernova</name>
       <track>Vision &amp; Creative Tech</track>
-      <role>Philosopher of Technology at Sorbonne</role>
+      <role>Philosopher of Technology at Paris Centre for Philosophy of Technology</role>
       <headline_topic>The Synthetic Muse: Can Neural Networks Possess Intention?</headline_topic>
-      <country>International / CZ</country>
-      <bio>Nadia Chernova is a leading expert specializing in the synthetic muse: can neural networks possess intention?. Featured keynote speaker at Futurika Fest.</bio>
+      <country>France</country>
+      <bio>Nadia Chernova is a philosopher of technology at the Paris Centre for Philosophy of Technology. Her writing on authorship and intention has been widely discussed among artists who work with machine learning.</bio>
     </performer>
     <performer id="perf-21">
+      <slug>carlos-mendez</slug>
       <name>Carlos Mendez</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Visual Jockey &amp; Creative Coder</role>
       <headline_topic>Live Latent VJing: Real-time Audio-Reactive Video Synthesis</headline_topic>
-      <country>International / CZ</country>
-      <bio>Carlos Mendez is a leading expert specializing in live latent vjing: real-time audio-reactive video synthesis. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Mexico</country>
+      <bio>Carlos Mendez performs as a visual jockey at festivals across Europe and Latin America. He writes his own audio-reactive software and releases most of it under open-source licences.</bio>
     </performer>
     <performer id="perf-22">
+      <slug>hanna-weber</slug>
       <name>Hanna Weber</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Story Lead at European Animation Guild</role>
       <headline_topic>Generative Storyboarding and Automated Animatic Generation</headline_topic>
-      <country>International / CZ</country>
-      <bio>Hanna Weber is a leading expert specializing in generative storyboarding and automated animatic generation. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Germany</country>
+      <bio>Hanna Weber leads story development for the European Animation Guild and has boarded three animated features. She mentors small studios on using automation for early drafts without losing a director's voice.</bio>
     </performer>
     <performer id="perf-23">
+      <slug>alexei-voronov</slug>
       <name>Dr. Alexei Voronov</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Complexity Scientist at DataMind</role>
       <headline_topic>Multi-Agent Simulation of Fictional Societies for Worldbuilding</headline_topic>
-      <country>International / CZ</country>
-      <bio>Dr. Alexei Voronov is a leading expert specializing in multi-agent simulation of fictional societies for worldbuilding. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Estonia</country>
+      <bio>Alexei Voronov is a complexity scientist at DataMind who models how norms spread through populations. Lately he has applied the same methods to help novelists and game writers test their fictional societies.</bio>
     </performer>
     <performer id="perf-24">
+      <slug>zuzana-cerna</slug>
       <name>Zuzana Černá</name>
       <track>Vision &amp; Creative Tech</track>
       <role>UX Director at Prague Design Collective</role>
       <headline_topic>Accessible AI UI: Designing Inclusive Prompts for Impaired Creators</headline_topic>
-      <country>International / CZ</country>
-      <bio>Zuzana Černá is a leading expert specializing in accessible ai ui: designing inclusive prompts for impaired creators. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Zuzana Černá is UX director at the Prague Design Collective and a long-time accessibility advocate. She co-designs interfaces with blind and low-vision creators and audits AI tools for inclusive interaction.</bio>
     </performer>
     <performer id="perf-25">
+      <slug>oskar-blomqvist</slug>
       <name>Oskar Blomqvist</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Digital Horticulturist at Nordic Green</role>
       <headline_topic>Synthetic Botany: Algorithmic Flora Simulation for Interactive Exhibits</headline_topic>
-      <country>International / CZ</country>
-      <bio>Oskar Blomqvist is a leading expert specializing in synthetic botany: algorithmic flora simulation for interactive exhibits. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Sweden</country>
+      <bio>Oskar Blomqvist calls himself a digital horticulturist. At Nordic Green he grows simulated gardens for museums and botanic centres, with species modelled on real growth and pollination data.</bio>
     </performer>
     <performer id="perf-26">
+      <slug>evelyn-reed</slug>
       <name>Evelyn Reed</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Indie Film Director &amp; Technologist</role>
       <headline_topic>Human-in-the-Loop Filmmaking: Directing Agentic Casts</headline_topic>
-      <country>International / CZ</country>
-      <bio>Evelyn Reed is a leading expert specializing in human-in-the-loop filmmaking: directing agentic casts. Featured keynote speaker at Futurika Fest.</bio>
+      <country>United States</country>
+      <bio>Evelyn Reed is an independent film director whose last two features combined human actors with AI-driven background characters. She teaches directing workshops on running a set where some of the cast are software.</bio>
     </performer>
     <performer id="perf-27">
+      <slug>kenji-takahashi</slug>
       <name>Kenji Takahashi</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Interactive Novelist at Tokyo StoryLab</role>
       <headline_topic>Hyper-Personalized Interactive Narrative Design</headline_topic>
-      <country>International / CZ</country>
-      <bio>Kenji Takahashi is a leading expert specializing in hyper-personalized interactive narrative design. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Japan</country>
+      <bio>Kenji Takahashi writes interactive fiction at Tokyo StoryLab, where a story's plot adapts to each reader. He has published in print as well, and argues that good branching still needs a strong authorial hand.</bio>
     </performer>
     <performer id="perf-28">
+      <slug>alina-popescu</slug>
       <name>Alina Popescu</name>
       <track>Vision &amp; Creative Tech</track>
       <role>Metaverse Stylist at DigiCouture</role>
       <headline_topic>Digital Fashion in the Age of Autonomous Avatars</headline_topic>
-      <country>International / CZ</country>
-      <bio>Alina Popescu is a leading expert specializing in digital fashion in the age of autonomous avatars. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Romania</country>
+      <bio>Alina Popescu is a digital stylist at DigiCouture, dressing virtual characters for games, music videos and brand worlds. She trained in couture in Bucharest and Antwerp before moving to digital-only garments.</bio>
     </performer>
     <performer id="perf-29">
+      <slug>matej-dvorak</slug>
       <name>Matěj Dvořák</name>
       <track>Vision &amp; Creative Tech</track>
       <role>IP Attorney &amp; Tech Counsel</role>
       <headline_topic>The Economics of Generative IP: Licensing Neural Checkpoints</headline_topic>
-      <country>International / CZ</country>
-      <bio>Matěj Dvořák is a leading expert specializing in the economics of generative ip: licensing neural checkpoints. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Matěj Dvořák is an intellectual property attorney advising studios and model developers across Central Europe. He helps creators draft licences for training data and fine-tuned model checkpoints.</bio>
     </performer>
     <performer id="perf-30">
+      <slug>rachel-weiss</slug>
       <name>Dr. Rachel Weiss</name>
       <track>Vision &amp; Creative Tech</track>
-      <role>Choreographer &amp; Roboticist at Zurich Arts</role>
+      <role>Choreographer &amp; Roboticist at Zurich Arts Lab</role>
       <headline_topic>Embodied AI in Performance Art: Human-Robot Dance Duets</headline_topic>
-      <country>International / CZ</country>
-      <bio>Dr. Rachel Weiss is a leading expert specializing in embodied ai in performance art: human-robot dance duets. Featured keynote speaker at Futurika Fest.</bio>
+      <country>Switzerland</country>
+      <bio>Rachel Weiss is a choreographer and roboticist at the Zurich Arts Lab. Her duets pair trained dancers with robotic arms that learn phrasing through rehearsal rather than fixed programming.</bio>
     </performer>
     <performer id="perf-31">
+      <slug>alexander-wright</slug>
       <name>Dr. Alexander Wright</name>
       <track>Engineering &amp; Core AI</track>
       <role>Chief AI Scientist at SwarmNet</role>
       <headline_topic>Autonomous Agent Swarms: Multi-Agent Collaboration in Production</headline_topic>
-      <country>International / EU</country>
-      <bio>Dr. Alexander Wright works on cutting-edge production systems, focusing on autonomous agent swarms: multi-agent collaboration in production. Technical workshop lead at Futurika Fest.</bio>
+      <country>United Kingdom</country>
+      <bio>Alexander Wright is chief AI scientist at SwarmNet, which runs fleets of cooperating agents for logistics customers. His research focuses on how agents coordinate, fail and recover under real workloads.</bio>
     </performer>
     <performer id="perf-32">
+      <slug>petra-horakova</slug>
       <name>Petra Horáková</name>
       <track>Engineering &amp; Core AI</track>
       <role>Systems Engineer at Prague Embedded</role>
       <headline_topic>Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air</headline_topic>
-      <country>International / EU</country>
-      <bio>Petra Horáková works on cutting-edge production systems, focusing on local llms on edge hardware: optimizing 7b models for macbook air. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Petra Horáková is a systems engineer at Prague Embedded, where she squeezes language models onto consumer hardware. She maintains a popular set of benchmarks for on-device inference.</bio>
     </performer>
     <performer id="perf-33">
+      <slug>dmitri-volkov</slug>
       <name>Dmitri Volkov</name>
       <track>Engineering &amp; Core AI</track>
       <role>Lead Architect at Agentic Stack</role>
       <headline_topic>Building Deterministic Workflows on Top of Non-Deterministic LLMs</headline_topic>
-      <country>International / EU</country>
-      <bio>Dmitri Volkov works on cutting-edge production systems, focusing on building deterministic workflows on top of non-deterministic llms. Technical workshop lead at Futurika Fest.</bio>
+      <country>Lithuania</country>
+      <bio>Dmitri Volkov is lead architect at Agentic Stack and has spent years making probabilistic systems dependable enough for regulated industries. He is a strong advocate of typed interfaces between models and code.</bio>
     </performer>
     <performer id="perf-34">
+      <slug>sarah-jenkins</slug>
       <name>Sarah Jenkins</name>
       <track>Engineering &amp; Core AI</track>
       <role>Data Engineer at PineScale</role>
       <headline_topic>Vector Databases at Scale: HNSW Indexing Benchmarks for 100M Records</headline_topic>
-      <country>International / EU</country>
-      <bio>Sarah Jenkins works on cutting-edge production systems, focusing on vector databases at scale: hnsw indexing benchmarks for 100m records. Technical workshop lead at Futurika Fest.</bio>
+      <country>United States</country>
+      <bio>Sarah Jenkins is a data engineer at PineScale, where she runs vector search clusters holding hundreds of millions of embeddings. She publishes reproducible benchmarks and shares her failures as openly as her results.</bio>
     </performer>
     <performer id="perf-35">
+      <slug>tomasz-zielinski</slug>
       <name>Tomasz Zielinski</name>
       <track>Engineering &amp; Core AI</track>
       <role>ML Engineer at Warsaw FinTech</role>
       <headline_topic>Fine-Tuning Open Source LLMs for Legal &amp; Financial Reasoning</headline_topic>
-      <country>International / EU</country>
-      <bio>Tomasz Zielinski works on cutting-edge production systems, focusing on fine-tuning open source llms for legal &amp; financial reasoning. Technical workshop lead at Futurika Fest.</bio>
+      <country>Poland</country>
+      <bio>Tomasz Zielinski is a machine learning engineer at Warsaw FinTech. He adapts open language models for legal and financial reasoning, where a wrong answer has a measurable cost.</bio>
     </performer>
     <performer id="perf-36">
+      <slug>helene-martin</slug>
       <name>Dr. Hélène Martin</name>
       <track>Engineering &amp; Core AI</track>
-      <role>Research Scientist at INRIA</role>
+      <role>Research Scientist at Lyon Institute for AI Research</role>
       <headline_topic>Mechanistic Interpretability: Peeking Inside Transformer Attention Heads</headline_topic>
-      <country>International / EU</country>
-      <bio>Dr. Hélène Martin works on cutting-edge production systems, focusing on mechanistic interpretability: peeking inside transformer attention heads. Technical workshop lead at Futurika Fest.</bio>
+      <country>France</country>
+      <bio>Hélène Martin is a research scientist at the Lyon Institute for AI Research. She works on mechanistic interpretability, tracing how individual attention heads contribute to a model's behaviour.</bio>
     </performer>
     <performer id="perf-37">
+      <slug>martin-svoboda</slug>
       <name>Martin Svoboda</name>
       <track>Engineering &amp; Core AI</track>
       <role>Head of AI at SearchBridge</role>
       <headline_topic>RAG That Doesn't Hallucinate: Graph Neural Networks meet Dense Retrieval</headline_topic>
-      <country>International / EU</country>
-      <bio>Martin Svoboda works on cutting-edge production systems, focusing on rag that doesn't hallucinate: graph neural networks meet dense retrieval. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Martin Svoboda heads AI at SearchBridge, a Brno company building retrieval systems for technical documentation. He joined from enterprise search and remains sceptical of any demo without an evaluation set.</bio>
     </performer>
     <performer id="perf-38">
+      <slug>jakub-kucera</slug>
       <name>Ing. Jakub Kučera</name>
       <track>Engineering &amp; Core AI</track>
       <role>Senior Backend Architect at CloudStack Prague</role>
       <headline_topic>Deploying FastAPI Backend Microservices with Model Quantization</headline_topic>
-      <country>International / EU</country>
-      <bio>Ing. Jakub Kučera works on cutting-edge production systems, focusing on deploying fastapi backend microservices with model quantization. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Jakub Kučera is a senior backend architect at CloudStack Prague. He designs Python services that keep quantised models fast and affordable, and mentors junior engineers through the local meetup scene.</bio>
     </performer>
     <performer id="perf-39">
+      <slug>olga-ivanova</slug>
       <name>Olga Ivanova</name>
       <track>Engineering &amp; Core AI</track>
       <role>Principal Data Scientist at FinShield</role>
       <headline_topic>Synthetic Data Generation for Training Robust Fraud Detection Models</headline_topic>
-      <country>International / EU</country>
-      <bio>Olga Ivanova works on cutting-edge production systems, focusing on synthetic data generation for training robust fraud detection models. Technical workshop lead at Futurika Fest.</bio>
+      <country>Latvia</country>
+      <bio>Olga Ivanova is principal data scientist at FinShield, where her team models card and payment fraud. She pioneered the company's use of synthetic transactions to protect customer privacy during training.</bio>
     </performer>
     <performer id="perf-40">
+      <slug>lukas-brandt</slug>
       <name>Lukas Brandt</name>
       <track>Engineering &amp; Core AI</track>
-      <role>Core Contributor at Candle ML</role>
+      <role>Core Contributor at Ferrite ML</role>
       <headline_topic>Rust for Machine Learning: Blazing Fast Tokenizers and Inference Engines</headline_topic>
-      <country>International / EU</country>
-      <bio>Lukas Brandt works on cutting-edge production systems, focusing on rust for machine learning: blazing fast tokenizers and inference engines. Technical workshop lead at Futurika Fest.</bio>
+      <country>Germany</country>
+      <bio>Lukas Brandt is a core contributor to Ferrite ML, an open-source machine learning framework written in Rust. He cares about memory safety, small binaries and removing Python from the serving path.</bio>
     </performer>
     <performer id="perf-41">
+      <slug>fatima-zahra</slug>
       <name>Fatima Zahra</name>
       <track>Engineering &amp; Core AI</track>
       <role>QA Engineer at EvalHub</role>
       <headline_topic>Evaluation Frameworks for LLMs: Automated Benchmarking Beyond MMLU</headline_topic>
-      <country>International / EU</country>
-      <bio>Fatima Zahra works on cutting-edge production systems, focusing on evaluation frameworks for llms: automated benchmarking beyond mmlu. Technical workshop lead at Futurika Fest.</bio>
+      <country>Morocco</country>
+      <bio>Fatima Zahra is a quality engineer at EvalHub who builds automated test suites for language models. She argues that teams should treat evaluation like continuous integration rather than a one-off benchmark.</bio>
     </performer>
     <performer id="perf-42">
+      <slug>julian-richter</slug>
       <name>Julian Richter</name>
       <track>Engineering &amp; Core AI</track>
       <role>Research Lead at EfficientAI Munich</role>
       <headline_topic>Small Language Models (SLMs) vs. Mega-Models: Efficiency Tradeoffs</headline_topic>
-      <country>International / EU</country>
-      <bio>Julian Richter works on cutting-edge production systems, focusing on small language models (slms) vs. mega-models: efficiency tradeoffs. Technical workshop lead at Futurika Fest.</bio>
+      <country>Germany</country>
+      <bio>Julian Richter is research lead at EfficientAI Munich, where he measures what small models can do per watt. His team helps manufacturers decide when a large cloud model is not worth the cost.</bio>
     </performer>
     <performer id="perf-43">
+      <slug>eliska-prochazkova</slug>
       <name>Eliška Procházková</name>
       <track>Engineering &amp; Core AI</track>
       <role>DevOps Architect at CloudPeak</role>
       <headline_topic>Self-Healing Distributed Systems Powered by Observability Agents</headline_topic>
-      <country>International / EU</country>
-      <bio>Eliška Procházková works on cutting-edge production systems, focusing on self-healing distributed systems powered by observability agents. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Eliška Procházková is a DevOps architect at CloudPeak, running distributed platforms for European retailers. Her current work gives observability agents limited permission to diagnose and repair incidents.</bio>
     </performer>
     <performer id="perf-44">
+      <slug>arthur-pendelton</slug>
       <name>Arthur Pendelton</name>
       <track>Engineering &amp; Core AI</track>
       <role>Privacy Architect at OpenSecure</role>
       <headline_topic>Federated Learning: Collaborative Model Training Without Data Sharing</headline_topic>
-      <country>International / EU</country>
-      <bio>Arthur Pendelton works on cutting-edge production systems, focusing on federated learning: collaborative model training without data sharing. Technical workshop lead at Futurika Fest.</bio>
+      <country>United Kingdom</country>
+      <bio>Arthur Pendelton is a privacy architect at OpenSecure and previously worked with hospitals on shared research data. He designs federated training systems that satisfy both engineers and data protection officers.</bio>
     </performer>
     <performer id="perf-45">
+      <slug>maximilian-gruber</slug>
       <name>Maximilian Gruber</name>
       <track>Engineering &amp; Core AI</track>
-      <role>Inference Engineer at vLLM Core</role>
+      <role>Inference Engineer at TensorServe</role>
       <headline_topic>Memory Management and KV-Cache Compression in LLM Serving</headline_topic>
-      <country>International / EU</country>
-      <bio>Maximilian Gruber works on cutting-edge production systems, focusing on memory management and kv-cache compression in llm serving. Technical workshop lead at Futurika Fest.</bio>
+      <country>Austria</country>
+      <bio>Maximilian Gruber is an inference engineer at TensorServe who works on the low-level mechanics of model serving. He is best known for practical write-ups on GPU memory and request scheduling.</bio>
     </performer>
     <performer id="perf-46">
+      <slug>veronika-krizova</slug>
       <name>Dr. Veronika Křížová</name>
       <track>Engineering &amp; Core AI</track>
       <role>Statistician at Prague Data Science Lab</role>
       <headline_topic>Causal Inference in Machine Learning: Moving Beyond Correlation</headline_topic>
-      <country>International / EU</country>
-      <bio>Dr. Veronika Křížová works on cutting-edge production systems, focusing on causal inference in machine learning: moving beyond correlation. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Veronika Křížová is a statistician at the Prague Data Science Lab. She teaches engineers to separate causes from correlations and has worked on studies in public health and online experimentation.</bio>
     </performer>
     <performer id="perf-47">
+      <slug>hiroshi-sato</slug>
       <name>Hiroshi Sato</name>
       <track>Engineering &amp; Core AI</track>
       <role>ML Researcher at Kyoto Systems</role>
       <headline_topic>Low-Rank Adaptation (LoRA) Deep-Dive: Adapting Foundation Models</headline_topic>
-      <country>International / EU</country>
-      <bio>Hiroshi Sato works on cutting-edge production systems, focusing on low-rank adaptation (lora) deep-dive: adapting foundation models. Technical workshop lead at Futurika Fest.</bio>
+      <country>Japan</country>
+      <bio>Hiroshi Sato is a machine learning researcher at Kyoto Systems, focusing on fine-tuning methods for constrained budgets. He shares training recipes that let small teams adapt large foundation models.</bio>
     </performer>
     <performer id="perf-48">
+      <slug>klara-vesela</slug>
       <name>Klára Veselá</name>
       <track>Engineering &amp; Core AI</track>
       <role>Fullstack ML Engineer at StreamVoice</role>
       <headline_topic>Building Real-Time Multimodal Pipelines with WebSockets and WebRTC</headline_topic>
-      <country>International / EU</country>
-      <bio>Klára Veselá works on cutting-edge production systems, focusing on building real-time multimodal pipelines with websockets and webrtc. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Klára Veselá is a full-stack machine learning engineer at StreamVoice, building voice assistants that respond while the user is still speaking. Her work spans browser audio, transport protocols and model serving.</bio>
     </performer>
     <performer id="perf-49">
+      <slug>brian-o-connor</slug>
       <name>Brian O'Connor</name>
       <track>Engineering &amp; Core AI</track>
       <role>Cybersecurity Analyst at SecurePrompt</role>
-      <headline_topic>Securing Prompt Injections and Jailbreaks in Enterprise Agents</headline_topic>
-      <country>International / EU</country>
-      <bio>Brian O'Connor works on cutting-edge production systems, focusing on securing prompt injections and jailbreaks in enterprise agents. Technical workshop lead at Futurika Fest.</bio>
+      <headline_topic>Defending Against Prompt Injections and Jailbreaks in Enterprise Agents</headline_topic>
+      <country>Ireland</country>
+      <bio>Brian O'Connor is a cybersecurity analyst at SecurePrompt who runs red-team exercises against enterprise AI assistants. He came to AI security from penetration testing in the banking sector.</bio>
     </performer>
     <performer id="perf-50">
+      <slug>simon-dufresne</slug>
       <name>Simon Dufresne</name>
       <track>Engineering &amp; Core AI</track>
       <role>AI Optimization Lead at CompresSys</role>
       <headline_topic>Model Distillation: Compressing Frontier Models into Tiny Weights</headline_topic>
-      <country>International / EU</country>
-      <bio>Simon Dufresne works on cutting-edge production systems, focusing on model distillation: compressing frontier models into tiny weights. Technical workshop lead at Futurika Fest.</bio>
+      <country>Canada</country>
+      <bio>Simon Dufresne leads AI optimisation at CompresSys, helping companies shrink large models for production. He previously researched knowledge distillation and now focuses on what is lost in compression.</bio>
     </performer>
     <performer id="perf-51">
+      <slug>ondrej-maly</slug>
       <name>Dr. Ondřej Malý</name>
       <track>Engineering &amp; Core AI</track>
       <role>Knowledge Engineer at BioGraph</role>
       <headline_topic>Graph RAG: Connecting Unstructured Knowledge with Neo4j</headline_topic>
-      <country>International / EU</country>
-      <bio>Dr. Ondřej Malý works on cutting-edge production systems, focusing on graph rag: connecting unstructured knowledge with neo4j. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Ondřej Malý is a knowledge engineer at BioGraph, connecting scientific literature into searchable graphs. He holds a doctorate in computational biology and builds retrieval systems for drug discovery teams.</bio>
     </performer>
     <performer id="perf-52">
+      <slug>valerie-dupont</slug>
       <name>Valerie Dupont</name>
       <track>Engineering &amp; Core AI</track>
       <role>Alignment Researcher at Paris AI</role>
       <headline_topic>Continuous Alignment: DPO vs RLHF in Continuous Production Cycles</headline_topic>
-      <country>International / EU</country>
-      <bio>Valerie Dupont works on cutting-edge production systems, focusing on continuous alignment: dpo vs rlhf in continuous production cycles. Technical workshop lead at Futurika Fest.</bio>
+      <country>Belgium</country>
+      <bio>Valerie Dupont is an alignment researcher at Paris AI. She studies how to keep model behaviour stable when training never really stops and user feedback arrives continuously.</bio>
     </performer>
     <performer id="perf-53">
+      <slug>tibor-varga</slug>
       <name>Tibor Varga</name>
       <track>Engineering &amp; Core AI</track>
       <role>Cloud Infrastructure Lead at ScalerEU</role>
       <headline_topic>Serverless GPU Orchestration: Cold Start Reduction Strategies</headline_topic>
-      <country>International / EU</country>
-      <bio>Tibor Varga works on cutting-edge production systems, focusing on serverless gpu orchestration: cold start reduction strategies. Technical workshop lead at Futurika Fest.</bio>
+      <country>Hungary</country>
+      <bio>Tibor Varga leads cloud infrastructure at ScalerEU, running GPU capacity across European data centres. He focuses on keeping idle costs low without making users wait for a model to load.</bio>
     </performer>
     <performer id="perf-54">
-      <name>Nikola Tesla-Smith</name>
+      <slug>nikola-stankovic</slug>
+      <name>Nikola Stanković</name>
       <track>Engineering &amp; Core AI</track>
       <role>Hardware Engineer at NeuroChip</role>
       <headline_topic>Neuromorphic Computing: Spiking Neural Networks in Low-Power IoT</headline_topic>
-      <country>International / EU</country>
-      <bio>Nikola Tesla-Smith works on cutting-edge production systems, focusing on neuromorphic computing: spiking neural networks in low-power iot. Technical workshop lead at Futurika Fest.</bio>
+      <country>Serbia</country>
+      <bio>Nikola Stanković is a hardware engineer at NeuroChip, working on spiking neural processors for battery-powered sensors. He designed his first low-power boards for agricultural monitoring.</bio>
     </performer>
     <performer id="perf-55">
+      <slug>barbora-nemcova</slug>
       <name>Barbora Němcová</name>
       <track>Engineering &amp; Core AI</track>
       <role>Developer Advocate at DevStack</role>
       <headline_topic>Synthetic Code Generation: Benchmarking Copilots across Python and Rust</headline_topic>
-      <country>International / EU</country>
-      <bio>Barbora Němcová works on cutting-edge production systems, focusing on synthetic code generation: benchmarking copilots across python and rust. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Barbora Němcová is a developer advocate at DevStack who tests AI coding tools on real repositories. Her independent comparisons are widely read by engineering teams deciding what to adopt.</bio>
     </performer>
     <performer id="perf-56">
+      <slug>goran-petrovic</slug>
       <name>Goran Petrovic</name>
       <track>Engineering &amp; Core AI</track>
       <role>Quantitative Analyst at AlphaStream</role>
       <headline_topic>Time-Series Forecasting with Hybrid Transformer-Mamba Architectures</headline_topic>
-      <country>International / EU</country>
-      <bio>Goran Petrovic works on cutting-edge production systems, focusing on time-series forecasting with hybrid transformer-mamba architectures. Technical workshop lead at Futurika Fest.</bio>
+      <country>Croatia</country>
+      <bio>Goran Petrovic is a quantitative analyst at AlphaStream, modelling energy and commodity markets. He evaluates new sequence architectures by how they perform on noisy live data rather than on clean test sets.</bio>
     </performer>
     <performer id="perf-57">
+      <slug>zdenek-pokorny</slug>
       <name>Zdeněk Pokorný</name>
       <track>Engineering &amp; Core AI</track>
       <role>Compliance Officer at EuroTech Ethics</role>
       <headline_topic>Data Lineage and Model Governance under the EU AI Act</headline_topic>
-      <country>International / EU</country>
-      <bio>Zdeněk Pokorný works on cutting-edge production systems, focusing on data lineage and model governance under the eu ai act. Technical workshop lead at Futurika Fest.</bio>
+      <country>Czech Republic</country>
+      <bio>Zdeněk Pokorný is a compliance officer at EuroTech Ethics who helps European companies prepare for the EU AI Act. A former software auditor, he translates legal duties into concrete engineering checks.</bio>
     </performer>
     <performer id="perf-58">
+      <slug>diana-vance</slug>
       <name>Diana Vance</name>
       <track>Engineering &amp; Core AI</track>
-      <role>Backend Lead at FastAPI Cloud</role>
+      <role>Backend Lead at SwiftServe Cloud</role>
       <headline_topic>Semantic Caching for High-Throughput LLM APIs</headline_topic>
-      <country>International / EU</country>
-      <bio>Diana Vance works on cutting-edge production systems, focusing on semantic caching for high-throughput llm apis. Technical workshop lead at Futurika Fest.</bio>
+      <country>United Kingdom</country>
+      <bio>Diana Vance is backend lead at SwiftServe Cloud, running high-traffic API platforms in Python. She specialises in reducing inference bills through caching and smarter request routing.</bio>
     </performer>
     <performer id="perf-59">
+      <slug>emir-kurt</slug>
       <name>Emir Kurt</name>
       <track>Engineering &amp; Core AI</track>
       <role>Database Architect at QueryMind</role>
       <headline_topic>Autonomous Database Query Optimization using Deep Reinforcement Learning</headline_topic>
-      <country>International / EU</country>
-      <bio>Emir Kurt works on cutting-edge production systems, focusing on autonomous database query optimization using deep reinforcement learning. Technical workshop lead at Futurika Fest.</bio>
+      <country>Turkey</country>
+      <bio>Emir Kurt is a database architect at QueryMind, where he applies reinforcement learning to query planning. He spent ten years tuning production databases by hand and wants to automate the tedious parts.</bio>
     </performer>
     <performer id="perf-60">
+      <slug>laura-fontana</slug>
       <name>Dr. Laura Fontana</name>
       <track>Engineering &amp; Core AI</track>
-      <role>Quantum Computing Fellow at CERN OpenLab</role>
+      <role>Quantum Computing Fellow at Geneva Quantum Lab</role>
       <headline_topic>Quantum Machine Learning: Exploring Variational Quantum Classifiers</headline_topic>
-      <country>International / EU</country>
-      <bio>Dr. Laura Fontana works on cutting-edge production systems, focusing on quantum machine learning: exploring variational quantum classifiers. Technical workshop lead at Futurika Fest.</bio>
+      <country>Italy</country>
+      <bio>Laura Fontana is a quantum computing fellow at the Geneva Quantum Lab. She investigates where variational quantum methods might help machine learning, and is candid about where they do not.</bio>
     </performer>
   </performers>
   <programme>
@@ -523,8 +587,14 @@
       <performer_id>perf-01</performer_id>
       <performer_name>Dr. Elena Rostova</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Cognitive Aesthetics &amp; Neural Style Transfer in Modern Cinema' delivered by Dr. Elena Rostova (Creative AI Lead at Synthetix).</description>
+      <type>Keynote</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Film &amp; Animation</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Style transfer can now restyle a whole feature film, but viewers notice more than engineers expect. Elena Rostova opens the festival with audience research and restored archive footage, showing what makes a machine-altered image feel right or wrong.</description>
     </item>
     <item id="prog-002">
       <title>From Diffusion to Reality: The Evolution of Text-to-3D Synthesis</title>
@@ -537,8 +607,14 @@
       <performer_id>perf-02</performer_id>
       <performer_name>Marcus Vance</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'From Diffusion to Reality: The Evolution of Text-to-3D Synthesis' delivered by Marcus Vance (Founder of HoloMesh Labs).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Generative Media</topic>
+        <topic>Spatial &amp; XR</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Text-to-3D has moved from blurry experiments to assets that can ship in a real project. Marcus Vance traces that progress and shows which steps of a production pipeline still need an artist.</description>
     </item>
     <item id="prog-003">
       <title>Generative Audiovisual Symphony: Real-Time Latent Space Soundscapes</title>
@@ -551,8 +627,14 @@
       <performer_id>perf-03</performer_id>
       <performer_name>Aoi Tanaka</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Generative Audiovisual Symphony: Real-Time Latent Space Soundscapes' delivered by Aoi Tanaka (Sound Architect &amp; Digital Artist).</description>
+      <type>Performance</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Audio &amp; Music</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>A live concert in which Aoi Tanaka steers trained sound models through latent space in real time. The piece is built from coastal field recordings and reacts to the acoustics of the hall.</description>
     </item>
     <item id="prog-004">
       <title>Ethics of Synthetic Media: Deepfakes, Watermarking, and Ownership</title>
@@ -563,10 +645,16 @@
       <stage_id>stage-vision</stage_id>
       <stage_name>Prompt &amp; Vision Hall</stage_name>
       <performer_id>perf-04</performer_id>
-      <performer_name>Liam Gallagher-Smith</performer_name>
+      <performer_name>Liam Hartley</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Ethics of Synthetic Media: Deepfakes, Watermarking, and Ownership' delivered by Liam Gallagher-Smith (Research Fellow at Oxford Digital Ethics).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Ethics &amp; Law</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Who owns a synthetic likeness, and can a watermark survive contact with the internet? Liam Hartley compares current provenance methods and explains where they protect people and where they fail.</description>
     </item>
     <item id="prog-005">
       <title>Autonomous Avatars: The Psychology of Synthetic Brand Influencers</title>
@@ -579,8 +667,14 @@
       <performer_id>perf-05</performer_id>
       <performer_name>Sofia Benitez</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Autonomous Avatars: The Psychology of Synthetic Brand Influencers' delivered by Sofia Benitez (Creative Director at PixelSphere).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Design &amp; UX</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>People follow virtual influencers even when they know the character is software. Sofia Benitez presents audience studies on trust and attachment, and sets out what brands should not do with them.</description>
     </item>
     <item id="prog-006">
       <title>Czech Language Models: Preserving Cultural Heritage through Open Weights</title>
@@ -593,8 +687,14 @@
       <performer_id>perf-06</performer_id>
       <performer_name>Jan Novák</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Czech Language Models: Preserving Cultural Heritage through Open Weights' delivered by Jan Novák (NLP Director at Charles AI Hub).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Ethics &amp; Law</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Most large models treat Czech as an afterthought. Jan Novák explains how open weights and community-built datasets can keep smaller languages and their cultural memory alive in AI systems.</description>
     </item>
     <item id="prog-007">
       <title>AI-Augmented Architecture: Algorithmic Urbanism and Future Habitats</title>
@@ -607,8 +707,14 @@
       <performer_id>perf-07</performer_id>
       <performer_name>Chloe Dubois</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'AI-Augmented Architecture: Algorithmic Urbanism and Future Habitats' delivered by Chloe Dubois (Principal Architect at Studio Biomimic).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Design &amp; UX</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Chloe Dubois walks through housing projects in which generative models informed real planning decisions. The talk compares algorithmic options with what residents and regulators actually accepted.</description>
     </item>
     <item id="prog-008">
       <title>Generative Typography and Dynamic Branding Systems</title>
@@ -621,8 +727,14 @@
       <performer_id>perf-08</performer_id>
       <performer_name>Tariq Al-Mansoor</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Generative Typography and Dynamic Branding Systems' delivered by Tariq Al-Mansoor (Design Technologist at BrandSynth).</description>
+      <type>Demo</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Design &amp; UX</topic>
+        <topic>Creative Coding</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>A live demonstration of a brand identity that behaves like software. Tariq Al-Mansoor generates type and layouts across Arabic and Latin scripts, then shows how designers keep control of the system.</description>
     </item>
     <item id="prog-009">
       <title>Bio-Digital Art: Cellular Automata Meets Neural Networks</title>
@@ -635,8 +747,14 @@
       <performer_id>perf-09</performer_id>
       <performer_name>Dr. Miriam Kováčová</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Bio-Digital Art: Cellular Automata Meets Neural Networks' delivered by Dr. Miriam Kováčová (Senior Lecturer at CTU Digital Arts).</description>
+      <type>Demo</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Creative Coding</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Miriam Kováčová demonstrates an installation in which cellular automata and a neural network shape each other's growth. She also explains what living cultures add that a pure simulation cannot.</description>
     </item>
     <item id="prog-010">
       <title>Interactive Spatial Computing with Real-time Diffusion Engines</title>
@@ -649,8 +767,14 @@
       <performer_id>perf-10</performer_id>
       <performer_name>Arjun Patel</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Interactive Spatial Computing with Real-time Diffusion Engines' delivered by Arjun Patel (VP of XR Research at NeuraVision).</description>
+      <type>Demo</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Spatial &amp; XR</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Arjun Patel closes the first day on the main stage with a headset demo that generates its surroundings as the wearer moves. He breaks down the latency budget that keeps the experience comfortable.</description>
     </item>
     <item id="prog-011">
       <title>Autonomous Agent Swarms: Multi-Agent Collaboration in Production</title>
@@ -663,8 +787,14 @@
       <performer_id>perf-31</performer_id>
       <performer_name>Dr. Alexander Wright</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Autonomous Agent Swarms: Multi-Agent Collaboration in Production' hosted by Dr. Alexander Wright (Chief AI Scientist at SwarmNet).</description>
+      <type>Keynote</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Agents</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Agent demos are easy, but running hundreds of agents in production is not. Alexander Wright opens the Tech &amp; Code Lab with lessons from live logistics deployments, including coordination failures and the recovery patterns that worked.</description>
     </item>
     <item id="prog-012">
       <title>Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air</title>
@@ -677,8 +807,14 @@
       <performer_id>perf-32</performer_id>
       <performer_name>Petra Horáková</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air' hosted by Petra Horáková (Systems Engineer at Prague Embedded).</description>
+      <type>Workshop</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>Laptop with Python 3.11 or newer; at least 16 GB of RAM recommended</prerequisites>
+      <description>Bring your laptop and run a 7B model locally by the end of the session. Petra Horáková guides you through quantisation choices, memory limits and realistic performance on consumer hardware such as a MacBook Air.</description>
     </item>
     <item id="prog-013">
       <title>Building Deterministic Workflows on Top of Non-Deterministic LLMs</title>
@@ -691,8 +827,14 @@
       <performer_id>perf-33</performer_id>
       <performer_name>Dmitri Volkov</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Building Deterministic Workflows on Top of Non-Deterministic LLMs' hosted by Dmitri Volkov (Lead Architect at Agentic Stack).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Agents</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Dependable software needs predictable behaviour, yet language models are probabilistic. Dmitri Volkov shows how typed interfaces, validation layers and retries turn uncertain outputs into workflows that regulated teams can trust.</description>
     </item>
     <item id="prog-014">
       <title>Vector Databases at Scale: HNSW Indexing Benchmarks for 100M Records</title>
@@ -705,8 +847,14 @@
       <performer_id>perf-34</performer_id>
       <performer_name>Sarah Jenkins</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Vector Databases at Scale: HNSW Indexing Benchmarks for 100M Records' hosted by Sarah Jenkins (Data Engineer at PineScale).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>RAG &amp; Search</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>How does HNSW indexing behave at 100 million records? Sarah Jenkins shares reproducible benchmarks on recall, latency and memory, including the configurations that looked good and then collapsed.</description>
     </item>
     <item id="prog-015">
       <title>Fine-Tuning Open Source LLMs for Legal &amp; Financial Reasoning</title>
@@ -719,8 +867,14 @@
       <performer_id>perf-35</performer_id>
       <performer_name>Tomasz Zielinski</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Fine-Tuning Open Source LLMs for Legal &amp; Financial Reasoning' hosted by Tomasz Zielinski (ML Engineer at Warsaw FinTech).</description>
+      <type>Workshop</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>Python and PyTorch experience; a laptop with access to a cloud GPU notebook</prerequisites>
+      <description>Fine-tune an open model on a small legal and financial reasoning dataset. Tomasz Zielinski covers data preparation and evaluation, and shows how to tell real improvement from memorised answers.</description>
     </item>
     <item id="prog-016">
       <title>Mechanistic Interpretability: Peeking Inside Transformer Attention Heads</title>
@@ -733,8 +887,14 @@
       <performer_id>perf-36</performer_id>
       <performer_name>Dr. Hélène Martin</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Mechanistic Interpretability: Peeking Inside Transformer Attention Heads' hosted by Dr. Hélène Martin (Research Scientist at INRIA).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>What does a single attention head actually do? Hélène Martin introduces the methods of mechanistic interpretability and uses worked examples to show how researchers trace model behaviour to specific components.</description>
     </item>
     <item id="prog-017">
       <title>RAG That Doesn't Hallucinate: Graph Neural Networks meet Dense Retrieval</title>
@@ -747,8 +907,14 @@
       <performer_id>perf-37</performer_id>
       <performer_name>Martin Svoboda</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'RAG That Doesn't Hallucinate: Graph Neural Networks meet Dense Retrieval' hosted by Martin Svoboda (Head of AI at SearchBridge).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>RAG &amp; Search</topic>
+        <topic>LLMs</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Dense retrieval alone often returns plausible but wrong context. Martin Svoboda explains how combining it with graph neural networks reduced hallucinations in a technical documentation assistant, with the evaluation data to prove it.</description>
     </item>
     <item id="prog-018">
       <title>Deploying FastAPI Backend Microservices with Model Quantization</title>
@@ -761,8 +927,14 @@
       <performer_id>perf-38</performer_id>
       <performer_name>Ing. Jakub Kučera</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Deploying FastAPI Backend Microservices with Model Quantization' hosted by Ing. Jakub Kučera (Senior Backend Architect at CloudStack Prague).</description>
+      <type>Live Coding</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Python</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>Familiarity with Python web services; Docker basics helpful</prerequisites>
+      <description>Jakub Kučera builds and deploys a FastAPI inference service live on stage. Watch a quantised model go from notebook to monitored microservice, including the mistakes that real deployments produce.</description>
     </item>
     <item id="prog-019">
       <title>Synthetic Data Generation for Training Robust Fraud Detection Models</title>
@@ -775,8 +947,14 @@
       <performer_id>perf-39</performer_id>
       <performer_name>Olga Ivanova</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Synthetic Data Generation for Training Robust Fraud Detection Models' hosted by Olga Ivanova (Principal Data Scientist at FinShield).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Security</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Real fraud data is scarce and sensitive. Olga Ivanova explains how FinShield generates synthetic transactions for training, how the team measures their quality, and where synthetic data misled the models.</description>
     </item>
     <item id="prog-020">
       <title>Rust for Machine Learning: Blazing Fast Tokenizers and Inference Engines</title>
@@ -789,8 +967,14 @@
       <performer_id>perf-40</performer_id>
       <performer_name>Lukas Brandt</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Rust for Machine Learning: Blazing Fast Tokenizers and Inference Engines' hosted by Lukas Brandt (Core Contributor at Candle ML).</description>
+      <type>Live Coding</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Rust</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>Working knowledge of Rust or another systems language</prerequisites>
+      <description>Lukas Brandt writes a fast tokenizer and a small inference engine in Rust in front of the audience. The session ends with a side-by-side performance comparison against a typical Python serving stack.</description>
     </item>
     <item id="prog-021">
       <title>AI in Game Design: Generating Living Worlds without Static Assets</title>
@@ -803,8 +987,14 @@
       <performer_id>perf-11</performer_id>
       <performer_name>Greta Lindholm</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'AI in Game Design: Generating Living Worlds without Static Assets' delivered by Greta Lindholm (Lead Game Designer at Nordic Worlds).</description>
+      <type>Keynote</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Generative Media</topic>
+        <topic>Agents</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>What happens when a game world is generated while you play it? Greta Lindholm opens the second day with lessons from a studio replacing static assets with systems, and explains why designers matter more than ever.</description>
     </item>
     <item id="prog-022">
       <title>Cinematography Reimagined: Virtual Production with Neural Radiance Fields (NeRF)</title>
@@ -817,8 +1007,14 @@
       <performer_id>perf-12</performer_id>
       <performer_name>Lucas Rossi</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Cinematography Reimagined: Virtual Production with Neural Radiance Fields (NeRF)' delivered by Lucas Rossi (VFX Supervisor at CineTech Milan).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Film &amp; Animation</topic>
+        <topic>Spatial &amp; XR</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Neural Radiance Fields have changed how crews capture locations. Lucas Rossi shares footage and budgets from European productions that used virtual production, and explains how the role of the cinematographer is changing.</description>
     </item>
     <item id="prog-023">
       <title>Post-Photography: Authenticity in the Age of Midjourney v8</title>
@@ -831,8 +1027,14 @@
       <performer_id>perf-13</performer_id>
       <performer_name>Zhenya Morozov</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Post-Photography: Authenticity in the Age of Midjourney v8' delivered by Zhenya Morozov (Curator at FutureLens Gallery).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Generative Media</topic>
+        <topic>Ethics &amp; Law</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>If an image can be generated in seconds, what still makes a photograph a record? Zhenya Morozov draws on gallery experiments in which visitors judged authenticity, often to their own surprise.</description>
     </item>
     <item id="prog-024">
       <title>African Languages in Generative AI: Breaking Linguistic Monoculture</title>
@@ -845,8 +1047,14 @@
       <performer_id>perf-14</performer_id>
       <performer_name>Amara Okafor</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'African Languages in Generative AI: Breaking Linguistic Monoculture' delivered by Amara Okafor (AI Inclusion Lead at AfroTech Futures).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Ethics &amp; Law</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>More than two thousand languages are spoken in Africa, yet few work well in generative AI. Amara Okafor shows how communities are building their own datasets and why ownership of that data matters.</description>
     </item>
     <item id="prog-025">
       <title>Autonomous Robotic Sculpting using Spatial Transformers</title>
@@ -859,8 +1067,14 @@
       <performer_id>perf-15</performer_id>
       <performer_name>Sven Erikson</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Autonomous Robotic Sculpting using Spatial Transformers' delivered by Sven Erikson (Robotics Artist at Stockholm Makers).</description>
+      <type>Demo</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Creative Coding</topic>
+        <topic>Spatial &amp; XR</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>A robot arm carves material on stage from a spoken description. Sven Erikson explains the spatial transformer models behind it and why he keeps the machine's errors in the finished work.</description>
     </item>
     <item id="prog-026">
       <title>Generative Fashion: Algorithmic Couture and Zero-Waste Patterns</title>
@@ -873,8 +1087,14 @@
       <performer_id>perf-16</performer_id>
       <performer_name>Maya Lin-Schumacher</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Generative Fashion: Algorithmic Couture and Zero-Waste Patterns' delivered by Maya Lin-Schumacher (Textile Technologist at BioWeave).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Design &amp; UX</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>The fashion industry wastes a large share of its fabric at the cutting stage. Maya Lin-Schumacher shows generated patterns that use the whole cloth, and looks at how small mills can adopt them.</description>
     </item>
     <item id="prog-027">
       <title>Music Without Musicians? Co-Creation Workflows with Generative Audio</title>
@@ -887,8 +1107,14 @@
       <performer_id>perf-17</performer_id>
       <performer_name>David Miller</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Music Without Musicians? Co-Creation Workflows with Generative Audio' delivered by David Miller (Producer &amp; Audio Engineer).</description>
+      <type>Performance</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Audio &amp; Music</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Are musicians still needed? David Miller answers with a live co-creation session in which a guitarist, a cellist and generative audio tools build a track in front of the audience.</description>
     </item>
     <item id="prog-028">
       <title>Neuroethics of Brain-Computer Interfaces in Digital Arts</title>
@@ -901,8 +1127,14 @@
       <performer_id>perf-18</performer_id>
       <performer_name>Dr. Katerina Krausová</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Neuroethics of Brain-Computer Interfaces in Digital Arts' delivered by Dr. Katerina Krausová (Neuroscientist at BrainTech Prague).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Ethics &amp; Law</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Brain-computer interfaces are entering galleries faster than the rules around them. Katerina Krausová explains what these devices really measure, and which questions of consent artists should ask before using neural data.</description>
     </item>
     <item id="prog-029">
       <title>Real-Time AI Holography: Projecting Volumetric Synthetic Humans</title>
@@ -913,10 +1145,16 @@
       <stage_id>stage-vision</stage_id>
       <stage_name>Prompt &amp; Vision Hall</stage_name>
       <performer_id>perf-19</performer_id>
-      <performer_name>Felix Baumgartner</performer_name>
+      <performer_name>Felix Brandstätter</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Real-Time AI Holography: Projecting Volumetric Synthetic Humans' delivered by Felix Baumgartner (CTO at HoloStage Vienna).</description>
+      <type>Demo</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Spatial &amp; XR</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Felix Brandstätter projects a volumetric synthetic performer live in the hall. He explains the display technology and rendering pipeline, and addresses when a digital human stops being comfortable to watch.</description>
     </item>
     <item id="prog-030">
       <title>The Synthetic Muse: Can Neural Networks Possess Intention?</title>
@@ -929,8 +1167,14 @@
       <performer_id>perf-20</performer_id>
       <performer_name>Nadia Chernova</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'The Synthetic Muse: Can Neural Networks Possess Intention?' delivered by Nadia Chernova (Philosopher of Technology at Sorbonne).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Ethics &amp; Law</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Can a system without desires be said to intend anything? Nadia Chernova ends the day's main-stage programme with a clear philosophical argument about authorship, aimed at artists and sceptics alike.</description>
     </item>
     <item id="prog-031">
       <title>Evaluation Frameworks for LLMs: Automated Benchmarking Beyond MMLU</title>
@@ -943,8 +1187,14 @@
       <performer_id>perf-41</performer_id>
       <performer_name>Fatima Zahra</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Evaluation Frameworks for LLMs: Automated Benchmarking Beyond MMLU' hosted by Fatima Zahra (QA Engineer at EvalHub).</description>
+      <type>Workshop</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>Basic Python; a laptop with a code editor</prerequisites>
+      <description>Single benchmark scores rarely predict how a model behaves in your product. Fatima Zahra helps you build a small automated evaluation suite that runs like continuous integration for prompts and models.</description>
     </item>
     <item id="prog-032">
       <title>Small Language Models (SLMs) vs. Mega-Models: Efficiency Tradeoffs</title>
@@ -957,8 +1207,14 @@
       <performer_id>perf-42</performer_id>
       <performer_name>Julian Richter</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Small Language Models (SLMs) vs. Mega-Models: Efficiency Tradeoffs' hosted by Julian Richter (Research Lead at EfficientAI Munich).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>When does a small model beat a giant one? Julian Richter compares cost, energy and accuracy across real workloads and offers a practical framework for choosing the right size.</description>
     </item>
     <item id="prog-033">
       <title>Self-Healing Distributed Systems Powered by Observability Agents</title>
@@ -971,8 +1227,14 @@
       <performer_id>perf-43</performer_id>
       <performer_name>Eliška Procházková</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Self-Healing Distributed Systems Powered by Observability Agents' hosted by Eliška Procházková (DevOps Architect at CloudPeak).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Agents</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Eliška Procházková shows what happens when observability agents get limited permission to act. The talk covers the guardrails, approval steps and rollback rules behind automatic incident repair in a production platform.</description>
     </item>
     <item id="prog-034">
       <title>Federated Learning: Collaborative Model Training Without Data Sharing</title>
@@ -985,8 +1247,14 @@
       <performer_id>perf-44</performer_id>
       <performer_name>Arthur Pendelton</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Federated Learning: Collaborative Model Training Without Data Sharing' hosted by Arthur Pendelton (Privacy Architect at OpenSecure).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Security</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Hospitals and banks often cannot share raw data, yet they still want better models. Arthur Pendelton explains how federated learning works and where privacy guarantees remain weaker than they sound.</description>
     </item>
     <item id="prog-035">
       <title>Memory Management and KV-Cache Compression in LLM Serving</title>
@@ -999,8 +1267,14 @@
       <performer_id>perf-45</performer_id>
       <performer_name>Maximilian Gruber</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Memory Management and KV-Cache Compression in LLM Serving' hosted by Maximilian Gruber (Inference Engineer at vLLM Core).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>KV-cache memory is often the true limit on LLM serving. Maximilian Gruber looks inside the serving stack and compares compression and eviction techniques that increase throughput on the same hardware.</description>
     </item>
     <item id="prog-036">
       <title>Causal Inference in Machine Learning: Moving Beyond Correlation</title>
@@ -1013,8 +1287,14 @@
       <performer_id>perf-46</performer_id>
       <performer_name>Dr. Veronika Křížová</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Causal Inference in Machine Learning: Moving Beyond Correlation' hosted by Dr. Veronika Křížová (Statistician at Prague Data Science Lab).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Research</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Prediction is not explanation. Veronika Křížová introduces causal inference through worked examples, showing engineers how to avoid confident conclusions drawn from misleading correlations.</description>
     </item>
     <item id="prog-037">
       <title>Low-Rank Adaptation (LoRA) Deep-Dive: Adapting Foundation Models</title>
@@ -1027,8 +1307,14 @@
       <performer_id>perf-47</performer_id>
       <performer_name>Hiroshi Sato</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Low-Rank Adaptation (LoRA) Deep-Dive: Adapting Foundation Models' hosted by Hiroshi Sato (ML Researcher at Kyoto Systems).</description>
+      <type>Workshop</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>Python and PyTorch experience; a laptop with access to a cloud GPU notebook</prerequisites>
+      <description>Train your own LoRA adapter with Hiroshi Sato. The workshop explains the mathematics in plain terms and then covers rank selection, small datasets and the most common training failures.</description>
     </item>
     <item id="prog-038">
       <title>Building Real-Time Multimodal Pipelines with WebSockets and WebRTC</title>
@@ -1041,11 +1327,17 @@
       <performer_id>perf-48</performer_id>
       <performer_name>Klára Veselá</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Building Real-Time Multimodal Pipelines with WebSockets and WebRTC' hosted by Klára Veselá (Fullstack ML Engineer at StreamVoice).</description>
+      <type>Live Coding</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Infrastructure</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>Experience with web development; basic understanding of asynchronous code</prerequisites>
+      <description>Klára Veselá assembles a voice and video assistant live using WebSockets and WebRTC. She shows how to measure every stage of the pipeline and keep the conversation feeling natural.</description>
     </item>
     <item id="prog-039">
-      <title>Securing Prompt Injections and Jailbreaks in Enterprise Agents</title>
+      <title>Defending Against Prompt Injections and Jailbreaks in Enterprise Agents</title>
       <day>2</day>
       <date>2027-05-22</date>
       <start_time>17:30</start_time>
@@ -1055,8 +1347,14 @@
       <performer_id>perf-49</performer_id>
       <performer_name>Brian O'Connor</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Securing Prompt Injections and Jailbreaks in Enterprise Agents' hosted by Brian O'Connor (Cybersecurity Analyst at SecurePrompt).</description>
+      <type>Workshop</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Security</topic>
+        <topic>Agents</topic>
+      </topics>
+      <prerequisites>Laptop with a modern browser; no security background required</prerequisites>
+      <description>Attack a deliberately vulnerable company assistant, then fix it. Brian O'Connor runs a guided red-team exercise covering prompt injection, jailbreaks and practical defensive layers for enterprise agents.</description>
     </item>
     <item id="prog-040">
       <title>Model Distillation: Compressing Frontier Models into Tiny Weights</title>
@@ -1069,8 +1367,14 @@
       <performer_id>perf-50</performer_id>
       <performer_name>Simon Dufresne</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Model Distillation: Compressing Frontier Models into Tiny Weights' hosted by Simon Dufresne (AI Optimization Lead at CompresSys).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Can a tiny model keep most of a frontier model's abilities? Simon Dufresne explains knowledge distillation, shows what is lost during compression, and presents methods to measure the damage.</description>
     </item>
     <item id="prog-041">
       <title>Live Latent VJing: Real-time Audio-Reactive Video Synthesis</title>
@@ -1083,8 +1387,14 @@
       <performer_id>perf-21</performer_id>
       <performer_name>Carlos Mendez</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Live Latent VJing: Real-time Audio-Reactive Video Synthesis' delivered by Carlos Mendez (Visual Jockey &amp; Creative Coder).</description>
+      <type>Performance</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Creative Coding</topic>
+        <topic>Audio &amp; Music</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Start the final day with a live audiovisual set. Carlos Mendez generates video in real time from the music, then opens up his software to show how the performance works.</description>
     </item>
     <item id="prog-042">
       <title>Generative Storyboarding and Automated Animatic Generation</title>
@@ -1097,8 +1407,14 @@
       <performer_id>perf-22</performer_id>
       <performer_name>Hanna Weber</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Generative Storyboarding and Automated Animatic Generation' delivered by Hanna Weber (Story Lead at European Animation Guild).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Film &amp; Animation</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Storyboards and animatics can now be drafted in hours instead of weeks. Hanna Weber shows how animation teams use that speed for more ideas without giving up the director's voice.</description>
     </item>
     <item id="prog-043">
       <title>Multi-Agent Simulation of Fictional Societies for Worldbuilding</title>
@@ -1111,8 +1427,14 @@
       <performer_id>perf-23</performer_id>
       <performer_name>Dr. Alexei Voronov</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Multi-Agent Simulation of Fictional Societies for Worldbuilding' delivered by Dr. Alexei Voronov (Complexity Scientist at DataMind).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Agents</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>What would your fictional society do during a famine or an election? Alexei Voronov shows how multi-agent simulations help writers and game designers test the logic of the worlds they build.</description>
     </item>
     <item id="prog-044">
       <title>Accessible AI UI: Designing Inclusive Prompts for Impaired Creators</title>
@@ -1125,8 +1447,14 @@
       <performer_id>perf-24</performer_id>
       <performer_name>Zuzana Černá</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Accessible AI UI: Designing Inclusive Prompts for Impaired Creators' delivered by Zuzana Černá (UX Director at Prague Design Collective).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Design &amp; UX</topic>
+        <topic>Ethics &amp; Law</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Prompt boxes are not automatically accessible. Zuzana Černá shares findings from co-design sessions with blind and low-vision creators and gives practical guidance for building more inclusive AI interfaces.</description>
     </item>
     <item id="prog-045">
       <title>Synthetic Botany: Algorithmic Flora Simulation for Interactive Exhibits</title>
@@ -1139,8 +1467,14 @@
       <performer_id>perf-25</performer_id>
       <performer_name>Oskar Blomqvist</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Synthetic Botany: Algorithmic Flora Simulation for Interactive Exhibits' delivered by Oskar Blomqvist (Digital Horticulturist at Nordic Green).</description>
+      <type>Demo</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Creative Coding</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Oskar Blomqvist grows a simulated garden on stage and invites the audience to change the climate. He explains how real botanical data makes digital plants behave believably.</description>
     </item>
     <item id="prog-046">
       <title>Human-in-the-Loop Filmmaking: Directing Agentic Casts</title>
@@ -1153,8 +1487,14 @@
       <performer_id>perf-26</performer_id>
       <performer_name>Evelyn Reed</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Human-in-the-Loop Filmmaking: Directing Agentic Casts' delivered by Evelyn Reed (Indie Film Director &amp; Technologist).</description>
+      <type>Keynote</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Film &amp; Animation</topic>
+        <topic>Agents</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>How do you direct an actor who is an agent? In the final day's keynote, Evelyn Reed shares scenes and failures from two independent features and argues for keeping human judgement at the centre of filmmaking.</description>
     </item>
     <item id="prog-047">
       <title>Hyper-Personalized Interactive Narrative Design</title>
@@ -1167,8 +1507,14 @@
       <performer_id>perf-27</performer_id>
       <performer_name>Kenji Takahashi</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Hyper-Personalized Interactive Narrative Design' delivered by Kenji Takahashi (Interactive Novelist at Tokyo StoryLab).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Generative Media</topic>
+        <topic>Design &amp; UX</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Personalised stories can adapt to every reader, but they can easily lose their shape. Kenji Takahashi explains the design rules that keep an adaptive narrative coherent and worth finishing.</description>
     </item>
     <item id="prog-048">
       <title>Digital Fashion in the Age of Autonomous Avatars</title>
@@ -1181,8 +1527,14 @@
       <performer_id>perf-28</performer_id>
       <performer_name>Alina Popescu</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Digital Fashion in the Age of Autonomous Avatars' delivered by Alina Popescu (Metaverse Stylist at DigiCouture).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Design &amp; UX</topic>
+        <topic>Generative Media</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Virtual characters need wardrobes, and some now choose their own. Alina Popescu looks at the craft and business of digital-only fashion, from couture training to autonomous avatars.</description>
     </item>
     <item id="prog-049">
       <title>The Economics of Generative IP: Licensing Neural Checkpoints</title>
@@ -1195,8 +1547,13 @@
       <performer_id>perf-29</performer_id>
       <performer_name>Matěj Dvořák</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'The Economics of Generative IP: Licensing Neural Checkpoints' delivered by Matěj Dvořák (IP Attorney &amp; Tech Counsel).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Ethics &amp; Law</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>A fine-tuned checkpoint can carry value and legal risk at the same time. Matěj Dvořák explains how licences for models and datasets work in practice and what creators should check before signing.</description>
     </item>
     <item id="prog-050">
       <title>Embodied AI in Performance Art: Human-Robot Dance Duets</title>
@@ -1209,8 +1566,14 @@
       <performer_id>perf-30</performer_id>
       <performer_name>Dr. Rachel Weiss</performer_name>
       <track>Vision &amp; Creative Tech</track>
-      <type>Keynote / Presentation</type>
-      <description>Keynote session on 'Embodied AI in Performance Art: Human-Robot Dance Duets' delivered by Dr. Rachel Weiss (Choreographer &amp; Roboticist at Zurich Arts).</description>
+      <type>Performance</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Spatial &amp; XR</topic>
+        <topic>Creative Coding</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>The festival's closing performance on the main stage is a duet for a dancer and a robotic arm. Rachel Weiss then explains how the machine learned its phrasing through rehearsal.</description>
     </item>
     <item id="prog-051">
       <title>Graph RAG: Connecting Unstructured Knowledge with Neo4j</title>
@@ -1223,8 +1586,14 @@
       <performer_id>perf-51</performer_id>
       <performer_name>Dr. Ondřej Malý</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Graph RAG: Connecting Unstructured Knowledge with Neo4j' hosted by Dr. Ondřej Malý (Knowledge Engineer at BioGraph).</description>
+      <type>Workshop</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>RAG &amp; Search</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>Python basics; a laptop able to run a local Neo4j instance or Docker</prerequisites>
+      <description>Build a working Graph RAG prototype with Ondřej Malý. Starting from unstructured papers, you will create a Neo4j knowledge graph and connect it to a retrieval pipeline.</description>
     </item>
     <item id="prog-052">
       <title>Continuous Alignment: DPO vs RLHF in Continuous Production Cycles</title>
@@ -1237,8 +1606,14 @@
       <performer_id>perf-52</performer_id>
       <performer_name>Valerie Dupont</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Continuous Alignment: DPO vs RLHF in Continuous Production Cycles' hosted by Valerie Dupont (Alignment Researcher at Paris AI).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Should a production model learn from RLHF, DPO or both? Valerie Dupont compares the methods in continuous training cycles and shows how to detect behaviour drift before users notice it.</description>
     </item>
     <item id="prog-053">
       <title>Serverless GPU Orchestration: Cold Start Reduction Strategies</title>
@@ -1251,8 +1626,13 @@
       <performer_id>perf-53</performer_id>
       <performer_name>Tibor Varga</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Serverless GPU Orchestration: Cold Start Reduction Strategies' hosted by Tibor Varga (Cloud Infrastructure Lead at ScalerEU).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Serverless GPUs are cheap until a user waits a minute for a cold start. Tibor Varga compares snapshotting, warm pools and scheduling strategies from running capacity across Europe.</description>
     </item>
     <item id="prog-054">
       <title>Neuromorphic Computing: Spiking Neural Networks in Low-Power IoT</title>
@@ -1263,10 +1643,16 @@
       <stage_id>stage-tech</stage_id>
       <stage_name>Tech &amp; Code Lab</stage_name>
       <performer_id>perf-54</performer_id>
-      <performer_name>Nikola Tesla-Smith</performer_name>
+      <performer_name>Nikola Stanković</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Neuromorphic Computing: Spiking Neural Networks in Low-Power IoT' hosted by Nikola Tesla-Smith (Hardware Engineer at NeuroChip).</description>
+      <type>Talk</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>Infrastructure</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Spiking neural networks use energy only when something happens. Nikola Stanković explains neuromorphic chips and shows how they extend battery life in low-power IoT sensors in the field.</description>
     </item>
     <item id="prog-055">
       <title>Synthetic Code Generation: Benchmarking Copilots across Python and Rust</title>
@@ -1279,8 +1665,14 @@
       <performer_id>perf-55</performer_id>
       <performer_name>Barbora Němcová</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Synthetic Code Generation: Benchmarking Copilots across Python and Rust' hosted by Barbora Němcová (Developer Advocate at DevStack).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Python</topic>
+        <topic>Rust</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Which AI coding assistants actually help on a real codebase? Barbora Němcová presents independent benchmarks across Python and Rust repositories, covering correctness and security as well as speed.</description>
     </item>
     <item id="prog-056">
       <title>Time-Series Forecasting with Hybrid Transformer-Mamba Architectures</title>
@@ -1293,8 +1685,14 @@
       <performer_id>perf-56</performer_id>
       <performer_name>Goran Petrovic</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Time-Series Forecasting with Hybrid Transformer-Mamba Architectures' hosted by Goran Petrovic (Quantitative Analyst at AlphaStream).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Research</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Goran Petrovic tests hybrid Transformer-Mamba forecasting models on noisy energy market data. He compares them with simpler baselines and shows when the extra complexity pays off.</description>
     </item>
     <item id="prog-057">
       <title>Data Lineage and Model Governance under the EU AI Act</title>
@@ -1307,8 +1705,14 @@
       <performer_id>perf-57</performer_id>
       <performer_name>Zdeněk Pokorný</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Data Lineage and Model Governance under the EU AI Act' hosted by Zdeněk Pokorný (Compliance Officer at EuroTech Ethics).</description>
+      <type>Talk</type>
+      <level>Beginner</level>
+      <topics>
+        <topic>Ethics &amp; Law</topic>
+        <topic>Infrastructure</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>The EU AI Act turns data lineage into a practical engineering task. Zdeněk Pokorný translates its duties into a checklist of records, reviews and tooling that teams can apply now.</description>
     </item>
     <item id="prog-058">
       <title>Semantic Caching for High-Throughput LLM APIs</title>
@@ -1321,8 +1725,14 @@
       <performer_id>perf-58</performer_id>
       <performer_name>Diana Vance</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Semantic Caching for High-Throughput LLM APIs' hosted by Diana Vance (Backend Lead at FastAPI Cloud).</description>
+      <type>Live Coding</type>
+      <level>Intermediate</level>
+      <topics>
+        <topic>LLMs</topic>
+        <topic>Python</topic>
+      </topics>
+      <prerequisites>Familiarity with REST APIs; basic Python</prerequisites>
+      <description>Diana Vance adds semantic caching to a high-traffic LLM API live on stage. Watch the costs and response times change, then see how to avoid serving stale or incorrect answers.</description>
     </item>
     <item id="prog-059">
       <title>Autonomous Database Query Optimization using Deep Reinforcement Learning</title>
@@ -1335,8 +1745,14 @@
       <performer_id>perf-59</performer_id>
       <performer_name>Emir Kurt</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Autonomous Database Query Optimization using Deep Reinforcement Learning' hosted by Emir Kurt (Database Architect at QueryMind).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Infrastructure</topic>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Can a learning agent tune a database better than an experienced administrator? Emir Kurt shows results from deep reinforcement learning on production query plans, including its most expensive mistakes.</description>
     </item>
     <item id="prog-060">
       <title>Quantum Machine Learning: Exploring Variational Quantum Classifiers</title>
@@ -1349,8 +1765,13 @@
       <performer_id>perf-60</performer_id>
       <performer_name>Dr. Laura Fontana</performer_name>
       <track>Engineering &amp; Core AI</track>
-      <type>Technical Workshop / Deep-Dive</type>
-      <description>In-depth technical session on 'Quantum Machine Learning: Exploring Variational Quantum Classifiers' hosted by Dr. Laura Fontana (Quantum Computing Fellow at CERN OpenLab).</description>
+      <type>Talk</type>
+      <level>Advanced</level>
+      <topics>
+        <topic>Research</topic>
+      </topics>
+      <prerequisites>None</prerequisites>
+      <description>Quantum machine learning attracts plenty of hype. Laura Fontana closes the Tech &amp; Code Lab with an honest introduction to variational quantum classifiers and what today's hardware can and cannot do.</description>
     </item>
   </programme>
 </festival_data>
