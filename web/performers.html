@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performers: 60 Artists and Engineers | Futurika Fest 2027</title>
+<meta name="description" content="Find the 60 artists, researchers and engineers performing at Futurika Fest 2027. Search by name and filter by track.">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header>
+  <div class="nav-container">
+    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <div class="header-actions">
+      <a class="btn-agenda" href="my-schedule.html"><span aria-hidden="true">⭐</span> <span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"><span aria-hidden="true">☰</span></button>
+    </div>
+    <nav class="nav-links" id="mainNav" aria-label="Main">
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="programme.html">Programme</a></li>
+        <li><a class="nav-link" href="performers.html" aria-current="page">Performers</a></li>
+        <li><a class="nav-link" href="stages.html">Stages &amp; Venues</a></li>
+        <li><a class="nav-link" href="practical.html">Practical Info</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li aria-current="page">Performers</li>
+  </ol>
+</nav>
+<div class="section-header">
+  <h1>Performers</h1>
+  <p>Meet our 60 performers spanning generative deep learning, autonomous software agents, and interactive audiovisual art.</p>
+</div>
+<div class="controls-wrapper">
+  <div class="search-bar">
+    <label class="visually-hidden" for="searchPerformerInput">Search performers</label>
+    <input type="search" id="searchPerformerInput" class="search-input" placeholder="🔍 Search name or topic">
+  </div>
+  <div class="filter-group" role="group" aria-label="Track">
+    <span class="filter-label" aria-hidden="true">Filter Track:</span>
+    <button class="tab-btn" type="button" data-perf-track="all">All Performers (60)</button>
+    <button class="tab-btn" type="button" data-perf-track="Vision &amp; Creative Tech">Vision &amp; Creative Tech (30)</button>
+    <button class="tab-btn" type="button" data-perf-track="Engineering &amp; Core AI">Engineering &amp; Core AI (30)</button>
+  </div>
+</div>
+<p class="results-count" id="performerCount" role="status"></p>
+<section class="grid-container" id="performersGrid" aria-label="Performers directory"></section>
+<noscript><p>The performer list needs JavaScript.</p></noscript>
+</main>
+<footer>
+  <div class="footer-content">
+    <div><strong>Futurika Fest 2027</strong> • DOX Prague • 21–23 May 2027</div>
+    <div>Fictional festival created for a university web design course. No connection to DOX.</div>
+  </div>
+</footer>
+</body>
+</html>
