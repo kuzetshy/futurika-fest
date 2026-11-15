@@ -5,6 +5,10 @@ const DAY_NAMES = { 1: 'Friday', 2: 'Saturday', 3: 'Sunday' };
 const ROOT = document.documentElement.dataset.root || '';
 const filters = { day: 'all', stage: 'all', time: 'all', type: 'all', topic: 'all' };
 const SELECT_FILTERS = { type: 'Type', topic: 'Topic' };
+const PAGE_SIZE = 10;
+let programmeLimit = PAGE_SIZE;
+let performerLimit = PAGE_SIZE;
+let animateFrom = 0;
 let searchQuery = '';
 let perfTrackFilter = 'all';
 let perfSearchQuery = '';
@@ -170,15 +174,16 @@ function toggleSaved(id) {
   const nowSaved = !saved.includes(id);
   setSavedSessions(nowSaved ? saved.concat(id) : saved.filter(item => item !== id));
   refreshSaveState();
+  document.querySelectorAll(`[data-save="${id}"]`).forEach(button => {
+    button.classList.remove('just-saved');
+    if (nowSaved) {
+      void button.offsetWidth;
+      button.classList.add('just-saved');
+    }
+  });
   const item = findSession(id);
   const clash = nowSaved ? clashText(item) : '';
   announce(nowSaved ? `Saved to My Schedule: ${item.title}.${clash ? ' ' + clash + '.' : ''}` : `Removed from My Schedule: ${item.title}.`);
-}
-
-function renderHomeHighlights() {
-  const grid = document.getElementById('homeHighlightsGrid');
-  if (!grid) return;
-  grid.innerHTML = festivalData.programme.filter(item => item.type === 'Keynote').sort(bySessionTime).map(item => sessionCard(item)).join('');
 }
 
 /* Programme */
@@ -189,6 +194,7 @@ function updateProgrammeUrl() {
     if (filters[name] !== 'all') params.set(name, filters[name]);
   });
   if (searchQuery) params.set('q', searchQuery);
+  if (programmeLimit > PAGE_SIZE) params.set('show', programmeLimit);
   const query = params.toString();
   history.replaceState(null, '', location.pathname + (query ? '?' + query : ''));
 }
@@ -265,19 +271,51 @@ function renderProgramme() {
   document.querySelectorAll('[data-filter-select]').forEach(select => {
     select.value = filters[select.dataset.filterSelect];
   });
+  const shown = sessions.slice(0, programmeLimit);
   document.getElementById('clearSearchBtn').hidden = !searchQuery;
-  document.getElementById('programmeCount').textContent = `Showing ${sessions.length} of ${festivalData.programme.length} sessions`;
+  document.getElementById('programmeCount').textContent = countText(shown.length, sessions.length, festivalData.programme.length, 'sessions');
   updateActiveFiltersBar();
   updateProgrammeUrl();
+  updateMoreButton('programmeMore', sessions.length - shown.length);
 
   if (!sessions.length) {
     grid.innerHTML = '<div class="no-results"><h2>No sessions found</h2><p>Try a different keyword or clear the filters.</p></div>';
     return;
   }
   grid.innerHTML = [1, 2, 3].map(day => {
-    const daySessions = sessions.filter(item => item.day === day);
+    const daySessions = shown.filter(item => item.day === day);
     return daySessions.length ? programmeDay(day, daySessions) : '';
   }).join('');
+  markNew(grid, '.item-card');
+}
+
+function countText(shown, matching, total, noun) {
+  const scope = matching === total ? `${total} ${noun}` : `${matching} matching ${noun} (${total} in total)`;
+  return `Showing ${shown} of ${scope}`;
+}
+
+function updateMoreButton(id, remaining) {
+  const button = document.getElementById(id);
+  button.hidden = remaining <= 0;
+  button.textContent = `View more (${remaining} left)`;
+}
+
+// Only cards that were not on screen before get the entrance animation.
+function markNew(container, cardSelector) {
+  [...container.querySelectorAll(cardSelector)].slice(animateFrom).forEach(card => card.classList.add('is-new'));
+  animateFrom = 0;
+}
+
+// After "View more", focus moves to the first new card so keyboard and screen reader users continue from there.
+function showMore(container, cardSelector, increase) {
+  const before = container.querySelectorAll(cardSelector).length;
+  animateFrom = before;
+  increase();
+  const first = container.querySelectorAll(cardSelector)[before];
+  if (first) {
+    first.tabIndex = -1;
+    first.focus();
+  }
 }
 
 function fillSelect(name, values) {
@@ -291,7 +329,8 @@ function fillSelect(name, values) {
 }
 
 function setupProgramme() {
-  if (!document.getElementById('programmeGrid')) return;
+  const grid = document.getElementById('programmeGrid');
+  if (!grid) return;
   const input = document.getElementById('searchInput');
   fillSelect('type', [...new Set(festivalData.programme.map(item => item.type))].sort());
   fillSelect('topic', [...new Set(festivalData.programme.flatMap(item => item.topics))].sort());
@@ -302,30 +341,36 @@ function setupProgramme() {
   });
   searchQuery = (params.get('q') || '').trim();
   input.value = searchQuery;
+  const show = parseInt(params.get('show'), 10);
+  if (show > PAGE_SIZE && show <= festivalData.programme.length) programmeLimit = Math.ceil(show / PAGE_SIZE) * PAGE_SIZE;
 
   const clearSearch = () => {
     input.value = '';
     searchQuery = '';
   };
+  const refilter = () => {
+    programmeLimit = PAGE_SIZE;
+    renderProgramme();
+  };
   document.querySelectorAll('[data-filter]').forEach(button => {
     button.addEventListener('click', () => {
       filters[button.dataset.filter] = button.dataset.value;
-      renderProgramme();
+      refilter();
     });
   });
   document.querySelectorAll('[data-filter-select]').forEach(select => {
     select.addEventListener('change', () => {
       filters[select.dataset.filterSelect] = select.value;
-      renderProgramme();
+      refilter();
     });
   });
   input.addEventListener('input', () => {
     searchQuery = input.value.trim();
-    renderProgramme();
+    refilter();
   });
   document.getElementById('clearSearchBtn').addEventListener('click', () => {
     clearSearch();
-    renderProgramme();
+    refilter();
     input.focus();
   });
   document.getElementById('activeTagsContainer').addEventListener('click', event => {
@@ -333,14 +378,20 @@ function setupProgramme() {
     if (!button) return;
     if (button.dataset.remove === 'search') clearSearch();
     else filters[button.dataset.remove] = 'all';
-    renderProgramme();
+    refilter();
     input.focus();
   });
   document.getElementById('resetFiltersBtn').addEventListener('click', () => {
     Object.keys(filters).forEach(name => { filters[name] = 'all'; });
     clearSearch();
-    renderProgramme();
+    refilter();
     input.focus();
+  });
+  document.getElementById('programmeMore').addEventListener('click', () => {
+    showMore(grid, '.item-card', () => {
+      programmeLimit += PAGE_SIZE;
+      renderProgramme();
+    });
   });
   renderProgramme();
 }
@@ -376,22 +427,34 @@ function renderPerformers() {
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', active);
   });
-  document.getElementById('performerCount').textContent = `Showing ${performers.length} of ${festivalData.performers.length} performers`;
-  grid.innerHTML = performers.length ? performers.map(performer => performerCard(performer)).join('') :
+  const shown = performers.slice(0, performerLimit);
+  document.getElementById('performerCount').textContent = countText(shown.length, performers.length, festivalData.performers.length, 'performers');
+  updateMoreButton('performersMore', performers.length - shown.length);
+  grid.innerHTML = performers.length ? shown.map(performer => performerCard(performer)).join('') :
     '<div class="no-results"><h2>No performers found</h2><p>Try a different keyword or reset the track filter.</p></div>';
+  markNew(grid, '.performer-card');
 }
 
 function setupPerformers() {
   if (!document.getElementById('performersGrid')) return;
+  const grid = document.getElementById('performersGrid');
   document.querySelectorAll('[data-perf-track]').forEach(button => {
     button.addEventListener('click', () => {
       perfTrackFilter = button.dataset.perfTrack;
+      performerLimit = PAGE_SIZE;
       renderPerformers();
     });
   });
   document.getElementById('searchPerformerInput').addEventListener('input', event => {
     perfSearchQuery = event.target.value.trim();
+    performerLimit = PAGE_SIZE;
     renderPerformers();
+  });
+  document.getElementById('performersMore').addEventListener('click', () => {
+    showMore(grid, '.performer-card', () => {
+      performerLimit += PAGE_SIZE;
+      renderPerformers();
+    });
   });
   renderPerformers();
 }
@@ -505,6 +568,164 @@ function setupSchedule() {
   renderSchedule();
 }
 
+/* Accounts: stored only in this browser. Passwords are kept as a SHA-256 hash, never as plain text. */
+
+const ACCOUNTS_KEY = 'futurika_accounts';
+const USER_KEY = 'futurika_current_user';
+
+function readJson(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || fallback;
+  } catch (error) {
+    return fallback;
+  }
+}
+
+function writeJson(key, value) {
+  try {
+    if (value === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function getUser() {
+  const user = readJson(USER_KEY, null);
+  return user && user.name ? user : null;
+}
+
+// SHA-256 where the browser offers it; a simple fallback hash keeps the form working in browsers without Web Crypto on local files.
+async function hashPassword(email, password) {
+  const text = `futurika:${email}:${password}`;
+  if (window.crypto && crypto.subtle) {
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  }
+  let hash = 2166136261;
+  for (let round = 0; round < 1000; round++) {
+    for (let i = 0; i < text.length; i++) {
+      hash ^= text.charCodeAt(i);
+      hash = Math.imul(hash, 16777619) >>> 0;
+    }
+  }
+  return 'fnv-' + hash.toString(16);
+}
+
+// Only same-site page paths are accepted as a return address, never full URLs.
+function safeReturnPath(value) {
+  return /^(performers\/)?[a-z0-9-]+\.html(\?[^#]*)?$/.test(value || '') && !/^(login|register)\.html/.test(value) ? value : 'index.html';
+}
+
+function currentPagePath() {
+  const file = location.pathname.split('/').pop() || 'index.html';
+  return (ROOT ? 'performers/' : '') + file + location.search;
+}
+
+function renderUser() {
+  const user = getUser();
+  document.querySelectorAll('[data-login-link]').forEach(link => {
+    const slot = link.parentElement;
+    slot.querySelectorAll('.user-greeting, .btn-logout').forEach(element => element.remove());
+    link.hidden = !!user;
+    if (!/(login|register)\.html$/.test(location.pathname)) link.href = `${ROOT}login.html?from=${encodeURIComponent(currentPagePath())}`;
+    if (user) {
+      link.insertAdjacentHTML('afterend', `<span class="user-greeting" title="${esc(user.name)}">Hi, ${esc(user.name)}</span><button class="btn-secondary btn-logout" type="button" data-logout>Log out</button>`);
+    }
+  });
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.hidden = !!user;
+    document.getElementById('loginDone').hidden = !user;
+    document.getElementById('loginDoneText').textContent = user ? `You are logged in as ${user.name}.` : '';
+  }
+}
+
+function showFormError(id, message) {
+  const error = document.getElementById(id);
+  error.textContent = message;
+  error.hidden = !message;
+}
+
+function setupAccountForms() {
+  const returnPath = safeReturnPath(new URLSearchParams(location.search).get('from'));
+  const fromQuery = returnPath === 'index.html' ? '' : '?from=' + encodeURIComponent(returnPath);
+  document.querySelectorAll('[data-keep-from]').forEach(link => { link.href += fromQuery; });
+
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    document.getElementById('loginContinue').href = returnPath;
+    loginForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword');
+      const account = readJson(ACCOUNTS_KEY, []).find(item => item.email === email);
+      if (!account || account.hash !== await hashPassword(email, password.value)) {
+        showFormError('loginError', 'Incorrect email or password. Check them and try again, or create an account.');
+        password.value = '';
+        password.focus();
+        return;
+      }
+      writeJson(USER_KEY, { name: account.name, email });
+      location.href = returnPath;
+    });
+  }
+
+  const registerForm = document.getElementById('registerForm');
+  if (registerForm) {
+    registerForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const name = document.getElementById('registerName').value.trim().replace(/\s+/g, ' ');
+      const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+      const password = document.getElementById('registerPassword').value;
+      const confirm = document.getElementById('registerConfirm');
+      const accounts = readJson(ACCOUNTS_KEY, []);
+      if (!name) {
+        showFormError('registerError', 'Enter your name.');
+        document.getElementById('registerName').focus();
+        return;
+      }
+      if (password !== confirm.value) {
+        showFormError('registerError', 'The passwords do not match. Type the same password twice.');
+        confirm.value = '';
+        confirm.focus();
+        return;
+      }
+      if (accounts.some(item => item.email === email)) {
+        showFormError('registerError', 'An account with this email already exists. Log in instead.');
+        document.getElementById('registerEmail').focus();
+        return;
+      }
+      accounts.push({ name, email, hash: await hashPassword(email, password) });
+      if (!writeJson(ACCOUNTS_KEY, accounts)) {
+        showFormError('registerError', 'This browser does not allow saving data, so the account could not be created.');
+        return;
+      }
+      writeJson(USER_KEY, { name, email });
+      location.href = returnPath;
+    });
+  }
+}
+
+/* Scroll reveal: decorative only, skipped when the user prefers reduced motion. */
+
+const REVEAL_TARGETS = '.reveal, .section-header, .controls-wrapper, .stage-card, .info-box, .performer-facts, .detail-links, .agenda-summary-bar, .search-suggestions, .stats-grid';
+
+function setupReveal() {
+  const items = document.querySelectorAll(REVEAL_TARGETS);
+  if (!items.length || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('reveal-ready');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  items.forEach(item => observer.observe(item));
+}
+
 /* Shared */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -515,21 +736,23 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.setAttribute('aria-expanded', open);
   });
 
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const open = button.parentElement.classList.toggle('open');
-      button.setAttribute('aria-expanded', open);
-      button.querySelector('.faq-sign').textContent = open ? '−' : '+';
-    });
-  });
-
   document.addEventListener('click', event => {
     const button = event.target.closest('[data-save]');
     if (button) toggleSaved(button.dataset.save);
+    if (event.target.closest('[data-logout]')) {
+      writeJson(USER_KEY, null);
+      renderUser();
+      announce('You are logged out.');
+      const link = document.querySelector('[data-login-link]');
+      if (link && !document.getElementById('loginForm')) link.focus();
+      else if (document.getElementById('loginEmail')) document.getElementById('loginEmail').focus();
+    }
   });
 
   updateBadge();
-  renderHomeHighlights();
+  renderUser();
+  setupAccountForms();
+  setupReveal();
   setupProgramme();
   setupPerformers();
   setupSearch();

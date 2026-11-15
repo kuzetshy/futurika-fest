@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Account | Futurika Fest 2027</title>
+<meta name="description" content="Create a Futurika Fest 2027 account with your name, email and password.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header>
+  <div class="nav-container">
+    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span><span class="brand-dates">21–23 May 2027 · Prague</span></a>
+    <form class="header-search" id="headerSearch" role="search" action="search.html">
+      <label class="visually-hidden" for="siteSearch">Search the festival</label>
+      <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
+      <button class="btn-secondary" type="submit">Search</button>
+    </form>
+    <div class="header-cta" id="headerCta">
+      <a class="btn-primary btn-tickets" href="practical.html#tickets">Tickets</a>
+      <a class="btn-secondary btn-login" href="login.html?from=register.html" data-login-link>Log in</a>
+    </div>
+    <div class="header-actions">
+      <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch headerCta mainNav">Menu</button>
+    </div>
+    <nav class="nav-links" id="mainNav" aria-label="Main">
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="programme.html">Programme</a></li>
+        <li><a class="nav-link" href="performers.html">Performers</a></li>
+        <li><a class="nav-link" href="stages.html">Stages &amp; Venues</a></li>
+        <li><a class="nav-link" href="practical.html">Practical Info</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="login.html">Log in</a></li>
+    <li aria-current="page">Create account</li>
+  </ol>
+</nav>
+<div class="section-header">
+  <h1>Create account</h1>
+  <p>Create your Futurika Fest account. You are logged in as soon as you register.</p>
+</div>
+<div class="login-layout">
+  <form class="controls-wrapper login-form" id="registerForm" action="register.html">
+    <p class="form-error" id="registerError" role="alert" hidden></p>
+    <div class="form-field">
+      <label for="registerName">Name</label>
+      <input class="search-input" type="text" id="registerName" name="name" autocomplete="given-name" maxlength="40" required>
+    </div>
+    <div class="form-field">
+      <label for="registerEmail">Email</label>
+      <input class="search-input" type="email" id="registerEmail" name="email" autocomplete="email" required>
+    </div>
+    <div class="form-field">
+      <label for="registerPassword">Password</label>
+      <input class="search-input" type="password" id="registerPassword" name="password" autocomplete="new-password" minlength="8" required aria-describedby="passwordHint">
+      <p class="field-hint" id="passwordHint">At least 8 characters.</p>
+    </div>
+    <div class="form-field">
+      <label for="registerConfirm">Confirm password</label>
+      <input class="search-input" type="password" id="registerConfirm" name="confirm" autocomplete="new-password" minlength="8" required>
+    </div>
+    <button class="btn-primary" type="submit">Create account</button>
+    <p class="form-switch">Already have an account? <a href="login.html" data-keep-from>Log in</a></p>
+  </form>
+</div>
+<noscript><p>Creating an account needs JavaScript.</p></noscript>
+<section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Questions about creating an account</h2>
+  <div class="faq-container">
+    <details class="faq-item">
+      <summary class="faq-question">What do I need to create an account?</summary>
+      <div class="faq-answer"><p>Your name, an email address and a password with at least 8 characters.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">How is my password kept?</summary>
+      <div class="faq-answer"><p>Your password is never saved as plain text. Only a scrambled version (a hash) stays in this browser, and nothing is sent to a server.</p></div>
+    </details>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <p class="logo">FUTURIKA<span>FEST</span></p>
+      <p>AI &amp; Creative Tech Summit, 5th edition</p>
+      <p><time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <h2>Festival</h2>
+        <ul>
+          <li><a href="programme.html">Programme</a></li>
+          <li><a href="performers.html">Performers</a></li>
+          <li><a href="stages.html">Stages &amp; Venues</a></li>
+          <li><a href="search.html">Search</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plan your visit</h2>
+        <ul>
+          <li><a href="practical.html#tickets">Tickets</a></li>
+          <li><a href="practical.html#directions">Getting here</a></li>
+          <li><a href="practical.html#accessibility">Accessibility</a></li>
+          <li><a href="practical.html#conduct">Code of Conduct</a></li>
+          <li><a href="practical.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your visit</h2>
+        <ul>
+          <li><a href="my-schedule.html">My Schedule</a></li>
+          <li><a href="login.html">Log in</a></li>
+          <li><a href="register.html">Create account</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-contact">
+      <h2>Contact</h2>
+      <address>DOX Centre for Contemporary Art<br>Poupětova 1, 170 00 Prague 7<br><a href="mailto:info@futurika-fest.example">info@futurika-fest.example</a></address>
+    </div>
+  </div>
+  <p class="footer-note">Fictional festival created for a university web design course. No connection to DOX.</p>
+</footer>
+</body>
+</html>

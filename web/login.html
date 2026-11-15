@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in | Futurika Fest 2027</title>
+<meta name="description" content="Log in to your Futurika Fest 2027 account to see your name on every page of the festival website.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header>
+  <div class="nav-container">
+    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span><span class="brand-dates">21–23 May 2027 · Prague</span></a>
+    <form class="header-search" id="headerSearch" role="search" action="search.html">
+      <label class="visually-hidden" for="siteSearch">Search the festival</label>
+      <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
+      <button class="btn-secondary" type="submit">Search</button>
+    </form>
+    <div class="header-cta" id="headerCta">
+      <a class="btn-primary btn-tickets" href="practical.html#tickets">Tickets</a>
+      <a class="btn-secondary btn-login" href="login.html?from=login.html" data-login-link aria-current="page">Log in</a>
+    </div>
+    <div class="header-actions">
+      <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch headerCta mainNav">Menu</button>
+    </div>
+    <nav class="nav-links" id="mainNav" aria-label="Main">
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="programme.html">Programme</a></li>
+        <li><a class="nav-link" href="performers.html">Performers</a></li>
+        <li><a class="nav-link" href="stages.html">Stages &amp; Venues</a></li>
+        <li><a class="nav-link" href="practical.html">Practical Info</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li aria-current="page">Log in</li>
+  </ol>
+</nav>
+<div class="section-header">
+  <h1>Log in</h1>
+  <p>Welcome back. Log in with the email and password you used to create your account.</p>
+</div>
+<div class="login-layout">
+  <form class="controls-wrapper login-form" id="loginForm" action="login.html">
+    <p class="form-error" id="loginError" role="alert" hidden></p>
+    <div class="form-field">
+      <label for="loginEmail">Email</label>
+      <input class="search-input" type="email" id="loginEmail" name="email" autocomplete="email" required>
+    </div>
+    <div class="form-field">
+      <label for="loginPassword">Password</label>
+      <input class="search-input" type="password" id="loginPassword" name="password" autocomplete="current-password" required>
+    </div>
+    <button class="btn-primary" type="submit">Log in</button>
+    <p class="form-switch">No account yet? <a href="register.html" data-keep-from>Create account</a></p>
+  </form>
+  <section class="controls-wrapper login-done" id="loginDone" aria-labelledby="login-done-title" hidden>
+    <h2 id="login-done-title">You are logged in</h2>
+    <p id="loginDoneText"></p>
+    <div class="hero-ctas">
+      <a class="btn-primary" id="loginContinue" href="index.html">Continue</a>
+      <button class="btn-secondary" type="button" data-logout>Log out</button>
+    </div>
+  </section>
+</div>
+<noscript><p>Logging in needs JavaScript.</p></noscript>
+<section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Questions about logging in</h2>
+  <div class="faq-container">
+    <details class="faq-item">
+      <summary class="faq-question">I do not have an account yet. What should I do?</summary>
+      <div class="faq-answer"><p>Select <a href="register.html">Create account</a>. After you register, you are logged in straight away.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">Can I use my account on another device?</summary>
+      <div class="faq-answer"><p>No. Your account is kept in this browser on this device only.</p></div>
+    </details>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <p class="logo">FUTURIKA<span>FEST</span></p>
+      <p>AI &amp; Creative Tech Summit, 5th edition</p>
+      <p><time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <h2>Festival</h2>
+        <ul>
+          <li><a href="programme.html">Programme</a></li>
+          <li><a href="performers.html">Performers</a></li>
+          <li><a href="stages.html">Stages &amp; Venues</a></li>
+          <li><a href="search.html">Search</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plan your visit</h2>
+        <ul>
+          <li><a href="practical.html#tickets">Tickets</a></li>
+          <li><a href="practical.html#directions">Getting here</a></li>
+          <li><a href="practical.html#accessibility">Accessibility</a></li>
+          <li><a href="practical.html#conduct">Code of Conduct</a></li>
+          <li><a href="practical.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your visit</h2>
+        <ul>
+          <li><a href="my-schedule.html">My Schedule</a></li>
+          <li><a href="login.html">Log in</a></li>
+          <li><a href="register.html">Create account</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-contact">
+      <h2>Contact</h2>
+      <address>DOX Centre for Contemporary Art<br>Poupětova 1, 170 00 Prague 7<br><a href="mailto:info@futurika-fest.example">info@futurika-fest.example</a></address>
+    </div>
+  </div>
+  <p class="footer-note">Fictional festival created for a university web design course. No connection to DOX.</p>
+</footer>
+</body>
+</html>

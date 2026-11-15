@@ -14,15 +14,19 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 <header>
   <div class="nav-container">
-    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span><span class="brand-dates">21–23 May 2027 · Prague</span></a>
     <form class="header-search" id="headerSearch" role="search" action="search.html">
       <label class="visually-hidden" for="siteSearch">Search the festival</label>
       <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
-      <button class="btn-primary" type="submit">Search</button>
+      <button class="btn-secondary" type="submit">Search</button>
     </form>
+    <div class="header-cta" id="headerCta">
+      <a class="btn-primary btn-tickets" href="practical.html#tickets">Tickets</a>
+      <a class="btn-secondary btn-login" href="login.html?from=stages.html" data-login-link>Log in</a>
+    </div>
     <div class="header-actions">
       <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
-      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch mainNav">Menu</button>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch headerCta mainNav">Menu</button>
     </div>
     <nav class="nav-links" id="mainNav" aria-label="Main">
       <ul>
@@ -46,7 +50,7 @@
   <h1>Stages &amp; Venues</h1>
   <p>Explore the two distinct spaces hosting Futurika Fest at DOX Prague.</p>
 </div>
-<div class="stage-showcase-grid">
+<div class="stage-showcase-grid reveal">
   <article class="stage-card" id="stage-vision">
     <div>
       <img src="images/stage-vision.svg" alt="Abstract illustration of projected beams and sound waves." width="640" height="360">
@@ -84,12 +88,66 @@
     <a class="btn-primary" href="programme.html?stage=stage-tech">View Tech Lab Schedule</a>
   </article>
 </div>
+<section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Questions about the stages</h2>
+  <div class="faq-container">
+    <details class="faq-item">
+      <summary class="faq-question">Are both stages in the same building?</summary>
+      <div class="faq-answer"><p>Yes. Both are at DOX Prague, Poupětova 1. The Prompt &amp; Vision Hall is in the DOX+ Hall and the Tech &amp; Code Lab is on Floor 2 of the Innovation Hub.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">Can I reach both stages without steps?</summary>
+      <div class="faq-answer"><p>Yes. The DOX+ Hall has step-free access, and an elevator connects the main lobby to Floor 2.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">Are there power outlets for laptops?</summary>
+      <div class="faq-answer"><p>Yes. All seating rows in the Tech &amp; Code Lab have power strips with 230 V European sockets.</p></div>
+    </details>
+  </div>
+</section>
 </main>
 <footer>
   <div class="footer-content">
-    <div><strong>Futurika Fest 2027</strong> • DOX Prague • 21–23 May 2027</div>
-    <div>Fictional festival created for a university web design course. No connection to DOX.</div>
+    <div class="footer-brand">
+      <p class="logo">FUTURIKA<span>FEST</span></p>
+      <p>AI &amp; Creative Tech Summit, 5th edition</p>
+      <p><time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <h2>Festival</h2>
+        <ul>
+          <li><a href="programme.html">Programme</a></li>
+          <li><a href="performers.html">Performers</a></li>
+          <li><a href="stages.html">Stages &amp; Venues</a></li>
+          <li><a href="search.html">Search</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plan your visit</h2>
+        <ul>
+          <li><a href="practical.html#tickets">Tickets</a></li>
+          <li><a href="practical.html#directions">Getting here</a></li>
+          <li><a href="practical.html#accessibility">Accessibility</a></li>
+          <li><a href="practical.html#conduct">Code of Conduct</a></li>
+          <li><a href="practical.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your visit</h2>
+        <ul>
+          <li><a href="my-schedule.html">My Schedule</a></li>
+          <li><a href="login.html">Log in</a></li>
+          <li><a href="register.html">Create account</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-contact">
+      <h2>Contact</h2>
+      <address>DOX Centre for Contemporary Art<br>Poupětova 1, 170 00 Prague 7<br><a href="mailto:info@futurika-fest.example">info@futurika-fest.example</a></address>
+    </div>
   </div>
+  <p class="footer-note">Fictional festival created for a university web design course. No connection to DOX.</p>
 </footer>
 </body>
 </html>

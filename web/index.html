@@ -14,15 +14,19 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 <header>
   <div class="nav-container">
-    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span><span class="brand-dates">21–23 May 2027 · Prague</span></a>
     <form class="header-search" id="headerSearch" role="search" action="search.html">
       <label class="visually-hidden" for="siteSearch">Search the festival</label>
       <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
-      <button class="btn-primary" type="submit">Search</button>
+      <button class="btn-secondary" type="submit">Search</button>
     </form>
+    <div class="header-cta" id="headerCta">
+      <a class="btn-primary btn-tickets" href="practical.html#tickets">Tickets</a>
+      <a class="btn-secondary btn-login" href="login.html?from=index.html" data-login-link>Log in</a>
+    </div>
     <div class="header-actions">
       <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
-      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch mainNav">Menu</button>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch headerCta mainNav">Menu</button>
     </div>
     <nav class="nav-links" id="mainNav" aria-label="Main">
       <ul>
@@ -37,16 +41,16 @@
 </header>
 <main id="main">
 <section class="hero-banner" aria-labelledby="hero-title">
-  <span class="hero-tag">Central Europe’s Premier AI Summit</span>
+  <p class="hero-tag">5th edition · DOX Prague</p>
   <h1 id="hero-title">Futurika Fest 2027</h1>
+  <p class="hero-status">Passes on sale now for <time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></p>
   <p>Connecting generative AI researchers, creative technologists, autonomous agent builders, and avant-garde media artists for 3 days of talks, workshops, and immersive live performances in Prague.</p>
   <div class="hero-ctas">
-    <a class="btn-primary" href="programme.html">Explore 3-Day Programme</a>
+    <a class="btn-primary" href="practical.html#tickets">Get Tickets</a>
+    <a class="btn-secondary" href="programme.html">Explore the Programme</a>
     <a class="btn-secondary" href="performers.html">Meet 60 Performers</a>
-    <a class="btn-secondary" href="practical.html">Venue &amp; Logistics</a>
   </div>
   <ul class="hero-meta-bar">
-    <li class="meta-item"><time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></li>
     <li class="meta-item">DOX Centre for Contemporary Art &amp; DOX+, Prague 7</li>
     <li class="meta-item">2 Specialized Stages</li>
     <li class="meta-item">60 Curated Sessions</li>
@@ -58,20 +62,199 @@
   <div class="stat-card"><dt class="stat-label">Performers</dt><dd class="stat-number">60</dd></div>
   <div class="stat-card"><dt class="stat-label">Sessions</dt><dd class="stat-number">60</dd></div>
 </dl>
-<section aria-labelledby="keynotes-title">
+<section class="lineup reveal" id="lineup" aria-labelledby="lineup-title">
   <div class="section-header">
-    <h2 id="keynotes-title">Curated Keynote Highlights</h2>
-    <p>Preview the keynote sessions at Futurika 2027.</p>
+    <h2 id="lineup-title">Lineup</h2>
+    <p>60 performers over three days. Keynotes and live performances are shown first.</p>
   </div>
-  <div class="grid-container" id="homeHighlightsGrid"></div>
-  <noscript><p>Keynotes need JavaScript. See the Programme page.</p></noscript>
+  <div class="lineup-days">
+    <div class="lineup-day">
+      <h3><a href="programme.html?day=1">Friday <time datetime="2027-05-21">21 May</time></a></h3>
+      <ul class="lineup-headliners">
+        <li><a href="performers/elena-rostova.html">Dr. Elena Rostova</a></li>
+        <li><a href="performers/alexander-wright.html">Dr. Alexander Wright</a></li>
+        <li><a href="performers/aoi-tanaka.html">Aoi Tanaka</a></li>
+      </ul>
+      <ul class="lineup-names">
+        <li><a href="performers/arjun-patel.html">Arjun Patel</a></li>
+        <li><a href="performers/chloe-dubois.html">Chloe Dubois</a></li>
+        <li><a href="performers/dmitri-volkov.html">Dmitri Volkov</a></li>
+        <li><a href="performers/helene-martin.html">Dr. Hélène Martin</a></li>
+        <li><a href="performers/jakub-kucera.html">Ing. Jakub Kučera</a></li>
+        <li><a href="performers/jan-novak.html">Jan Novák</a></li>
+        <li><a href="performers/liam-hartley.html">Liam Hartley</a></li>
+        <li><a href="performers/lukas-brandt.html">Lukas Brandt</a></li>
+        <li><a href="performers/marcus-vance.html">Marcus Vance</a></li>
+        <li><a href="performers/martin-svoboda.html">Martin Svoboda</a></li>
+        <li><a href="performers/miriam-kovacova.html">Dr. Miriam Kováčová</a></li>
+        <li><a href="performers/olga-ivanova.html">Olga Ivanova</a></li>
+        <li><a href="performers/petra-horakova.html">Petra Horáková</a></li>
+        <li><a href="performers/sarah-jenkins.html">Sarah Jenkins</a></li>
+        <li><a href="performers/sofia-benitez.html">Sofia Benitez</a></li>
+        <li><a href="performers/tariq-al-mansoor.html">Tariq Al-Mansoor</a></li>
+        <li><a href="performers/tomasz-zielinski.html">Tomasz Zielinski</a></li>
+      </ul>
+    </div>
+    <div class="lineup-day">
+      <h3><a href="programme.html?day=2">Saturday <time datetime="2027-05-22">22 May</time></a></h3>
+      <ul class="lineup-headliners">
+        <li><a href="performers/greta-lindholm.html">Greta Lindholm</a></li>
+        <li><a href="performers/david-miller.html">David Miller</a></li>
+      </ul>
+      <ul class="lineup-names">
+        <li><a href="performers/amara-okafor.html">Amara Okafor</a></li>
+        <li><a href="performers/arthur-pendelton.html">Arthur Pendelton</a></li>
+        <li><a href="performers/brian-o-connor.html">Brian O&#x27;Connor</a></li>
+        <li><a href="performers/eliska-prochazkova.html">Eliška Procházková</a></li>
+        <li><a href="performers/fatima-zahra.html">Fatima Zahra</a></li>
+        <li><a href="performers/felix-brandstatter.html">Felix Brandstätter</a></li>
+        <li><a href="performers/hiroshi-sato.html">Hiroshi Sato</a></li>
+        <li><a href="performers/julian-richter.html">Julian Richter</a></li>
+        <li><a href="performers/katerina-krausova.html">Dr. Katerina Krausová</a></li>
+        <li><a href="performers/klara-vesela.html">Klára Veselá</a></li>
+        <li><a href="performers/lucas-rossi.html">Lucas Rossi</a></li>
+        <li><a href="performers/maximilian-gruber.html">Maximilian Gruber</a></li>
+        <li><a href="performers/maya-lin-schumacher.html">Maya Lin-Schumacher</a></li>
+        <li><a href="performers/nadia-chernova.html">Nadia Chernova</a></li>
+        <li><a href="performers/simon-dufresne.html">Simon Dufresne</a></li>
+        <li><a href="performers/sven-erikson.html">Sven Erikson</a></li>
+        <li><a href="performers/veronika-krizova.html">Dr. Veronika Křížová</a></li>
+        <li><a href="performers/zhenya-morozov.html">Zhenya Morozov</a></li>
+      </ul>
+    </div>
+    <div class="lineup-day">
+      <h3><a href="programme.html?day=3">Sunday <time datetime="2027-05-23">23 May</time></a></h3>
+      <ul class="lineup-headliners">
+        <li><a href="performers/carlos-mendez.html">Carlos Mendez</a></li>
+        <li><a href="performers/evelyn-reed.html">Evelyn Reed</a></li>
+        <li><a href="performers/rachel-weiss.html">Dr. Rachel Weiss</a></li>
+      </ul>
+      <ul class="lineup-names">
+        <li><a href="performers/alexei-voronov.html">Dr. Alexei Voronov</a></li>
+        <li><a href="performers/alina-popescu.html">Alina Popescu</a></li>
+        <li><a href="performers/barbora-nemcova.html">Barbora Němcová</a></li>
+        <li><a href="performers/diana-vance.html">Diana Vance</a></li>
+        <li><a href="performers/emir-kurt.html">Emir Kurt</a></li>
+        <li><a href="performers/goran-petrovic.html">Goran Petrovic</a></li>
+        <li><a href="performers/hanna-weber.html">Hanna Weber</a></li>
+        <li><a href="performers/kenji-takahashi.html">Kenji Takahashi</a></li>
+        <li><a href="performers/laura-fontana.html">Dr. Laura Fontana</a></li>
+        <li><a href="performers/matej-dvorak.html">Matěj Dvořák</a></li>
+        <li><a href="performers/nikola-stankovic.html">Nikola Stanković</a></li>
+        <li><a href="performers/ondrej-maly.html">Dr. Ondřej Malý</a></li>
+        <li><a href="performers/oskar-blomqvist.html">Oskar Blomqvist</a></li>
+        <li><a href="performers/tibor-varga.html">Tibor Varga</a></li>
+        <li><a href="performers/valerie-dupont.html">Valerie Dupont</a></li>
+        <li><a href="performers/zdenek-pokorny.html">Zdeněk Pokorný</a></li>
+        <li><a href="performers/zuzana-cerna.html">Zuzana Černá</a></li>
+      </ul>
+    </div>
+  </div>
+  <a class="btn-secondary" href="performers.html">All performers</a>
+</section>
+<section class="home-section reveal" aria-labelledby="stages-title">
+  <div class="section-header">
+    <h2 id="stages-title">Two stages, one venue</h2>
+    <p>Both stages run side by side at DOX Prague, so you can switch between them between sessions.</p>
+  </div>
+  <div class="stage-showcase-grid">
+    <article class="stage-card">
+      <img src="images/stage-vision.svg" alt="" width="640" height="360">
+      <h3 class="stage-title">Prompt &amp; Vision Hall</h3>
+      <p class="stage-desc">Keynotes, generative art, media performances and AI demos in the DOX+ Hall, with 450 seats.</p>
+      <a class="text-link" href="stages.html#stage-vision">About the Prompt &amp; Vision Hall</a>
+    </article>
+    <article class="stage-card">
+      <img src="images/stage-tech.svg" alt="" width="640" height="360">
+      <h3 class="stage-title">Tech &amp; Code Lab</h3>
+      <p class="stage-desc">Technical talks, LLM architecture, agentic workflows and live coding on Floor 2 of the Innovation Hub, with 250 seats.</p>
+      <a class="text-link" href="stages.html#stage-tech">About the Tech &amp; Code Lab</a>
+    </article>
+  </div>
+</section>
+<section class="home-section reveal" aria-labelledby="plan-title">
+  <div class="section-header">
+    <h2 id="plan-title">Plan your visit</h2>
+    <p>The essentials before you travel to Prague.</p>
+  </div>
+  <div class="plan-grid">
+    <article class="info-box plan-card">
+      <h3>Getting here</h3>
+      <p>Metro C to Nádraží Holešovice, or tram 6 or 12 to Ortenovo náměstí.</p>
+      <a class="text-link" href="practical.html#directions">Directions to DOX Prague</a>
+    </article>
+    <article class="info-box plan-card">
+      <h3>Accessibility</h3>
+      <p>Step-free entrances, an elevator to Floor 2 and a hearing loop in the Vision Hall.</p>
+      <a class="text-link" href="practical.html#accessibility">Accessibility details</a>
+    </article>
+    <article class="info-box plan-card">
+      <h3>Tickets</h3>
+      <p>3-Day Pass, Day Pass and a discounted Student 3-Day Pass.</p>
+      <a class="text-link" href="practical.html#tickets">Ticket prices</a>
+    </article>
+  </div>
+</section>
+<section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Questions about the festival</h2>
+  <div class="faq-container">
+    <details class="faq-item">
+      <summary class="faq-question">When and where is Futurika Fest 2027?</summary>
+      <div class="faq-answer"><p>From Friday 21 to Sunday 23 May 2027 at the DOX Centre for Contemporary Art and DOX+ Hall, Poupětova 1, Prague 7. See <a href="practical.html#directions">directions</a>.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">Who is the festival for?</summary>
+      <div class="faq-answer"><p>Software engineers and data scientists, digital creatives and media artists, and anyone curious about generative AI, including students.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">How do I get a ticket?</summary>
+      <div class="faq-answer"><p>Choose a 3-Day Pass, a Day Pass or a Student 3-Day Pass. Prices are listed under <a href="practical.html#tickets">Tickets</a>.</p></div>
+    </details>
+  </div>
 </section>
 </main>
 <footer>
   <div class="footer-content">
-    <div><strong>Futurika Fest 2027</strong> • DOX Prague • 21–23 May 2027</div>
-    <div>Fictional festival created for a university web design course. No connection to DOX.</div>
+    <div class="footer-brand">
+      <p class="logo">FUTURIKA<span>FEST</span></p>
+      <p>AI &amp; Creative Tech Summit, 5th edition</p>
+      <p><time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <h2>Festival</h2>
+        <ul>
+          <li><a href="programme.html">Programme</a></li>
+          <li><a href="performers.html">Performers</a></li>
+          <li><a href="stages.html">Stages &amp; Venues</a></li>
+          <li><a href="search.html">Search</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plan your visit</h2>
+        <ul>
+          <li><a href="practical.html#tickets">Tickets</a></li>
+          <li><a href="practical.html#directions">Getting here</a></li>
+          <li><a href="practical.html#accessibility">Accessibility</a></li>
+          <li><a href="practical.html#conduct">Code of Conduct</a></li>
+          <li><a href="practical.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Your visit</h2>
+        <ul>
+          <li><a href="my-schedule.html">My Schedule</a></li>
+          <li><a href="login.html">Log in</a></li>
+          <li><a href="register.html">Create account</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-contact">
+      <h2>Contact</h2>
+      <address>DOX Centre for Contemporary Art<br>Poupětova 1, 170 00 Prague 7<br><a href="mailto:info@futurika-fest.example">info@futurika-fest.example</a></address>
+    </div>
   </div>
+  <p class="footer-note">Fictional festival created for a university web design course. No connection to DOX.</p>
 </footer>
 </body>
 </html>
