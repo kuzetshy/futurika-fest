@@ -6,6 +6,8 @@ const ROOT = document.documentElement.dataset.root || '';
 const filters = { day: 'all', stage: 'all', time: 'all', type: 'all', topic: 'all' };
 const SELECT_FILTERS = { type: 'Type', topic: 'Topic' };
 const PAGE_SIZE = 10;
+// Performers with an AI-generated portrait in images/performers/<slug>.webp (list written by the build script).
+const PORTRAITS = new Set(['alexander-wright', 'aoi-tanaka', 'carlos-mendez', 'david-miller', 'elena-rostova', 'evelyn-reed', 'greta-lindholm', 'rachel-weiss']);
 let programmeLimit = PAGE_SIZE;
 let performerLimit = PAGE_SIZE;
 let animateFrom = 0;
@@ -398,6 +400,15 @@ function setupProgramme() {
 
 /* Performers */
 
+// The name is shown next to the photo, so the photo is decorative here (empty alt).
+function performerPhoto(performer) {
+  if (PORTRAITS.has(performer.slug)) {
+    return `<img class="performer-photo" src="${ROOT}images/performers/${performer.slug}.webp" alt="" width="600" height="600" loading="lazy">`;
+  }
+  const words = performer.name.split(' ').filter(word => !word.endsWith('.'));
+  return `<span class="performer-photo performer-initials" aria-hidden="true">${esc((words[0][0] + words[words.length - 1][0]).toUpperCase())}</span>`;
+}
+
 function performerCard(performer, heading = 'h2') {
   const isVision = performer.track === 'Vision & Creative Tech';
   return `
@@ -407,8 +418,13 @@ function performerCard(performer, heading = 'h2') {
           <span class="track-pill ${isVision ? 'track-vision' : 'track-tech'}">${isVision ? 'Vision' : 'Core AI'}</span>
           <span class="performer-country">${esc(performer.country)}</span>
         </div>
-        <${heading} class="performer-name">${esc(performer.name)}</${heading}>
-        <p class="performer-role">${esc(performer.role)}</p>
+        <div class="performer-head">
+          ${performerPhoto(performer)}
+          <div>
+            <${heading} class="performer-name">${esc(performer.name)}</${heading}>
+            <p class="performer-role">${esc(performer.role)}</p>
+          </div>
+        </div>
         <p class="performer-topic"><strong>Session:</strong> ${esc(performer.headline_topic)}</p>
       </div>
       <a class="btn-secondary" href="${ROOT}performers/${performer.slug}.html">View profile<span class="visually-hidden">: ${esc(performer.name)}</span></a>
