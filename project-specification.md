@@ -58,10 +58,10 @@ The website serves as the primary digital touchpoint, schedule manager, and inte
 ```text
 Futurika Website
 ├── Home Page (index.html)
-│   ├── Hero Section (Festival dates, location, core premise)
-│   ├── Festival Highlights & Curated Keynotes
+│   ├── Hero Section (Festival dates, location, core premise, ticket call to action)
+│   ├── Lineup by Day (keynotes and live performances highlighted)
 │   ├── Stages & Experience Overview
-│   └── Quick Logistics & Call to Action
+│   └── Quick Logistics (Getting here, Accessibility, Tickets)
 ├── Programme (programme.html)
 │   ├── Interactive Day Filter Tabs (Day 1 / Day 2 / Day 3)
 │   ├── Stage, Time of Day, Session Type & Topic Filters
@@ -82,8 +82,12 @@ Futurika Website
 │   └── FAQ Accordion
 ├── My Schedule (my-schedule.html)
 │   └── Persistent client-side list of saved sessions, sorted by time, with total duration counter and overlap warning
-└── Search Results (search.html)
-    └── Results across sessions and performers for the query entered in the site-wide search field
+├── Search Results (search.html)
+│   └── Results across sessions and performers for the query entered in the site-wide search field
+├── Log in (login.html)
+└── Create Account (register.html)
+
+Every page ends with a page-specific FAQ and a footer with a sitemap and the contact address.
 ```
 
 ### Purpose of Each Main Section
@@ -95,9 +99,10 @@ Futurika Website
 - **Practical Info (`practical.html`):** Logistical hub providing ticket information, public transit directions (Metro C / Tram stops in Prague 7 Holešovice), wheelchair accessibility standards, attendee code of conduct, and an interactive FAQ accordion.
 - **My Schedule (`my-schedule.html`):** Client-side personal itinerary manager powered by `localStorage`. Allows visitors to curate and reference their custom session lineup on-site without needing an account, sorted by time and with a warning when two saved sessions overlap.
 - **Search Results (`search.html`):** Displays matching sessions and performers for the query submitted through the site-wide search field, with links to the relevant detail content.
+- **Log in and Create Account (`login.html`, `register.html`):** Let visitors create an account and log in, so their name appears in the header. Accounts are kept in the visitor's browser only.
 
 ### Main Navigation & Interconnections
-- **Header Navigation:** Clean persistent navbar linking directly to `Home`, `Programme`, `Performers`, `Stages`, `Practical Info`, a site-wide search field, and a link to `My Schedule` with a badge showing the count of saved sessions (`My Schedule [0]`).
+- **Header Navigation:** Clean persistent navbar linking directly to `Home`, `Programme`, `Performers`, `Stages`, `Practical Info`, a site-wide search field, a `Tickets` call to action, `Log in`, and a link to `My Schedule` with a badge showing the count of saved sessions (`My Schedule [0]`).
 - **Contextual Linking:** Every performer card links to the performer's detail page, which shows their programme item. Programme items link to stage descriptions and performer detail pages.
 - **Breadcrumbs:** Provided across subpages to maintain clear structural hierarchy and easy backtracking.
 - **Terminology:** The interface consistently uses *Performer* (never Speaker or Artist as a section label), *Session* (a programme item), and *My Schedule* (never Agenda or Favorites).
@@ -152,7 +157,7 @@ Futurika Website
 ---
 
 ## 7. Specification Change Log
-The original structure, target groups, festival identity, schedule, and key scenarios remain in place. The changes below are limited and were made after instructor feedback and an audit of the submitted prototype.
+The original structure, target groups, festival identity, schedule, and key scenarios remain in place. The changes below are limited and were made after instructor feedback on the Seminar 3 and Seminar 4 submissions, an audit of the submitted prototype, and team review.
 
 | # | Change | Reason | Basis |
 | :--- | :--- | :--- | :--- |
@@ -164,3 +169,7 @@ The original structure, target groups, festival identity, schedule, and key scen
 | 6 | Data enriched: unique performer biographies and session abstracts, real countries, `slug`, `type`, `level`, `topics`, `prerequisites` | The previous texts came from templates and contained broken sentences. Session IDs, performer IDs, stages, days, and times are unchanged. | Data audit |
 | 7 | Three performers renamed; ten fictional affiliations and one session title adjusted | Names resembled real people, and fictional performers were attached to real institutions and products. | Content review |
 | 8 | Scenario details corrected (afternoon example, tram stop, button labels, terminology) | Scenario 2 cited a session that mostly falls outside the stated 14:00–18:00 window. The tram stop was checked against public sources. | Scenario walkthrough; fact check |
+| 9 | Programme shown as a timetable (time slot × stage) with overlap warnings on the session cards, and lists shown 10 items at a time with View more | Overlapping sessions were only visible on the My Schedule page, after saving. Parallel sessions now sit side by side, and the warning appears as soon as a session is saved. | Instructor feedback on the Seminar 4 submission ("Programme layout! Overlaps (too late in My Schedule)"); team review |
+| 10 | Emoji removed from the interface | Emoji were inherited from the prototype. | Instructor feedback on the Seminar 4 submission ("Try to avoid emoticons") |
+| 11 | Home page restructured (lineup by day, stages, visit essentials), page-specific FAQ at the bottom of every page, footer with sitemap and contact | The Seminar 4 version still looked like a prototype. The structure follows patterns from established festival websites, adapted to our design. | Instructor feedback on the Seminar 4 submission ("Still prototype"); research of festival websites (see `progress-04.md`, section 4) |
+| 12 | Account registration and login added (`register.html`, `login.html`), running in the browser only | Visitors can create an account and see a personal greeting. Passwords are stored only as a hash in the browser; no server is used. | Team review; instructor consulted on 15 November 2026 [TO FILL: instructor's answer] |
