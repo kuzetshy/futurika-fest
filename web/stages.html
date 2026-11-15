@@ -15,9 +15,14 @@
 <header>
   <div class="nav-container">
     <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <form class="header-search" id="headerSearch" role="search" action="search.html">
+      <label class="visually-hidden" for="siteSearch">Search the festival</label>
+      <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
+      <button class="btn-primary" type="submit">Search</button>
+    </form>
     <div class="header-actions">
-      <a class="btn-agenda" href="my-schedule.html"><span aria-hidden="true">⭐</span> <span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
-      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"><span aria-hidden="true">☰</span></button>
+      <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch mainNav">Menu</button>
     </div>
     <nav class="nav-links" id="mainNav" aria-label="Main">
       <ul>
@@ -42,41 +47,41 @@
   <p>Explore the two distinct spaces hosting Futurika Fest at DOX Prague.</p>
 </div>
 <div class="stage-showcase-grid">
-  <article class="stage-card">
+  <article class="stage-card" id="stage-vision">
     <div>
       <img src="images/stage-vision.svg" alt="Abstract illustration of projected beams and sound waves." width="640" height="360">
       <div class="stage-header">
         <h2 class="stage-title">Prompt &amp; Vision Hall</h2>
         <span class="stage-capacity">Capacity: 450</span>
       </div>
-      <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 8px;">Main Auditorium (DOX+ Hall)</p>
-      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Designed for keynotes, large-scale generative audiovisual performances, neural cinema screenings, and live robotic art.</p>
+      <p class="stage-location">Main Auditorium (DOX+ Hall)</p>
+      <p class="stage-desc">Designed for keynotes, large-scale generative audiovisual performances, neural cinema screenings, and live robotic art.</p>
       <ul class="stage-specs">
-      <li><span aria-hidden="true">🔊</span> Meyer Sound Spatial Audio System</li>
-      <li><span aria-hidden="true">📽️</span> Dual 4K Laser Projection Surfaces</li>
-      <li><span aria-hidden="true">🎨</span> Stage Rigging for Live Kinetic Installations</li>
-      <li><span aria-hidden="true">♿</span> Step-free access &amp; reserved seating</li>
+      <li>Meyer Sound Spatial Audio System</li>
+      <li>Dual 4K Laser Projection Surfaces</li>
+      <li>Stage Rigging for Live Kinetic Installations</li>
+      <li>Step-free access &amp; reserved seating</li>
       </ul>
     </div>
-    <a class="btn-primary" href="programme.html?stage=stage-vision">View Vision Hall Schedule →</a>
+    <a class="btn-primary" href="programme.html?stage=stage-vision">View Vision Hall Schedule</a>
   </article>
-  <article class="stage-card">
+  <article class="stage-card" id="stage-tech">
     <div>
       <img src="images/stage-tech.svg" alt="Abstract illustration of a circuit grid." width="640" height="360">
       <div class="stage-header">
         <h2 class="stage-title">Tech &amp; Code Lab</h2>
         <span class="stage-capacity">Capacity: 250</span>
       </div>
-      <p style="color: #60a5fa; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px;">Innovation Hub, Floor 2</p>
-      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Focused on hands-on coding deep dives, local LLM fine-tuning, multi-agent frameworks, and live coding.</p>
+      <p class="stage-location stage-location-tech">Innovation Hub, Floor 2</p>
+      <p class="stage-desc">Focused on hands-on coding deep dives, local LLM fine-tuning, multi-agent frameworks, and live coding.</p>
       <ul class="stage-specs">
-      <li><span aria-hidden="true">⚡</span> Gigabit Developer LAN &amp; Dedicated Power Outlets</li>
-      <li><span aria-hidden="true">💻</span> Ultra-wide Dual Screens for Terminal &amp; Code Review</li>
-      <li><span aria-hidden="true">🎙️</span> Interactive Q&amp;A Microphone System</li>
-      <li><span aria-hidden="true">♿</span> Elevator access from Main Lobby to Floor 2</li>
+      <li>Gigabit Developer LAN &amp; Dedicated Power Outlets</li>
+      <li>Ultra-wide Dual Screens for Terminal &amp; Code Review</li>
+      <li>Interactive Q&amp;A Microphone System</li>
+      <li>Elevator access from Main Lobby to Floor 2</li>
       </ul>
     </div>
-    <a class="btn-primary" href="programme.html?stage=stage-tech">View Tech Lab Schedule →</a>
+    <a class="btn-primary" href="programme.html?stage=stage-tech">View Tech Lab Schedule</a>
   </article>
 </div>
 </main>

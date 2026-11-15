@@ -15,9 +15,14 @@
 <header>
   <div class="nav-container">
     <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <form class="header-search" id="headerSearch" role="search" action="search.html">
+      <label class="visually-hidden" for="siteSearch">Search the festival</label>
+      <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
+      <button class="btn-primary" type="submit">Search</button>
+    </form>
     <div class="header-actions">
-      <a class="btn-agenda" href="my-schedule.html"><span aria-hidden="true">⭐</span> <span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
-      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"><span aria-hidden="true">☰</span></button>
+      <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch mainNav">Menu</button>
     </div>
     <nav class="nav-links" id="mainNav" aria-label="Main">
       <ul>
@@ -36,15 +41,15 @@
   <h1 id="hero-title">Futurika Fest 2027</h1>
   <p>Connecting generative AI researchers, creative technologists, autonomous agent builders, and avant-garde media artists for 3 days of talks, workshops, and immersive live performances in Prague.</p>
   <div class="hero-ctas">
-    <a class="btn-primary" href="programme.html">Explore 3-Day Programme →</a>
+    <a class="btn-primary" href="programme.html">Explore 3-Day Programme</a>
     <a class="btn-secondary" href="performers.html">Meet 60 Performers</a>
     <a class="btn-secondary" href="practical.html">Venue &amp; Logistics</a>
   </div>
-  <ul class="hero-meta-bar" style="list-style: none; margin-top: 20px;">
-    <li class="meta-item"><span aria-hidden="true">📅</span> <time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></li>
-    <li class="meta-item"><span aria-hidden="true">📍</span> DOX Centre for Contemporary Art &amp; DOX+, Prague 7</li>
-    <li class="meta-item"><span aria-hidden="true">💡</span> 2 Specialized Stages</li>
-    <li class="meta-item"><span aria-hidden="true">🌐</span> 60 Curated Sessions</li>
+  <ul class="hero-meta-bar">
+    <li class="meta-item"><time datetime="2027-05-21">21</time>–<time datetime="2027-05-23">23 May 2027</time></li>
+    <li class="meta-item">DOX Centre for Contemporary Art &amp; DOX+, Prague 7</li>
+    <li class="meta-item">2 Specialized Stages</li>
+    <li class="meta-item">60 Curated Sessions</li>
   </ul>
 </section>
 <dl class="stats-grid">

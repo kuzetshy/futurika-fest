@@ -15,9 +15,14 @@
 <header>
   <div class="nav-container">
     <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <form class="header-search" id="headerSearch" role="search" action="search.html">
+      <label class="visually-hidden" for="siteSearch">Search the festival</label>
+      <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
+      <button class="btn-primary" type="submit">Search</button>
+    </form>
     <div class="header-actions">
-      <a class="btn-agenda" href="my-schedule.html"><span aria-hidden="true">⭐</span> <span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
-      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"><span aria-hidden="true">☰</span></button>
+      <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch mainNav">Menu</button>
     </div>
     <nav class="nav-links" id="mainNav" aria-label="Main">
       <ul>
@@ -44,7 +49,7 @@
 <div class="controls-wrapper">
   <div class="search-bar">
     <label class="visually-hidden" for="searchPerformerInput">Search performers</label>
-    <input type="search" id="searchPerformerInput" class="search-input" placeholder="🔍 Search name or topic">
+    <input type="search" id="searchPerformerInput" class="search-input" placeholder="Search name, country or topic">
   </div>
   <div class="filter-group" role="group" aria-label="Track">
     <span class="filter-label" aria-hidden="true">Filter Track:</span>

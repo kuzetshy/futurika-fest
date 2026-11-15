@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search Sessions, Performers and Visitor Info | Futurika Fest 2027</title>
+<meta name="description" content="Search the Futurika Fest 2027 website: find sessions, performers, stages, tickets, directions and accessibility information in one place.">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header>
+  <div class="nav-container">
+    <a class="brand-group" href="index.html"><span class="logo">FUTURIKA<span>FEST</span></span></a>
+    <form class="header-search" id="headerSearch" role="search" action="search.html">
+      <label class="visually-hidden" for="siteSearch">Search the festival</label>
+      <input type="search" id="siteSearch" name="q" class="search-input" placeholder="Search sessions, performers, info">
+      <button class="btn-primary" type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <a class="btn-agenda" href="my-schedule.html"><span class="visually-hidden">My Schedule, saved sessions:</span><span class="agenda-text-short" aria-hidden="true">Schedule</span><span class="agenda-text" aria-hidden="true">My Schedule</span> <span class="agenda-count-badge" data-schedule-count>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="headerSearch mainNav">Menu</button>
+    </div>
+    <nav class="nav-links" id="mainNav" aria-label="Main">
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="programme.html">Programme</a></li>
+        <li><a class="nav-link" href="performers.html">Performers</a></li>
+        <li><a class="nav-link" href="stages.html">Stages &amp; Venues</a></li>
+        <li><a class="nav-link" href="practical.html">Practical Info</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li aria-current="page">Search</li>
+  </ol>
+</nav>
+<div class="section-header">
+  <h1>Search</h1>
+  <p>Find sessions, performers, stages and visitor information across the whole festival.</p>
+</div>
+<form class="controls-wrapper search-page-form" role="search" action="search.html">
+  <label for="searchPageInput">Search term</label>
+  <div class="search-page-row">
+    <input type="search" id="searchPageInput" name="q" class="search-input" placeholder="e.g. LLM, workshop, tram">
+    <button class="btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<p class="results-count" id="searchStatus" role="status"></p>
+<section class="search-suggestions" id="searchSuggestions" aria-labelledby="suggestions-title">
+  <h2 id="suggestions-title">Popular searches</h2>
+  <ul>
+    <li><a href="search.html?q=LLM">LLM</a></li>
+    <li><a href="search.html?q=workshop">Workshop</a></li>
+    <li><a href="search.html?q=generative%20art">Generative art</a></li>
+    <li><a href="search.html?q=tram">Tram</a></li>
+    <li><a href="search.html?q=wheelchair">Wheelchair</a></li>
+  </ul>
+</section>
+<div id="searchResults"></div>
+<noscript><p>Search needs JavaScript. You can still browse the <a href="programme.html">programme</a> and the <a href="performers.html">performers</a>.</p></noscript>
+</main>
+<footer>
+  <div class="footer-content">
+    <div><strong>Futurika Fest 2027</strong> • DOX Prague • 21–23 May 2027</div>
+    <div>Fictional festival created for a university web design course. No connection to DOX.</div>
+  </div>
+</footer>
+</body>
+</html>
