@@ -20,14 +20,14 @@ The website serves as the primary digital touchpoint, schedule manager, and inte
 ### Main Objectives
 - Provide a clear, comprehensive, and accessible presentation of the 3-day programme across both specialized stages.
 - Enable attendees to quickly find speakers, topics, and technical tracks using instant search and multi-criteria filters.
-- Allow visitors to curate their own personalized festival agenda (My Schedule) that persists in local storage.
+- Allow visitors to curate their own personalized festival agenda (My Schedule) that is linked to their account and persists in local storage.
 - Clearly present logistical, travel, accessibility, and ticketing information for attending DOX Prague.
 - Deliver an exemplar of modern client-side web standards: fully responsive (mobile-first), semantic HTML5, WCAG 2.0 Level AA accessibility, and zero external build runtime requirements.
 
 ### Important User Actions
 1. Filter the schedule by day (Day 1, 2, 3), stage, time of day, session type, or topic (e.g., *LLMs*, *Python*, *Rust*, *RAG & Search*).
 2. Instantly search for specific performers, technologies (e.g., "FastAPI", "Diffusion", "Rust", "Agents"), or presentation titles.
-3. Add and remove sessions to/from a personal agenda ("My Schedule") stored locally in the browser, and see when two saved sessions overlap.
+3. Log in and add and remove sessions to/from a personal agenda ("My Schedule") stored locally in the browser, and see when two saved sessions overlap.
 4. Open a dedicated detail page for each performer, including their biography, session abstract, and venue location.
 5. Review essential practical information (tickets, directions to DOX+, venue accessibility, schedule time slots, FAQ).
 
@@ -81,7 +81,7 @@ Futurika Website
 │   ├── Code of Conduct
 │   └── FAQ Accordion
 ├── My Schedule (my-schedule.html)
-│   └── Persistent client-side list of saved sessions, sorted by time, with total duration counter and overlap warning
+│   └── Persistent client-side list of the logged-in account's saved sessions, sorted by time, with total duration counter and overlap warning
 ├── Search Results (search.html)
 │   └── Results across sessions and performers for the query entered in the site-wide search field
 ├── Log in (login.html)
@@ -97,9 +97,9 @@ Every page ends with a page-specific FAQ and a footer with a sitemap and the con
 - **Performer Detail Pages (`performers/<slug>.html`):** Individual pages with a stable URL presenting the performer's biography, role, country, and full session details, with links back to the programme and to the stage. They work on every device, with the browser Back button, and can be shared or indexed by search engines.
 - **Stages & Venues (`stages.html`):** Spatial and technical orientation guide detailing the two distinct festival venues: *Prompt & Vision Hall* (DOX+ Hall, 450 seats) for immersive media and keynotes, and *Tech & Code Lab* (Innovation Hub, 250 seats) for live-coding and agentic workshops.
 - **Practical Info (`practical.html`):** Logistical hub providing ticket information, public transit directions (Metro C / Tram stops in Prague 7 Holešovice), wheelchair accessibility standards, attendee code of conduct, and an interactive FAQ accordion.
-- **My Schedule (`my-schedule.html`):** Client-side personal itinerary manager powered by `localStorage`. Allows visitors to curate and reference their custom session lineup on-site without needing an account, sorted by time and with a warning when two saved sessions overlap.
+- **My Schedule (`my-schedule.html`):** Client-side personal itinerary manager powered by `localStorage`. Allows logged-in visitors to curate and reference their custom session lineup on-site, sorted by time and with a warning when two saved sessions overlap. Each account has its own schedule; visitors who are not logged in are asked to log in or create an account.
 - **Search Results (`search.html`):** Displays matching sessions and performers for the query submitted through the site-wide search field, with links to the relevant detail content.
-- **Log in and Create Account (`login.html`, `register.html`):** Let visitors create an account and log in, so their name appears in the header. Accounts are kept in the visitor's browser only.
+- **Log in and Create Account (`login.html`, `register.html`):** Let visitors create an account and log in, so their name appears in the header and they can keep their own My Schedule. Accounts are kept in the visitor's browser only.
 
 ### Main Navigation & Interconnections
 - **Header Navigation:** Clean persistent navbar linking directly to `Home`, `Programme`, `Performers`, `Stages`, `Practical Info`, a site-wide search field, a `Tickets` call to action, `Log in`, and a link to `My Schedule` with a badge showing the count of saved sessions (`My Schedule [0]`).
@@ -119,8 +119,8 @@ Every page ends with a page-specific FAQ and a footer with a sitemap and the con
   1. The user taps the primary mobile menu or "Explore Programme" CTA.
   2. In the Programme view, the user taps the search bar and types "LLM" or selects the "LLMs" topic filter.
   3. The list updates instantly, revealing *Petra Horáková's* session: *"Local LLMs on Edge Hardware: Optimizing 7B Models for MacBook Air"*.
-  4. The user taps the "Save to My Schedule" button.
-  5. The My Schedule counter increments to `1`, visual confirmation appears, and the session is saved in `localStorage`. When opening "My Schedule", the session is prominently listed with its exact time slot.
+  4. The user taps the "Save to Schedule" button. If not logged in yet, the user is taken to the login page, logs in (or creates an account), and returns to the same programme view.
+  5. The session is saved to the user's account, the My Schedule counter increments to `1`, and visual confirmation appears. When opening "My Schedule", the session is prominently listed with its exact time slot.
 
 ### Scenario 2: Planning an Afternoon of Digital Art Performances (Key Scenario 2)
 - **User Type:** Digital Media Artist and Prague tourist visiting on Saturday (Day 2).
@@ -172,4 +172,5 @@ The original structure, target groups, festival identity, schedule, and key scen
 | 9 | Programme shown as a timetable (time slot × stage) with overlap warnings on the session cards, and lists shown 10 items at a time with View more | Overlapping sessions were only visible on the My Schedule page, after saving. Parallel sessions now sit side by side, and the warning appears as soon as a session is saved. | Instructor feedback on the Seminar 4 submission ("Programme layout! Overlaps (too late in My Schedule)"); team review |
 | 10 | Emoji removed from the interface | Emoji were inherited from the prototype. | Instructor feedback on the Seminar 4 submission ("Try to avoid emoticons") |
 | 11 | Home page restructured (lineup by day, stages, visit essentials), page-specific FAQ at the bottom of every page, footer with sitemap and contact | The Seminar 4 version still looked like a prototype. The structure follows patterns from established festival websites, adapted to our design. | Instructor feedback on the Seminar 4 submission ("Still prototype"); research of festival websites (see `progress-04.md`, section 4) |
-| 12 | Account registration and login added (`register.html`, `login.html`), running in the browser only | Visitors can create an account and see a personal greeting. Passwords are stored only as a hash in the browser; no server is used. | Team review; instructor consulted on 15 November 2026 [TO FILL: instructor's answer] |
+| 12 | Account registration and login added (`register.html`, `login.html`), running in the browser only | Visitors can create an account and see a personal greeting. Passwords are stored only as a hash in the browser; no server is used. | Team review; consultation with the instructor by email in November 2026: approved. The instructor noted that a simulated login would also be sufficient. |
+| 13 | My Schedule requires a login, and each account has its own schedule. Selecting "Save to Schedule" while logged out opens the login page, and the session is saved after logging in. The earlier shared schedule without an owner is removed. | The specification said My Schedule works "without needing an account". After adding accounts, the team preferred personal schedules, so that several people using one browser each see only their own sessions. Key Scenario 1 gains one login step. | Team review; consultation with the instructor by email in November 2026: approved |

@@ -1,5 +1,8 @@
 // Futurika Fest: navigation, site search, My Schedule, and the Programme and Performers lists.
-const STORAGE_KEY = 'futurika_saved_sessions_2027';
+// Each account has its own schedule, stored under this prefix plus the account email.
+const SCHEDULE_PREFIX = 'futurika_schedule_';
+const LEGACY_SCHEDULE_KEY = 'futurika_saved_sessions_2027';
+const PENDING_SAVE_KEY = 'futurika_just_saved';
 const DAY_DATES = { 1: '21 May', 2: '22 May', 3: '23 May' };
 const DAY_NAMES = { 1: 'Friday', 2: 'Saturday', 3: 'Sunday' };
 const ROOT = document.documentElement.dataset.root || '';
@@ -41,17 +44,27 @@ function matchesQuery(text, query) {
   return words.every(word => haystack.includes(word));
 }
 
+function scheduleKey(user = getUser()) {
+  return user ? SCHEDULE_PREFIX + user.email : null;
+}
+
+// Visitors who are not logged in have no schedule.
 function getSavedSessions() {
+  const key = scheduleKey();
+  if (!key) return [];
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    const ids = JSON.parse(localStorage.getItem(key));
+    return Array.isArray(ids) ? ids.filter(id => findSession(id)) : [];
   } catch (error) {
     return [];
   }
 }
 
 function setSavedSessions(ids) {
+  const key = scheduleKey();
+  if (!key) return;
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+    localStorage.setItem(key, JSON.stringify(ids));
   } catch (error) {
     // Storage can be blocked; the page keeps working without saving.
   }
@@ -171,7 +184,16 @@ function announce(message) {
   status.textContent = message;
 }
 
+// Saving needs an account: visitors who are not logged in go to the login page and the session is saved after they log in.
+function loginToSave(id) {
+  location.href = `${ROOT}login.html?from=${encodeURIComponent(currentPagePath())}&save=${encodeURIComponent(id)}`;
+}
+
 function toggleSaved(id) {
+  if (!getUser()) {
+    loginToSave(id);
+    return;
+  }
   const saved = getSavedSessions();
   const nowSaved = !saved.includes(id);
   setSavedSessions(nowSaved ? saved.concat(id) : saved.filter(item => item !== id));
@@ -533,6 +555,14 @@ function setupSearch() {
 function renderSchedule() {
   const list = document.getElementById('agendaList');
   if (!list) return;
+  const summary = document.getElementById('agendaSummaryBar');
+  summary.hidden = !getUser();
+  if (!getUser()) {
+    document.getElementById('agendaTotalText').textContent = '';
+    list.innerHTML = `<div class="agenda-empty"><p>Log in to plan your festival. Each account has its own schedule.</p>
+      <div class="hero-ctas"><a class="btn-primary" href="login.html?from=my-schedule.html">Log in</a><a class="btn-secondary" href="register.html?from=my-schedule.html">Create account</a></div></div>`;
+    return;
+  }
   const ids = getSavedSessions();
   const sessions = festivalData.programme.filter(item => ids.includes(item.id)).sort(bySessionTime);
   document.getElementById('clearAgendaBtn').hidden = sessions.length === 0;
@@ -664,10 +694,47 @@ function showFormError(id, message) {
   error.hidden = !message;
 }
 
+// After logging in or registering, save the session the visitor selected before, and announce it on the page they return to.
+function savePendingSession(user, sessionId) {
+  if (!sessionId) return;
+  const ids = readJson(scheduleKey(user), []);
+  if (!ids.includes(sessionId)) writeJson(scheduleKey(user), ids.concat(sessionId));
+  try { sessionStorage.setItem(PENDING_SAVE_KEY, sessionId); } catch (error) { /* announcement is optional */ }
+}
+
+function announcePendingSave() {
+  let id = null;
+  try {
+    id = sessionStorage.getItem(PENDING_SAVE_KEY);
+    sessionStorage.removeItem(PENDING_SAVE_KEY);
+  } catch (error) {
+    return;
+  }
+  const item = id && findSession(id);
+  if (!item || !getUser()) return;
+  const clash = clashText(item);
+  announce(`Saved to My Schedule: ${item.title}.${clash ? ' ' + clash + '.' : ''}`);
+  const button = document.querySelector(`[data-save="${id}"]`);
+  if (button) {
+    button.scrollIntoView({ block: 'center' });
+    button.focus({ preventScroll: true });
+  }
+}
+
 function setupAccountForms() {
-  const returnPath = safeReturnPath(new URLSearchParams(location.search).get('from'));
-  const fromQuery = returnPath === 'index.html' ? '' : '?from=' + encodeURIComponent(returnPath);
-  document.querySelectorAll('[data-keep-from]').forEach(link => { link.href += fromQuery; });
+  const params = new URLSearchParams(location.search);
+  const returnPath = safeReturnPath(params.get('from'));
+  const pendingSave = findSession(params.get('save')) ? params.get('save') : '';
+  const query = new URLSearchParams();
+  if (returnPath !== 'index.html') query.set('from', returnPath);
+  if (pendingSave) query.set('save', pendingSave);
+  const keepQuery = query.toString() ? '?' + query.toString() : '';
+  document.querySelectorAll('[data-keep-from]').forEach(link => { link.href += keepQuery; });
+  if (pendingSave && !getUser()) {
+    document.querySelectorAll('.login-form').forEach(form => {
+      form.insertAdjacentHTML('afterbegin', `<p class="form-note">Log in or create an account to save “${esc(findSession(pendingSave).title)}” to My Schedule.</p>`);
+    });
+  }
 
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
@@ -684,6 +751,7 @@ function setupAccountForms() {
         return;
       }
       writeJson(USER_KEY, { name: account.name, email });
+      savePendingSession({ email }, pendingSave);
       location.href = returnPath;
     });
   }
@@ -719,6 +787,7 @@ function setupAccountForms() {
         return;
       }
       writeJson(USER_KEY, { name, email });
+      savePendingSession({ email }, pendingSave);
       location.href = returnPath;
     });
   }
@@ -758,6 +827,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.closest('[data-logout]')) {
       writeJson(USER_KEY, null);
       renderUser();
+      updateBadge();
+      refreshSaveState();
+      renderSchedule();
       announce('You are logged out.');
       const link = document.querySelector('[data-login-link]');
       if (link && !document.getElementById('loginForm')) link.focus();
@@ -765,6 +837,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // The old shared schedule (before accounts) belonged to no one, so it is removed.
+  try { localStorage.removeItem(LEGACY_SCHEDULE_KEY); } catch (error) { /* storage blocked */ }
   updateBadge();
   renderUser();
   setupAccountForms();
@@ -774,4 +848,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearch();
   setupSchedule();
   refreshSaveState();
+  announcePendingSave();
 });

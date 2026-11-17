@@ -1042,6 +1042,8 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 
 .login-layout { max-width: 32rem; }
 .login-form { gap: 16px; }
+.form-note { padding: 10px 12px; border-radius: 8px; background: var(--accent-light); border: 1px solid var(--accent); color: var(--text); font-size: 0.9rem; }
+.agenda-empty .hero-ctas { justify-content: center; }
 .form-error { padding: 10px 12px; border-radius: 8px; background: rgba(248, 113, 113, 0.12); border: 1px solid #f87171; color: #fecaca; font-size: 0.9rem; }
 .field-hint { font-size: 0.8rem; color: var(--text-muted); }
 .form-switch { font-size: 0.9rem; color: var(--text-muted); }

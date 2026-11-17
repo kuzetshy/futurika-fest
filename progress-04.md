@@ -18,7 +18,7 @@ The review-ready website is in the `web/` folder. It opens directly from `web/in
 | Performers, detail | `performers/<slug>.html` | One page for each of the 60 performers: biography, country, track, stage and full session details |
 | Stages & Venues | `stages.html` | Both stages with capacity, equipment and accessibility, linked to the filtered programme |
 | Practical Info | `practical.html` | Directions, tickets, accessibility, Code of Conduct and FAQ |
-| My Schedule | `my-schedule.html` | Saved sessions sorted by time, total duration, overlap warnings, Remove and Clear All |
+| My Schedule | `my-schedule.html` | The logged-in account's saved sessions sorted by time, total duration, overlap warnings, Remove and Clear All |
 | Search results | `search.html` | Results for sessions, performers, stages and visitor information |
 | Create account, Log in | `register.html`, `login.html` | Account registration and login that run in the browser only (see section 2) |
 
@@ -28,7 +28,7 @@ Every page has the same header (search field, Tickets, Log in, My Schedule with 
 
 | Scenario (from the specification) | Path on the website | State |
 | :--- | :--- | :--- |
-| 1. Find an LLM session on a phone and save it | Menu → Programme → search "LLM" or Topic "LLMs" → Save to Schedule → My Schedule | Complete |
+| 1. Find an LLM session on a phone and save it | Menu → Programme → search "LLM" or Topic "LLMs" → Save to Schedule → log in or create an account → back on the same programme view with the session saved → My Schedule | Complete |
 | 2. Plan a Saturday afternoon in the Prompt & Vision Hall | Programme → Day 2 → Vision Hall → Afternoon (6 sessions) → performer page → Back keeps the filters | Complete |
 | 3. Check accessibility and transport | Practical Info → Location & Directions and Accessibility, or search "tram" or "wheelchair" | Complete |
 
@@ -37,19 +37,18 @@ Every page has the same header (search field, Tickets, Log in, My Schedule with 
 1. **Programme filters:** day, stage and time of day as buttons; session type and topic as select lists. Active filters appear as removable chips, and all filters are kept in the page address, so the Back button restores them.
 2. **Programme timetable:** sessions that run at the same time are shown side by side, one column for each stage.
 3. **Overlap warnings:** as soon as a session is saved, every card that runs at the same time shows which saved session it overlaps with. The message is also announced to screen readers.
-4. **My Schedule:** saved sessions in `localStorage`, sorted by time, with total duration and overlap warnings.
+4. **My Schedule:** each account has its own saved sessions in `localStorage`, sorted by time, with total duration and overlap warnings. Selecting Save while logged out opens the login page, and the session is saved right after logging in.
 5. **Site search:** a search field in the header of every page and a results page. Search ignores accents, so "horakova" finds Petra Horáková.
 6. **Performer search and track filter.**
 7. **View more:** the programme and the performer list show 10 items first, and each select of View more adds 10.
-8. **Account registration and login,** with a personal greeting in the header.
+8. **Account registration and login,** with a personal greeting in the header and a personal My Schedule.
 
 ## 2. Known Shortcomings
 
 | Shortcoming | Impact | Plan |
 | :--- | :--- | :--- |
-| Portraits exist for 8 of the 60 performers. The others show their initials instead. | The performer list looks uneven. | Generate the remaining portraits for the final version. |
+| Portraits exist only for the 8 headliners (keynotes and live performances). The other 52 performers show their initials. | Most performer cards have no photo. | Team decision, to keep the project small; the initials keep the cards consistent. |
 | Accounts are stored only in this browser. They are not real accounts: there is no server, and the same account does not work on another device. | Expected for a client-side project, but reviewers should know it. | Kept as it is. Passwords are stored only as a SHA-256 hash, never as plain text. |
-| My Schedule is not linked to an account yet. Anyone using the browser sees the same saved sessions. | The account feature is less useful than it could be. | Waiting for the instructor's answer on whether this change to the specification is acceptable **[TO FILL: answer]**. |
 | Search uses simple word matching. It has no typo tolerance and no ranking by relevance. | A misspelt word returns no results. | The no-results message suggests checking the spelling. |
 | Saved data depends on `localStorage`. If the browser blocks storage, sessions and accounts are not saved. | Rare, but possible in strict privacy modes. | The site keeps working without saving and does not show errors. |
 | Structured data (JSON-LD) and the SEO, AEO and GEO work required for the final version are not done yet. | No impact on the scenarios. | Planned after the cross-review. |
@@ -76,6 +75,7 @@ All checks ran on all 69 HTML pages in `web/` (9 main pages and 60 performer pag
 | Key Scenario 3 | Header search "tram" finds Location & Directions on a phone-sized screen | Passed |
 | Overlap warning | Saved two sessions in the same slot | The warning appears on both cards at once; My Schedule shows 2 warnings |
 | Accounts | Register, mismatching passwords, existing email, log out, wrong password, correct password, return to the original page | All messages and redirects work; the password is not stored as plain text |
+| My Schedule with accounts | Save while logged out → login page → create an account → back on the filtered programme; a second account; log out; Save from a performer page | The session is saved automatically and announced; each account sees only its own sessions; after logging out the counter shows 0 and My Schedule asks to log in |
 | Unsafe return address | `login.html?from=https://evil.example/...` | Ignored; the page returns to `index.html` |
 | View more | 10 items, then 20; the address keeps `show=20` after reload; a new filter resets to 10 | Passed |
 | Reduced motion | System setting "reduce motion" emulated | All animations are switched off |
@@ -87,7 +87,7 @@ All checks ran on all 69 HTML pages in `web/` (9 main pages and 60 performer pag
 | Screenshots of every page at mobile, tablet and desktop width | Abilkhaiyr Albet with AI | Chromium | Found and fixed: timetable columns in the wrong rows, repeated time on cards, an unclear schedule button on small screens, header wrapping at 320 px, a missing space in the lineup |
 | Mobile layout, menu and header search | Abilkhaiyr Albet | Browser and device mode used | Works |
 | Real phone | Beibarys Askar | [IPhone 14, Safari] | Working well  |
-| Other browser | Alisher Karim | [Firefox] | [working well] |
+| Other browser | Alisher Karim | Firefox | working well |
 | Keyboard only | Muzafar Iusupov | Chrome | working well |
 
 
@@ -120,12 +120,13 @@ In response to the instructor's feedback on Seminar 4 ("no source links or docum
 | All emoji removed from the interface, without replacement icons | Instructor feedback: "Try to avoid emoticons" |
 | Performer detail pages, site search, session type and topic filters | Planned in the specification (change log items 1, 3 and 5) and required for the final website |
 | New home page, header and footer, FAQ on every page, animations, images | Instructor feedback: "Still prototype"; research of festival websites (section 4) |
-| Account registration and login | Team decision after comparing other teams' presentations at the seminars; recorded in the specification change log |
-| View more on the programme and performer list | Requested in the team review of the new version **[TO FILL: short reason in your own words]** |
+| Account registration and login | Team decision after comparing other teams' presentations at the seminars; approved by the instructor by email (specification change 12) |
+| My Schedule linked to the account, with Save leading to the login page when logged out | Team decision after adding accounts; approved by the instructor by email (specification change 13) |
+| View more on the programme and performer list | Team review of the new version: a list of 60 cards was too long to scroll, especially on a phone |
 
 ## 6. Use of AI and Verification of AI Outputs
 
-- **AI tools:** Claude Opus 5.5 in Claude Code (code, audits, texts, this report) and Google Gemini (all images). Earlier stages used Claude 3.5 Sonnet and GPT-4o.
+- **AI tools:** Claude Opus 5.5 in Claude Code and Google Gemini (all images). Earlier stages used Claude 3.5 Sonnet and GPT-4o.
 - **What AI was used for:** writing the HTML, CSS and JavaScript; generating the 60 performer pages from `data.json` with a small Python script (the website itself needs no build step); writing FAQ answers from facts already on the site; finding UX sources; generating images.
 - **Example requests**:
   - "Make it like coachella.com: don't copy it, but use the same patterns, and don't move far from our current theme."
@@ -137,10 +138,11 @@ In response to the instructor's feedback on Seminar 4 ("no source links or docum
 - **What we modified or rejected:**
   - AI suggested replacing emoji with SVG icons. We rejected it and removed the emoji without replacement.
   - AI suggested drop-down menus like Coachella. We kept a flat menu, because drop-down panels are the kind of pop-out the instructor warned about.
-  - AI first advised against a login, because there is no server. The team decided to add it, and AI then added hashing and clear error messages.
+  - AI first advised against a login, because there is no server. The team decided to add it, and AI then added hashing and clear error messages. The instructor approved it and noted that a simulated login would be enough; we kept the working password check.
   - AI added a "Demo only" note to the login page. We removed it from the site and describe the limitation in this report instead.
   - Page transition animations (View Transitions) were removed after testing, because they caused JavaScript errors when the site is opened from local files.
   - Two AI portraits looked almost identical to other portraits and were regenerated with clearer differences (age, glasses, beard, hair).
+  - The image prompts left the gender open where a biography does not state it (for example Aoi Tanaka); we chose it ourselves in Gemini.
 - **Errors and limitations we found:**
   - In the first version of the timetable, Vision Hall sessions appeared one row too low because the stages were sorted alphabetically.
   - The programme repeated each time twice.
