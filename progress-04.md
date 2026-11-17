@@ -97,7 +97,7 @@ In response to the instructor's feedback on Seminar 4 ("no source links or docum
 
 | Practice | Source | How we applied it |
 | :--- | :--- | :--- |
-| Festival website structure | [coachella.com](https://www.coachella.com/), reviewed on 15 November 2026 | We adopted the patterns, not the design: dates next to the logo, one main ticket call to action in the header, a lineup grouped by day with headliners in larger type, three visit cards (icon-free in our version), FAQ reachable from several places, and a footer sitemap. We did not adopt its drop-down menus, social media links or legal pages. |
+| Festival website structure | [coachella.com](https://www.coachella.com/)| We adopted the patterns, not the design: dates next to the logo, one main ticket call to action in the header, a lineup grouped by day with headliners in larger type, three visit cards (icon-free in our version), FAQ reachable from several places, and a footer sitemap. We did not adopt its drop-down menus, social media links or legal pages. |
 | No modal dialogs for content | [NN/g: Modal & Nonmodal Dialogs](https://www.nngroup.com/articles/modal-nonmodal-dialog/) | Performer profiles are full pages and My Schedule is a page, not a pop-up. This also answers the instructor's feedback on Seminar 3. |
 | Load more instead of one endless list | [NN/g: Infinite Scrolling](https://www.nngroup.com/articles/infinite-scrolling-tips/) | View more shows 10 items at a time, so the FAQ and footer stay reachable, and focus moves to the first new card. |
 | Visible applied filters | [NN/g: Applying Filters](https://www.nngroup.com/articles/applying-filters/) | Filters apply instantly, and every active filter appears as a chip that can be removed on its own. |
@@ -142,7 +142,7 @@ In response to the instructor's feedback on Seminar 4 ("no source links or docum
   - AI added a "Demo only" note to the login page. We removed it from the site and describe the limitation in this report instead.
   - Page transition animations (View Transitions) were removed after testing, because they caused JavaScript errors when the site is opened from local files.
   - Two AI portraits looked almost identical to other portraits and were regenerated with clearer differences (age, glasses, beard, hair).
-  - The image prompts left the gender open where a biography does not state it (for example Aoi Tanaka); we chose it ourselves in Gemini.
+  - The image prompts left the gender open where a biography does not state it; we chose it ourselves in Gemini.
 - **Errors and limitations we found:**
   - In the first version of the timetable, Vision Hall sessions appeared one row too low because the stages were sorted alphabetically.
   - The programme repeated each time twice.
