@@ -40,7 +40,7 @@ Every page has the same header (search field, Tickets, Log in, My Schedule with 
 4. **My Schedule:** each account has its own saved sessions in `localStorage`, sorted by time, with total duration and overlap warnings. Selecting Save while logged out opens the login page, and the session is saved right after logging in.
 5. **Site search:** a search field in the header of every page and a results page. Search ignores accents, so "horakova" finds Petra Horáková.
 6. **Performer search and track filter.**
-7. **View more:** the programme and the performer list show 10 items first, and each select of View more adds 10.
+7. **View more:** the programme and the performer list show 10 items first, and each use of View more adds 10.
 8. **Account registration and login,** with a personal greeting in the header and a personal My Schedule.
 
 ## 2. Known Shortcomings
@@ -80,6 +80,7 @@ All checks ran on all 69 HTML pages in `web/` (9 main pages and 60 performer pag
 | View more | 10 items, then 20; the address keeps `show=20` after reload; a new filter resets to 10 | Passed |
 | Reduced motion | System setting "reduce motion" emulated | All animations are switched off |
 | Data consistency | `js/data.js` compared with `data.json` and `data.xml`; performer pages generated from `data.json` | Identical |
+| Submission copy | The submitted files packed into a zip, unpacked into another folder and all checks above run again on the copy | Passed |
 
 ### Manual checks
 | Check | Who | Device and browser | Result |

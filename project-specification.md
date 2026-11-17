@@ -60,6 +60,7 @@ Futurika Website
 ├── Home Page (index.html)
 │   ├── Hero Section (Festival dates, location, core premise, ticket call to action)
 │   ├── Lineup by Day (keynotes and live performances highlighted)
+│   ├── Session Types Band ("More than talks", link to the programme)
 │   ├── Stages & Experience Overview
 │   └── Quick Logistics (Getting here, Accessibility, Tickets)
 ├── Programme (programme.html)
@@ -83,7 +84,7 @@ Futurika Website
 ├── My Schedule (my-schedule.html)
 │   └── Persistent client-side list of the logged-in account's saved sessions, sorted by time, with total duration counter and overlap warning
 ├── Search Results (search.html)
-│   └── Results across sessions and performers for the query entered in the site-wide search field
+│   └── Results across sessions, performers, stages and visitor information for the query entered in the site-wide search field
 ├── Log in (login.html)
 └── Create Account (register.html)
 
@@ -91,14 +92,14 @@ Every page ends with a page-specific FAQ and a footer with a sitemap and the con
 ```
 
 ### Purpose of Each Main Section
-- **Home Page (`index.html`):** Welcomes visitors and introduces the festival's identity, core theme (Generative AI & Creative Tech), date range, and DOX Prague location. Provides curated keynote highlights, venue sneak peeks, and direct calls-to-action for tickets (`practical.html#tickets`) and programme exploration.
+- **Home Page (`index.html`):** Welcomes visitors and introduces the festival's identity, core theme (Generative AI & Creative Tech), date range, and DOX Prague location. Provides the lineup by day, an overview of the session types, venue sneak peeks, and direct calls-to-action for tickets (`practical.html#tickets`) and programme exploration.
 - **Programme (`programme.html`):** The primary schedule management tool. Delivers the complete 3-day chronological agenda (60 items across 2 stages) with multi-criteria filtering by day, stage, time of day, session type, and topic, instant real-time keyword search, and local bookmarking into "My Schedule".
 - **Performers (`performers.html`):** A searchable directory of all 60 international and Czech speakers, engineers, and digital artists. Offers track filtering (*Vision & Creative Tech* vs *Engineering & Core AI*) and links to a dedicated detail page for each performer.
 - **Performer Detail Pages (`performers/<slug>.html`):** Individual pages with a stable URL presenting the performer's biography, role, country, and full session details, with links back to the programme and to the stage. They work on every device, with the browser Back button, and can be shared or indexed by search engines.
 - **Stages & Venues (`stages.html`):** Spatial and technical orientation guide detailing the two distinct festival venues: *Prompt & Vision Hall* (DOX+ Hall, 450 seats) for immersive media and keynotes, and *Tech & Code Lab* (Innovation Hub, 250 seats) for live-coding and agentic workshops.
 - **Practical Info (`practical.html`):** Logistical hub providing ticket information, public transit directions (Metro C / Tram stops in Prague 7 Holešovice), wheelchair accessibility standards, attendee code of conduct, and an interactive FAQ accordion.
 - **My Schedule (`my-schedule.html`):** Client-side personal itinerary manager powered by `localStorage`. Allows logged-in visitors to curate and reference their custom session lineup on-site, sorted by time and with a warning when two saved sessions overlap. Each account has its own schedule; visitors who are not logged in are asked to log in or create an account.
-- **Search Results (`search.html`):** Displays matching sessions and performers for the query submitted through the site-wide search field, with links to the relevant detail content.
+- **Search Results (`search.html`):** Displays matching sessions, performers, stages and visitor information for the query submitted through the site-wide search field, with links to the relevant detail content.
 - **Log in and Create Account (`login.html`, `register.html`):** Let visitors create an account and log in, so their name appears in the header and they can keep their own My Schedule. Accounts are kept in the visitor's browser only.
 
 ### Main Navigation & Interconnections
@@ -157,7 +158,7 @@ Every page ends with a page-specific FAQ and a footer with a sitemap and the con
 ---
 
 ## 7. Specification Change Log
-The original structure, target groups, festival identity, schedule, and key scenarios remain in place. The changes below are limited and were made after instructor feedback on the Seminar 3 and Seminar 4 submissions, an audit of the submitted prototype, and team review.
+The original structure, target groups, festival identity, schedule, and key scenarios remain in place. The changes below are limited and were made after instructor feedback on the Seminar 3 and Seminar 4 submissions, an audit of the submitted prototype, team review, and consultation with the instructor.
 
 | # | Change | Reason | Basis |
 | :--- | :--- | :--- | :--- |
