@@ -52,7 +52,7 @@ Every page has the same header (search field, Tickets, Log in, My Schedule with 
 | Search uses simple word matching. It has no typo tolerance and no ranking by relevance. | A misspelt word returns no results. | The no-results message suggests checking the spelling. |
 | Saved data depends on `localStorage`. If the browser blocks storage, sessions and accounts are not saved. | Rare, but possible in strict privacy modes. | The site keeps working without saving and does not show errors. |
 | Structured data (JSON-LD) and the SEO, AEO and GEO work required for the final version are not done yet. | No impact on the scenarios. | Planned after the cross-review. |
-| Real-device and screen reader testing is limited (see section 3). | Some problems may only appear on other devices. | 
+| Testing covered two iPhones (Safari) and desktop browsers; screen reader testing used VoiceOver on macOS only. | Problems specific to Android phones or other screen readers (such as NVDA) may remain. | Ask the reviewing team to note the device and browser for every issue they find, and test on an Android phone and with NVDA before the final version. |
 
 There are no known blocking errors.
 
@@ -85,10 +85,12 @@ All checks ran on all 69 HTML pages in `web/` (9 main pages and 60 performer pag
 | Check | Who | Device and browser | Result |
 | :--- | :--- | :--- | :--- |
 | Screenshots of every page at mobile, tablet and desktop width | Abilkhaiyr Albet with AI | Chromium | Found and fixed: timetable columns in the wrong rows, repeated time on cards, an unclear schedule button on small screens, header wrapping at 320 px, a missing space in the lineup |
-| Mobile layout, menu and header search | Abilkhaiyr Albet | Browser and device mode used | Works |
-| Real phone | Beibarys Askar | [IPhone 14, Safari] | Working well  |
-| Other browser | Alisher Karim | Firefox | working well |
-| Keyboard only | Muzafar Iusupov | Chrome | working well |
+| Mobile layout, menu and header search | Abilkhaiyr Albet | Safari, Responsive Design Mode | Everything fits well |
+| Real phone | Beibarys Askar | iPhone 14, Safari | Menu, filters, saving and login work |
+| Other browser | Karim Alisher | Firefox | Menu, filters, saving and login work |
+| Keyboard only | Iusupov Muzafar | Chrome | Menu, filters, saving and login work |
+| Real phone, current version (opened through GitHub Pages) | Abilkhaiyr Albet | iPhone 13, Safari | All three key scenarios, login, saving, overlap warnings and portraits work; no layout problems |
+| Screen reader | Karim Alisher | VoiceOver on macOS, Safari | Key Scenario 1, login and registration errors, saving, My Schedule, menu and FAQ announced as expected |
 
 
 ## 4. Current UX Practices and Their Sources
